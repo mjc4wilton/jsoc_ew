@@ -12,3 +12,4 @@
 #endif
 
 #include "\z\jsoc_ew\addons\main\script_macros.hpp"
+#include "script_macros_acre.hpp"
