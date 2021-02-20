@@ -96,7 +96,7 @@ if (HASH_HASKEY(_currentChannelData,"deviation")) then {
  * Jamming
 */
 private _maxPxJam = 0;
-private _maxSignalJam = -993; //ACRE defined minimum for dbm
+private _maxSignalJam = -993; // ACRE defined minimum for dbm
 
 // Omni-directional jammers
 private _jammers = missionNamespace getVariable [GVAR(jammers), []];
@@ -108,7 +108,7 @@ private _jammers = missionNamespace getVariable [GVAR(jammers), []];
     private _rFreqUp = (_f + _deviationRx);
     private _rFreqLow = (_f - _deviationRx);
     
-    //Find effect over distance and terrain with respect to ACRE signal modeling
+    // Find effect over distance and terrain with respect to ACRE signal modeling
     private _jammer = [_frequencyJ, _powerJ, _radioIDJ, _receiverClass] call FUNC(signalFunctionJammer);
     _jammer params ["_PxJam", "_signalJam"];
 
