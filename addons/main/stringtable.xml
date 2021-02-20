@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="JSOC_EW">
+    <Package name="Main">
+        <Key ID="STR_JSOC_EW_Main_Author">
+            <English>77th JSOC</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Main_URL">
+            <English>https://77th-jsoc.com/forum/index.php</English>
+            <German>https://77th-jsoc.com/forum/index.php</German>
+            <Polish>https://77th-jsoc.com/forum/index.php</Polish>
+            <Portuguese>https://77th-jsoc.com/forum/index.php</Portuguese>
+            <Russian>https://77th-jsoc.com/forum/index.php</Russian>
+            <Czech>https://77th-jsoc.com/forum/index.php</Czech>
+            <Spanish>https://77th-jsoc.com/forum/index.php</Spanish>
+            <Italian>https://77th-jsoc.com/forum/index.php</Italian>
+            <French>https://77th-jsoc.com/forum/index.php</French>
+            <Korean>https://77th-jsoc.com/forum/index.php</Korean>
+            <Japanese>https://77th-jsoc.com/forum/index.php</Japanese>
+            <Chinese>https://77th-jsoc.com/forum/index.php</Chinese>
+            <Chinesesimp>https://77th-jsoc.com/forum/index.php</Chinesesimp>
+        </Key>
+    </Package>
+</Project>

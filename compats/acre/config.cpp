@@ -6,8 +6,8 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {};
-        author = "AUTHOR";
+        requiredAddons[] = {"jsoc_ew_main"};
+        author = ECSTRING(main,Author);
         VERSION_CONFIG;
     };
 };
