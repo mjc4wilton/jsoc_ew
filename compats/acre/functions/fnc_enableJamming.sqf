@@ -41,6 +41,7 @@ _jammers pushBack [_radioID, _frequencyTX, _powerTX, _deviation];
 _jammersClass pushBack _radioID;
 missionNamespace setVariable [QGVAR(jammers), _jammers, true];
 missionNamespace setVariable [QGVAR(jammersClass), _jammersClass, true];
+HASH_SET(_currentChannelData,"rxOnly",true);
 
 hintSilent format ["Jamming Enabled\nFrequency: %1\nPower: %2\nDeviation: %3", _frequencyTX, _powerTX, _deviation];
 

@@ -29,6 +29,12 @@ _jammersClass deleteAt _index;
 missionNamespace setVariable [QGVAR(jammers), _jammers, true];
 missionNamespace setVariable [QGVAR(jammersClass), _jammersClass, true];
 
+private _radioData = HASH_GET(acre_sys_data_radioData,_radioID);
+private _currentChannelId = HASH_GET(_radioData,"currentChannel");
+private _radioChannels = HASH_GET(_radioData,"channels");
+private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId);
+HASH_SET(_currentChannelData,"rxOnly",false);
+
 hintSilent "Jamming Disabled";
 
 nil
