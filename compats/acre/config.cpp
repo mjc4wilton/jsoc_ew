@@ -6,7 +6,11 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"jsoc_ew_main"};
+        requiredAddons[] = {
+            "jsoc_ew_main",
+            "acre_sys_signal",
+            "acre_api"
+        };
         author = ECSTRING(main,Author);
         VERSION_CONFIG;
     };
@@ -14,3 +18,4 @@ class CfgPatches {
 
 
 #include "CfgEventHandlers.hpp"
+#include "CfgVehicles.hpp"
