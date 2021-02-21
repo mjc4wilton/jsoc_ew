@@ -99,7 +99,7 @@ private _maxPxJam = 0;
 private _maxSignalJam = -993; // ACRE defined minimum for dbm
 
 // Omni-directional jammers
-private _jammers = missionNamespace getVariable [GVAR(jammers), []];
+private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
 {
     _x params ["_radioIDJ", "_frequencyJ", "_powerJ", "_deviationJ"];
 
