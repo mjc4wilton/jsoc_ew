@@ -37,4 +37,9 @@ HASH_SET(_currentChannelData,"rxOnly",false);
 
 hintSilent "Jamming Disabled";
 
+if (isClass(configFile >> "CfgPatches" >> "jsoc_ew_contact")) then {
+	// Remove jamming signal from device
+	[_radioID] call EFUNC(contact,removeSignal);
+};
+
 nil

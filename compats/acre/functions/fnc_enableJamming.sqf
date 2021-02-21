@@ -45,4 +45,9 @@ HASH_SET(_currentChannelData,"rxOnly",true);
 
 hintSilent format ["Jamming Enabled\nFrequency: %1\nPower: %2\nDeviation: %3", _frequencyTX, _powerTX, _deviation];
 
+if (isClass(configFile >> "CfgPatches" >> "jsoc_ew_contact")) then {
+	// Add jamming signal to device
+	[_radioID, _frequencyTX, _powerTX, true] call EFUNC(contact,addSignal);
+};
+
 nil
