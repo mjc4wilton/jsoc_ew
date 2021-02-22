@@ -4,7 +4,7 @@
  * Ran on each frame to update the display of the spectrum device
  *
  * Arguments:
- * 0: Device <OBJECT>
+ * None
  *
  * Return Value:
  * None
@@ -14,8 +14,6 @@
  *
  * Public: No
  */
-
-params ["_device"];
 
 // Cleanup source list
 private _sourceList = missionNamespace getVariable [QGVAR(sources), []];
