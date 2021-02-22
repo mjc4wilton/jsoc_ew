@@ -1,26 +1,11 @@
 #include "script_component.hpp"
 
-[
-	ACE_player,
-	"AnimChanged",
-	{
-		params ["_unit"];
-		if (GVAR(PFH) isEqualTo -1) then {
-			if (currentWeapon _unit isEqualTo "hgun_esd_01_F") then {
-				GVAR(PFH) = [{
-						call FUNC(drawSignalPF);
-					},
-					0
-				] call CBA_fnc_addPerFrameHandler;
-			};
-		} else {
-			if !(currentWeapon _unit isEqualTo "hgun_esd_01_F") then {
-				[GVAR(PFH)] call CBA_fnc_removePerFrameHandler;
-			};
-		};
-	},
-	[ACE_player]
-] call CBA_fnc_addBISEventHandler;
+["weapon", {_this call FUNC(update)}] call CBA_fnc_addPlayerEventHandler;
+["vehicle", {
+	params ["_unit", "_newVehicle"];
+	[] call FUNC(disable);
+	[_unit, currentWeapon _unit] call FUNC(update);
+}] call CBA_fnc_addPlayerEventHandler;
 
 [
 	QGVAR(addSignal),
