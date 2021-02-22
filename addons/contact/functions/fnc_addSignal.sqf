@@ -18,16 +18,16 @@
  * Public: No
  */
 
-params ["_source", "_f", "_power", ["_perm", false]];
+params ["_source", "_f", "_power", ["_perm", false], ["_isACRE", false]];
 
 private _sourceList = missionNamespace getVariable [QGVAR(sources), []];
 
 if !((_sourceList findIf {_x select 0 isEqualTo _source}) isEqualTo -1) then {
 	// Source already in list
 	private _sourceIndex = _sourceList findIf {_x select 0 isEqualTo _source};
-	_sourceList set [_sourceIndex, [_source, _f, _power, _perm, diag_frameNo]];
+	_sourceList set [_sourceIndex, [_source, _f, _power, _perm, _isACRE, diag_frameNo]];
 } else {
-	_sourceList pushBack [_source, _f, _power, _perm, diag_frameNo];
+	_sourceList pushBack [_source, _f, _power, _perm, _isACRE, diag_frameNo];
 };
 
 missionNamespace setVariable [QGVAR(sources), _sourceList, false];

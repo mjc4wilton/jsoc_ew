@@ -21,3 +21,17 @@
 	},
 	[ACE_player]
 ] call CBA_fnc_addBISEventHandler;
+
+[
+	QGVAR(addSignal),
+	{
+		_this call FUNC(addSignal);
+	}
+] call CBA_fnc_addEventHandler;
+
+[
+	QGVAR(removeSignal),
+	{
+		_this call FUNC(removeSignal);
+	}
+] call CBA_fnc_addEventHandler;
