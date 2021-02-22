@@ -43,11 +43,6 @@ missionNamespace setVariable [QGVAR(jammers), _jammers, true];
 missionNamespace setVariable [QGVAR(jammersClass), _jammersClass, true];
 HASH_SET(_currentChannelData,"rxOnly",true);
 
-hintSilent format ["Jamming Enabled\nFrequency: %1\nPower: %2\nDeviation: %3", _frequencyTX, _powerTX, _deviation];
-
-if (isClass(configFile >> "CfgPatches" >> "jsoc_ew_contact")) then {
-	// Add jamming signal to device
-	[_radioID, _frequencyTX, _powerTX, true] call EFUNC(contact,addSignal);
-};
+[["<t font='RobotoCondensedBold' size='1.3'>Jamming Enabled</t><br/><t font='RobotoCondensedBold' align='left'>Frequency:</t><t align='right'>%1 MHz</t><br/><t font='RobotoCondensedBold' align='left'>Power:</t><t align='right'>%2 mW</t><br/><t font='RobotoCondensedBold' align='left'>Deviation:</t><t align='right'>%3 kHz</t>", _frequencyTX, _powerTX, _deviation], 3] call ace_common_fnc_displayTextStructured;
 
 nil

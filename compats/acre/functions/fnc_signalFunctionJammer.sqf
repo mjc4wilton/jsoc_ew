@@ -71,3 +71,5 @@ if (_count == 0) then {
 };
 private _maxSignal = missionNamespace getVariable [_transmitterClass + "_best_signal", -992];
 private _Px = missionNamespace getVariable [_transmitterClass + "_best_px", 0];
+
+[_Px, _maxSignal]

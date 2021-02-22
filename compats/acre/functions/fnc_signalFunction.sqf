@@ -109,7 +109,7 @@ private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
     private _rFreqLow = (_f - _deviationRx);
     
     // Find effect over distance and terrain with respect to ACRE signal modeling
-    private _jammer = [_frequencyJ, _powerJ, _radioIDJ, _receiverClass] call FUNC(signalFunctionJammer);
+    private _jammer = [_frequencyJ, _powerJ, _receiverClass, _radioIDJ] call FUNC(signalFunctionJammer);
     _jammer params ["_PxJam", "_signalJam"];
 
     // Adjust effect with frequency (works by calculating the % of overlap between Rx frequency bandwidth and jamming frequency bandwidth)

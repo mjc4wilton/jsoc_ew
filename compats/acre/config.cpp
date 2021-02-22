@@ -9,7 +9,8 @@ class CfgPatches {
         requiredAddons[] = {
             "jsoc_ew_main",
             "acre_sys_signal",
-            "acre_api"
+            "acre_api",
+            "ace_common"
         };
         author = ECSTRING(main,Author);
         VERSION_CONFIG;

@@ -35,11 +35,6 @@ private _radioChannels = HASH_GET(_radioData,"channels");
 private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId);
 HASH_SET(_currentChannelData,"rxOnly",false);
 
-hintSilent "Jamming Disabled";
-
-if (isClass(configFile >> "CfgPatches" >> "jsoc_ew_contact")) then {
-	// Remove jamming signal from device
-	[_radioID] call EFUNC(contact,removeSignal);
-};
+["Jamming Disabled"] call ace_common_fnc_displayTextStructured;
 
 nil
