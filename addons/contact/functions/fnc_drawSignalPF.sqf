@@ -33,6 +33,27 @@ if (isClass(configFile >> "CfgPatches" >> "jsoc_ew_acre") then {
 	} forEach _jammers;
 };
 
+// Handle all vehicles
+private _fVehicles = 135;
+{
+	if (isEngineOn _x) then {
+		private _power = -993;
+		private _fSpace = 2.5;
+		if (unitIsUAV _x) then {
+			_power = -24;
+			_fSpace = 25
+		} else {
+			_power = -54;
+		};
+		if (_power > -993) then {
+			private _distance = ACE_player distance _x;
+			_power = ((_power * (1 / linearConversion [2500, 0, _distance, 0.0001, 1, true])) min 0) max -993;
+			_fVehicles = _fVehicles + (_fSpace + random 15);
+		};
+		_sourceList pushBack [str _x, _fVehicles, _power];
+	};
+} forEach ACE_player nearEntities [["LandVehicle", "Air", "Ship"], 2500];
+
 // Set vars for spectrum device
 private _deviceEM = [];
 {
