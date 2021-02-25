@@ -17,3 +17,9 @@
 #define HASHLIST_PUSH(hashList, value) (hashList pushBack value)
 
 #define BASECLASS(radioId) ([radioId] call acre_sys_radio_fnc_getRadioBaseClassname)
+
+#define SIGNAL_MODEL_CASUAL        0
+#define SIGNAL_MODEL_LOS_SIMPLE    1
+#define SIGNAL_MODEL_LOS_MULTIPATH 2
+#define SIGNAL_MODEL_ITM           3
+#define SIGNAL_MODEL_ITWOM         4  // This model is for now disabled.
