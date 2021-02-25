@@ -62,7 +62,7 @@ if (_count == 0) then {
                     acre_sys_signal_omnidirectionalRadios
                 ],
                 2,
-                FUNC(handleSignalReturn),
+                acre_sys_signal_fnc_handleSignalReturn,
                 [_transmitterClass, _receiverClass]
             ] call acre_sys_core_fnc_callExt;
         } forEach _rxAntennas;
