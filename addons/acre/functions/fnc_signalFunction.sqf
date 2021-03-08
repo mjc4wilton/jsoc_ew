@@ -90,10 +90,10 @@ private _radioData = HASH_GET(acre_sys_data_radioData,_receiverClass);
 private _currentChannelId = HASH_GET(_radioData,"currentChannel");
 private _radioChannels = HASH_GET(_radioData,"channels");
 private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId);
+private _deviationRx = 0.006;
+
 if (HASH_HASKEY(_currentChannelData,"deviation")) then {
-	private _deviationRx = 0.001 * HASH_GET(_currentChannelData,"deviation"); // kHz to MHz
-} else {
-	private _deviationRx = 0.006;
+	_deviationRx = 0.001 * (HASH_GET(_currentChannelData,"deviation")); // kHz to MHz
 };
 
 /*
@@ -134,8 +134,8 @@ private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
             _mult = (0 max ((_jFreqUp - _jFreqLow)/(_rFreqUp - _rFreqLow))) min 1;
         };
     };
-    _PxJamF = _PxJam * (1 - _mult);
-    _signalJamF = -1 * (10 ^ ((log (abs _signalJam)) * (1/(1 - _mult))));
+    _PxJamF = _PxJam * _mult;
+    _signalJamF = (-1 * (10 ^ ((log (abs _signalJam)) * (1/(0.0001 max _mult))))) max -993;
 
     if (ACRE_SIGNAL_DEBUGGING > 1) then {
         hintSilent format ["Reciever: %1\nJammer: %2\nFrequency: %3\nMultiplier: %4\nPxJam: %5\nSignalJam: %6\nPxJamF: %7\nSignalJamF: %8", _receiverClass, _radioIDJ, _frequencyJ, _mult, _PxJam, _signalJam, _PxJamF, _signalJamF];
@@ -152,7 +152,7 @@ private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
 
 // TODO: Directional jammers
 
-_Px = _Px - _maxPxJam;
+_Px = _Px * (1 - _maxPxJam);
 
 private _diffSignal = -1 * ((abs _maxSignalJam) - (abs _maxSignal));
 _maxSignal = _maxSignal - (exp _diffSignal);

@@ -29,10 +29,9 @@ private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId)
 
 private _frequencyTX = HASH_GET(_currentChannelData,"frequencyTX");
 private _powerTX = 10 * HASH_GET(_currentChannelData,"power"); // added power boost
+private _deviation = 3 * 0.006; // 6 kHz with 3x boost
 if (HASH_HASKEY(_currentChannelData,"deviation")) then {
-	private _deviation = 0.003 * HASH_GET(_currentChannelData,"deviation"); // kHz to MHz with x3 boost (covers wider frequency)
-} else {
-	private _deviation = 0.006;
+	_deviation = 0.003 * (HASH_GET(_currentChannelData,"deviation")); // kHz to MHz with x3 boost (covers wider frequency)
 };
 
 private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
@@ -43,6 +42,6 @@ missionNamespace setVariable [QGVAR(jammers), _jammers, true];
 missionNamespace setVariable [QGVAR(jammersClass), _jammersClass, true];
 HASH_SET(_currentChannelData,"rxOnly",true);
 
-[["<t font='RobotoCondensedBold' size='1.3'>Jamming Enabled</t><br/><t font='RobotoCondensedBold' align='left'>Frequency:</t><t align='right'>%1 MHz</t><br/><t font='RobotoCondensedBold' align='left'>Power:</t><t align='right'>%2 mW</t><br/><t font='RobotoCondensedBold' align='left'>Deviation:</t><t align='right'>%3 kHz</t>", _frequencyTX, _powerTX, _deviation], 3] call ace_common_fnc_displayTextStructured;
+[[LLSTRING(EnableJamming_Title), 1.3], [format [LLSTRING(EnableJamming_Frequency), _frequencyTX], 1], [format [LLSTRING(EnableJamming_Power), _powerTX], 1], [format [LLSTRING(EnableJamming_Deviation), _deviation], 1], true] call CBA_fnc_notify;
 
 nil
