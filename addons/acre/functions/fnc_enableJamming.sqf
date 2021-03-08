@@ -30,9 +30,9 @@ private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId)
 private _frequencyTX = HASH_GET(_currentChannelData,"frequencyTX");
 private _powerTX = 10 * HASH_GET(_currentChannelData,"power"); // added power boost
 if (HASH_HASKEY(_currentChannelData,"deviation")) then {
-	private _deviation = HASH_GET(_currentChannelData,"deviation"); // multipies deviation by a factor of 100 (treats a kHz value as a MHz value for jamming boost)
+	private _deviation = 0.003 * HASH_GET(_currentChannelData,"deviation"); // kHz to MHz with x3 boost (covers wider frequency)
 } else {
-	private _deviation = 6;
+	private _deviation = 0.006;
 };
 
 private _jammers = missionNamespace getVariable [QGVAR(jammers), []];

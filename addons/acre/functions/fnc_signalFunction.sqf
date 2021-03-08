@@ -26,8 +26,8 @@ params ["_f", "_mW", "_receiverClass", "_transmitterClass"];
 
 private _count = (missionNamespace getVariable [_transmitterClass + "_running_count", 0]) max 0;
 if (_count == 0) then {
-    private _rxAntennas = [_receiverClass] call acre_sys_components_findAntenna;
-    private _txAntennas = [_transmitterClass] call acre_sys_components_findAntenna;
+    private _rxAntennas = [_receiverClass] call acre_sys_components_fnc_findAntenna;
+    private _txAntennas = [_transmitterClass] call acre_sys_components_fnc_findAntenna;
 
     {
         private _txAntenna = _x;
@@ -81,6 +81,10 @@ if (ACRE_SIGNAL_DEBUGGING > 0) then {
 /*
  * End of ACRE code
 */
+if (ACRE_SIGNAL_DEBUGGING > 1) then {
+    systemChat format ["PRE: Px: %1 | maxSignal: %2", _Px, _maxSignal];
+};
+
 
 private _radioData = HASH_GET(acre_sys_data_radioData,_receiverClass);
 private _currentChannelId = HASH_GET(_radioData,"currentChannel");
@@ -89,7 +93,7 @@ private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId)
 if (HASH_HASKEY(_currentChannelData,"deviation")) then {
 	private _deviationRx = 0.001 * HASH_GET(_currentChannelData,"deviation"); // kHz to MHz
 } else {
-	private _deviationRx = 6;
+	private _deviationRx = 0.006;
 };
 
 /*
@@ -116,18 +120,18 @@ private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
     private _mult = 0;
     if (_jFreqUp >= _rFreqUp) then {
         if (_rFreqLow >= _jFreqLow) then {
-            _mult = 0 max ((_jFreqUp - _jFreqLow)/(_rFreqUp - _rFreqLow)) min 1;
+            _mult = (0 max ((_jFreqUp - _jFreqLow)/(_rFreqUp - _rFreqLow))) min 1;
         };
         if (_rFreqLow < _jFreqLow) then {
-            _mult = 0 max ((_rFreqUp - _jFreqLow)/(_rFreqUp - _rFreqLow)) min 1;
+            _mult = (0 max ((_rFreqUp - _jFreqLow)/(_rFreqUp - _rFreqLow))) min 1;
         };
     };
     if (_jFreqUp < _rFreqUp) then {
         if (_rFreqLow >= _jFreqLow) then {
-            _mult = 0 max ((_jFreqUp - _rFreqLow)/(_rFreqUp - _rFreqLow)) min 1;
+            _mult = (0 max ((_jFreqUp - _rFreqLow)/(_rFreqUp - _rFreqLow))) min 1;
         };
         if (_rFreqLow < _jFreqLow) then {
-            _mult = 0 max ((_jFreqUp - _jFreqLow)/(_rFreqUp - _rFreqLow)) min 1;
+            _mult = (0 max ((_jFreqUp - _jFreqLow)/(_rFreqUp - _rFreqLow))) min 1;
         };
     };
     _PxJamF = _PxJam * (1 - _mult);

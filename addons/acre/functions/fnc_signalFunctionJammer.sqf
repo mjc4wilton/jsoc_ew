@@ -26,8 +26,8 @@ params ["_f", "_mW", "_receiverClass", "_transmitterClass"];
 
 private _count = (missionNamespace getVariable [_transmitterClass + "_running_count", 0]) max 0;
 if (_count == 0) then {
-    private _rxAntennas = [_receiverClass] call acre_sys_components_findAntenna;
-    private _txAntennas = [_transmitterClass] call acre_sys_components_findAntenna;
+    private _rxAntennas = [_receiverClass] call acre_sys_components_fnc_findAntenna;
+    private _txAntennas = [_transmitterClass] call acre_sys_components_fnc_findAntenna;
 
     {
         private _txAntenna = _x;
