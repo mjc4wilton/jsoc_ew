@@ -35,6 +35,6 @@ private _radioChannels = HASH_GET(_radioData,"channels");
 private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId);
 HASH_SET(_currentChannelData,"rxOnly",false);
 
-["Jamming Disabled"] call ace_common_fnc_displayTextStructured;
+[[LLSTRING(DisableJamming_Title), 1.3], true] call CBA_fnc_notify;
 
 nil

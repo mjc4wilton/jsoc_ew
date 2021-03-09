@@ -25,5 +25,8 @@
             <English>Disable Jamming</English>
             <Original>Disable Jamming</Original>
         </Key>
+        <Key ID="STR_JSOC_EW_ACRE_DisableJamming_Title">
+            <English>Jamming Disabled</English>
+        </Key>
     </Package>
 </Project>

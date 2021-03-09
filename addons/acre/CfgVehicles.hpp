@@ -3,7 +3,7 @@ class CfgVehicles {
 	class CAManBase: Man {
 		class ACE_SelfActions {
 			class jsoc_ew_acre {
-				displayName = CESTRING(Main,Title);
+				displayName = ECSTRING(Main,Title);
                 condition = "true";
                 exceptions[] = {"isNotInside", "isNotSitting"};
                 statement = ""; // With no statement the action will only show if it has children
