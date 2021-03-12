@@ -22,10 +22,10 @@ private _antenna = (_unit weaponAccessories _currentWeapon) select 0;
 
 if !(_antenna isKindOf ["muzzle_antenna_base_01_F", configFile >> "CfgWeapons"]) exitWith {_this call FUNC(disable);};
 
-if !(GVAR(PFH) > -1) then {
-	GVAR(PFH) = [
-		{_this call FUNC(drawSignalPF)},
-		1,
-		[]
-	] call CBA_fnc_addPerFrameHandler;
-};
+if (GVAR(PFH) > -1) exitWith {};
+
+GVAR(PFH) = [
+	{_this call FUNC(drawSignalPF)},
+	1,
+	[]
+] call CBA_fnc_addPerFrameHandler;
