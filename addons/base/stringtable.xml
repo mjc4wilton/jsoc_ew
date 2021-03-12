@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="JSOC_EW">
     <Package name="Base">
+        <Key ID="STR_JSOC_EW_Base_Interaction">
+            <English>JSOC EW</English>
+            <Original>JSOC EW</Original>
+        </Key>
         <Key ID="STR_JSOC_EW_Base_DetonationAttempted_Title">
             <English>Detonation Attempted!</English>
             <Original>Detonation Attempted!</Original>
