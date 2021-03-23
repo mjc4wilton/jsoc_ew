@@ -10,8 +10,48 @@
             <Original>Detonation Attempted!</Original>
         </Key>
         <Key ID="STR_JSOC_EW_Base_DetonationAttempted_Angle">
-            <English>Heading: %1 deg</English>
-            <Original>Heading: %1 deg</Original>
+            <English>Bearing: %1</English>
+            <Original>Bearing: %1</Original>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_DegreesFormat">
+            <English>%1 deg</English>
+            <Original>%1 deg</Original>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Cell_Jamming">
+            <English>Cell Jamming</English>
+            <Original>Cell Jamming</Original>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Cell_EnableJamming">
+            <English>Enable</English>
+            <Original>Enable</Original>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Cell_DisableJamming">
+            <English>Disable</English>
+            <Original>Disable</Original>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_RF_Jamming">
+            <English>RF Jamming</English>
+            <Original>RF Jamming</Original>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_RF_EnableJamming">
+            <English>Enable</English>
+            <Original>Enable</Original>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_RF_DisableJamming">
+            <English>Disable</English>
+            <Original>Disable</Original>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_IEDJamming">
+            <English>IED Jamming</English>
+            <Original>IED Jamming</Original>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_MaxJamRange_DisplayName">
+            <English>Max Jammer Range</English>
+            <Original>Max Jammer Range</Original>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_MaxJamRange_Description">
+            <English>Max range for a jammer to successfully jam, provided it is closer to the explosive than the detonator in meters</English>
+            <Original>Max range for a jammer to successfully jam, provided it is closer to the explosive than the detonator in meters</Original>
         </Key>
     </Package>
 </Project>

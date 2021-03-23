@@ -2,12 +2,26 @@ class CfgVehicles {
 	class Man;
 	class CAManBase: Man {
 		class ACE_SelfActions {
-			class jsoc_ew_acre {
+			class jsoc_ew {
 				displayName = CSTRING(Interaction);
-                condition = "true";
+                condition = QUOTE(true);
                 exceptions[] = {"isNotInside", "isNotSitting"};
                 statement = ""; // With no statement the action will only show if it has children
-                priority = 0.05;
+				
+				class GVAR(cell) {
+					displayName = CSTRING(Cell_Jamming);
+					condition = QUOTE(true);
+					statement = ""; // With no statement the action will only show if it has children
+					priority = 0.5;
+					insertChildren = QUOTE(_this call FUNC(cell_addChildren));
+				};
+				class GVAR(rf) {
+					displayName = CSTRING(RF_Jamming);
+					condition = QUOTE(true);
+					statement = ""; // With no statement the action will only show if it has children
+					priority = 0.5;
+					insertChildren = QUOTE(_this call FUNC(rf_addChildren));
+				};
 			};
 		};
 	};
@@ -26,5 +40,7 @@ class CfgVehicles {
 		};
 		maximumLoad = 250;
 		mass = 150;
+		GVAR(isCellJammer) = QUOTE(true);
+		GVAR(isRFJammer) = QUOTE(true);
 	};
 };

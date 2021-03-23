@@ -1,0 +1,9 @@
+// CBA Settings [ADDON: jsoc_ew_base]:
+
+[
+    QGVAR(maxJamRange), "SLIDER",
+    [LLSTRING(MaxJamRange_DisplayName), LLSTRING(MaxJamRange_Description)],
+    [LLSTRING(Interaction), LLSTRING(IEDJamming)],
+    [0, 20000, 2000, 0], // [_min, _max, _default, _trailingDecimals, _isPercentage]
+    true // isGlobal
+] call CBA_fnc_addSetting;

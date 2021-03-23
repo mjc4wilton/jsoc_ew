@@ -8,7 +8,7 @@ class CfgPatches {
         };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {};
+        requiredAddons[] = {"jsoc_ew_main","ace_interaction"};
         author = ECSTRING(main,Author);
         VERSION_CONFIG;
     };

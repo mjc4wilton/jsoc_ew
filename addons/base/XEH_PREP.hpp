@@ -1,2 +1,14 @@
+PREP(cell_addChildren);
+PREP(cell_addChildrenChildren);
+PREP(cell_disableJamming);
+PREP(cell_enableJamming);
+PREP(cell_isJammer);
+PREP(cell_isJamming);
 PREP(handleAceDetonation);
 PREP(handleDetonationAttempted);
+PREP(rf_addChildren);
+PREP(rf_addChildrenChildren);
+PREP(rf_disableJamming);
+PREP(rf_enableJamming);
+PREP(rf_isJammer);
+PREP(rf_isJamming);

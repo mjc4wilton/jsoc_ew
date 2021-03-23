@@ -4,7 +4,7 @@ if (isServer) then {
 
 	// ACE Explosives Jamming
 	[{
-		call FUNC(handleAceDetonate);
+		_this call FUNC(handleAceDetonation)
 	}] call ace_explosives_fnc_addDetonateHandler;
 };
 

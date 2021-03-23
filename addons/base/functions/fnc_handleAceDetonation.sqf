@@ -21,31 +21,63 @@
 
 params ["_unit", "_range","_explosive","_fuse","_trigger"];
 
+if (_range == -1) then {
+	// Infinite detonation range
+	_range = GVAR(maxJamRange);
+};
 private _return = true;
-private _cellJammers = missionNamespace getVariable [QGVAR(cellJammers), []];
-private _rfJammers = missionNamespace getVariable [QGVAR(rfJammers), []];
+scopeName QGVAR(handleAceDetonation_main);
 
-// Check if detonator is within range of the explosive
-if ((_unit distance _explosive) >= _range) exitWith {false};
-
-// Check cellphone controlled IEDs
-if (_trigger isEqualTo "ace_cellphone") then {
-	{
-		if ((_x distance _explosive) - (_unit distance explosive) <= 0) then {
-			_return = false;
-			[QGVAR(detonationAttempted), [_explosive, _trigger], _x] call CBA_fnc_targetEvent;
-		};
-	} forEach _cellJammers;
-};
-
-// Check rf controlled IEDs
-if ((_trigger isEqualTo "ace_m26_clacker") || (_trigger isEqualTo "ACE_Clacker")) then {
-	{
-		if ((_x distance _explosive) - (_unit distance explosive) <= 0) then {
-			_return = false;
-			[QGVAR(detonationAttempted), [_explosive, _trigger], _x] call CBA_fnc_targetEvent;
-		};
-	} forEach _rfJammers;
-};
+{
+	if (_x isKindOf "Man") then {
+		private _unit = _x;
+		private _uniformContainer = uniformContainer _unit;
+		private _vestContainer = vestContainer _unit;
+		private _backpackContainer = backpackContainer _unit;
+		{
+			private _obj = _x;
+			if (_trigger isEqualTo "ACE_Cellphone") then {
+				if ([_obj] call FUNC(cell_isJammer)) then {
+					if (_obj getVariable [QGVAR(cell_isJamming),false]) then {
+						_return = false;
+						[QGVAR(detonationAttempted), [_explosive, _trigger], _obj] call CBA_fnc_targetEvent;
+						breakTo QGVAR(handleAceDetonation_main);
+					};
+				};
+			};
+			if (_trigger isEqualTo "ACE_Clacker" || {_trigger isEqualTo "ACE_M26_Clacker"}) then {
+				if ([_obj] call FUNC(rf_isJammer)) then {
+					if (_obj getVariable [QGVAR(rf_isJamming),false]) then {
+						_return = false;
+						[QGVAR(detonationAttempted), [_explosive, _trigger], _obj] call CBA_fnc_targetEvent;
+						breakTo QGVAR(handleAceDetonation_main);
+					};
+				};
+			};
+		} forEach [_uniformContainer, _vestContainer, _backpackContainer];
+	};
+	if (_x isKindOf "WeaponHolder" || {_x isKindOf "ReammoBox_F"} || {_x isKindOf "AllVehicles"}) then {
+		private _container = _x;
+		{
+			_x params ["_class", "_obj"];
+			if (_trigger isEqualTo "ACE_Cellphone") then {
+				if ([_obj] call FUNC(cell_isJammer)) then {
+					if (_obj getVariable [QGVAR(cell_isJamming),false]) then {
+						_return = false;
+						breakTo QGVAR(handleAceDetonation_main);
+					};
+				};
+			};
+			if (_trigger isEqualTo "ACE_Clacker" || {_trigger isEqualTo "ACE_M26_Clacker"}) then {
+				if ([_obj] call FUNC(rf_isJammer)) then {
+					if (_obj getVariable [QGVAR(rf_isJamming),false]) then {
+						_return = false;
+						breakTo QGVAR(handleAceDetonation_main);
+					};
+				};
+			};
+		} forEach everyContainer _container;
+	};	
+} forEach ((getPos _explosive) nearEntities [["Man","WeaponHolder","ReammoBox_F","AllVehicles"], _range]);
 
 _return

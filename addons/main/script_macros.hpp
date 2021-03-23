@@ -6,10 +6,10 @@
 #ifdef DISABLE_COMPILE_CACHE
     #undef PREP
     #define PREP(fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(functions\DOUBLES(fnc,fncName).sqf)
+    #define LINKFUNC(x) {_this call FUNC(x)}
 #else
     #undef PREP
     #define PREP(fncName) [QPATHTOF(functions\DOUBLES(fnc,fncName).sqf), QFUNC(fncName)] call CBA_fnc_compileFunction
+    #define LINKFUNC(x) FUNC(x)
 #endif
 
-#define HASH_SET(hash, key, val) (hash setVariable [key, val])
-#define HASH_GET(hash, key) (hash getVariable key)
