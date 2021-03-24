@@ -78,6 +78,6 @@ scopeName QGVAR(handleAceDetonation_main);
 			};
 		} forEach everyContainer _container;
 	};	
-} forEach ((getPos _explosive) nearEntities [["Man","WeaponHolder","ReammoBox_F","AllVehicles"], _range]);
+} forEach ((getPos _explosive) nearEntities [["CAManBase","WeaponHolder","ReammoBox_F","AllVehicles"], _range]);
 
 _return
