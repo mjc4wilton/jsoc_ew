@@ -22,30 +22,30 @@ private _direction = ACE_player getDir _explosive;
 private _distance = ACE_player distance _explosive;
 private _directionFormatted = "";
 
-if (_distance > 500) then {
+if (_distance > GVAR(exactRange)) then {
 	switch (true) do {
-		case ({_direction >= (360 - 22.5)} || {_direction < (0 + 22.5)}): { 
+		case (_direction >= (360 - 22.5) || {_direction < (0 + 22.5)}): { 
 			_directionFormatted = "N";
 		};
-		case ({_direction >= (45 - 22.5)} && {_direction < (45 + 22.5)}): { 
+		case (_direction >= (45 - 22.5) && {_direction < (45 + 22.5)}): { 
 			_directionFormatted = "NE";
 		};
-		case ({_direction >= (90 - 22.5)} && {_direction < (90 + 22.5)}): { 
+		case (_direction >= (90 - 22.5) && {_direction < (90 + 22.5)}): { 
 			_directionFormatted = "E";
 		};
-		case ({_direction >= (135 - 22.5)} && {_direction < (135 + 22.5)}): { 
+		case (_direction >= (135 - 22.5) && {_direction < (135 + 22.5)}): { 
 			_directionFormatted = "SE";
 		};
-		case ({_direction >= (180 - 22.5)} && {_direction < (180 + 22.5)}): { 
+		case (_direction >= (180 - 22.5) && {_direction < (180 + 22.5)}): { 
 			_directionFormatted = "S";
 		};
-		case ({_direction >= (225 - 22.5)} && {_direction < (225 + 22.5)}): { 
+		case (_direction >= (225 - 22.5) && {_direction < (225 + 22.5)}): { 
 			_directionFormatted = "SW";
 		};
-		case ({_direction >= (275 - 22.5)} && {_direction < (275 + 22.5)}): { 
+		case (_direction >= (275 - 22.5) && {_direction < (275 + 22.5)}): { 
 			_directionFormatted = "W";
 		};
-		case ({_direction >= (325 - 22.5)} && {_direction < (325 + 22.5)}): { 
+		case (_direction >= (325 - 22.5) && {_direction < (325 + 22.5)}): { 
 			_directionFormatted = "NW";
 		};
 		default { 
@@ -56,4 +56,13 @@ if (_distance > 500) then {
 	_directionFormatted = format [LLSTRING(DegreesFormat), round _direction];
 };
 
-[[LLSTRING(DetonationAttempted_Title), 1.3], [format [LLSTRING(DetonationAttempted_Angle), _directionFormatted]], true] call CBA_fnc_notify;
+private _detonatorType = "";
+switch (_trigger) do {
+	case "ACE_Cellphone": {_detonatorType = LLSTRING(Cell)};
+	case "ACE_Clacker": {_detonatorType = LLSTRING(RF)};
+	case "ACE_M26_Clacker": {_detonatorType = LLSTRING(RF)};
+	default { };
+};
+
+[[LLSTRING(DetonationAttempted_Title), 1.3], [format [LLSTRING(DetonationAttempted_Type), _detonatorType]], [format [LLSTRING(DetonationAttempted_Angle), _directionFormatted]], true] call CBA_fnc_notify;
+playSound "Spawn";

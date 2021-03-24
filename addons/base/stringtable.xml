@@ -9,6 +9,10 @@
             <English>Detonation Attempted!</English>
             <Original>Detonation Attempted!</Original>
         </Key>
+        <Key ID="STR_JSOC_EW_Base_DetonationAttempted_Type">
+            <English>Detonator Type: %1</English>
+            <Original>Detonator Type: %1</Original>
+        </Key>
         <Key ID="STR_JSOC_EW_Base_DetonationAttempted_Angle">
             <English>Bearing: %1</English>
             <Original>Bearing: %1</Original>
@@ -16,6 +20,10 @@
         <Key ID="STR_JSOC_EW_Base_DegreesFormat">
             <English>%1 deg</English>
             <Original>%1 deg</Original>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Cell">
+            <English>Cell</English>
+            <Original>Cell</Original>
         </Key>
         <Key ID="STR_JSOC_EW_Base_Cell_Jamming">
             <English>Cell Jamming</English>
@@ -28,6 +36,10 @@
         <Key ID="STR_JSOC_EW_Base_Cell_DisableJamming">
             <English>Disable</English>
             <Original>Disable</Original>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_RF">
+            <English>RF</English>
+            <Original>RF</Original>
         </Key>
         <Key ID="STR_JSOC_EW_Base_RF_Jamming">
             <English>RF Jamming</English>
@@ -52,6 +64,14 @@
         <Key ID="STR_JSOC_EW_Base_MaxJamRange_Description">
             <English>Max range for a jammer to successfully jam, provided it is closer to the explosive than the detonator in meters</English>
             <Original>Max range for a jammer to successfully jam, provided it is closer to the explosive than the detonator in meters</Original>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_ExactRange_DisplayName">
+            <English>Exact Bearing Range</English>
+            <Original>Exact Bearing Range</Original>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_ExactRange_Description">
+            <English>When an IED is jammed, if the jammer is within this radius of the explosive it will provice the exact bearing to the explosive</English>
+            <Original>When an IED is jammed, if the jammer is within this radius of the explosive it will provice the exact bearing to the explosive</Original>
         </Key>
     </Package>
 </Project>

@@ -7,3 +7,11 @@
     [0, 20000, 2000, 0], // [_min, _max, _default, _trailingDecimals, _isPercentage]
     true // isGlobal
 ] call CBA_fnc_addSetting;
+
+[
+    QGVAR(exactRange), "SLIDER",
+    [LLSTRING(ExactRange_DisplayName), LLSTRING(ExactRange_Description)],
+    [LLSTRING(Interaction), LLSTRING(IEDJamming)],
+    [0, 5000, 500, 0], // [_min, _max, _default, _trailingDecimals, _isPercentage]
+    true // isGlobal
+] call CBA_fnc_addSetting;
