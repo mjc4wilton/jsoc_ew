@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: Wilton
- * Handles detonation of ACE explosives (CLIENT SIDE)
+ * Handles detonation of ACE explosives (Executed where jammer is local)
  *
  * Arguments:
  * 0: Explosive <OBJECT>

@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: Wilton
- * Handles detonation of ACE explosives (SERVER SIDE)
+ * Handles detonation of ACE explosives (Executed where detonator is local)
  *
  * Arguments:
  * 0: Unit <OBJECT>
