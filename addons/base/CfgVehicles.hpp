@@ -43,4 +43,24 @@ class CfgVehicles {
 		GVAR(isCellJammer) = QUOTE(true);
 		GVAR(isRFJammer) = QUOTE(true);
 	};
+
+	// ZEUS Modules
+	class Module_F;
+    class GVAR(ModuleBase): Module_F {
+        author = "77th JSOC";
+        category = "NO_CATEGORY";
+        function = "";
+        scope = 1;
+        scopeCurator = 2;
+    };
+	class GVAR(Cell_ConnectExplosive): GVAR(ModuleBase) {
+		scope = 2;
+        curatorCanAttach = 1;
+        category = "ace_zeus_Utility";
+        displayName = CSTRING(Modules_Cell_ConnectExplosive);
+        function = QFUNC(cell_connectExplosive);
+        icon = "z\ace\addons\explosives\UI\Explosives_Menu_ca.paa";
+    };
+
+
 };

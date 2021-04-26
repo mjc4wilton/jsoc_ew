@@ -4,13 +4,11 @@ class CfgPatches {
     class ADDON {
         name = QUOTE(COMPONENT);
         units[] = {
-            "jsoc_ew_base_backpack_mc",
-            QGVAR(ModuleBase),
-            QGVAR(Cell_ConnectExplosive)
+            QGVAR(EquipRadioJammer)
         };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"jsoc_ew_main","ace_interaction","ace_explosives"};
+        requiredAddons[] = {"jsoc_ew_base","zen_modules"};
         author = ECSTRING(main,Author);
         VERSION_CONFIG;
     };
@@ -19,4 +17,3 @@ class CfgPatches {
 
 #include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
-#include "Ace_ZeusActions.hpp"

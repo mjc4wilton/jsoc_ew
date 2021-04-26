@@ -73,5 +73,9 @@
             <English>When an IED is jammed, if the jammer is within this radius of the explosive it will provice the exact bearing to the explosive</English>
             <Original>When an IED is jammed, if the jammer is within this radius of the explosive it will provice the exact bearing to the explosive</Original>
         </Key>
+        <Key ID="STR_JSOC_EW_Base_Modules_Cell_ConnectExplosive">
+            <English>Connect Explosive (Cell)</English>
+            <Original>Connect Explosive (Cell)</Original>
+        </Key>
     </Package>
 </Project>

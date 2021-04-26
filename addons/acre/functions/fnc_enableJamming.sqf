@@ -16,9 +16,8 @@
  * Public: No
  */
 
-params ["_unit", "_target"];
+params ["_unit", "_target", ["_radioID", [] call acre_api_fnc_getCurrentRadio]];
 
-private _radioID = [] call acre_api_fnc_getCurrentRadio;
 private _jammersClass = missionNamespace getVariable [QGVAR(jammersClass), []];
 if (_radioID in _jammersClass) exitWith {}; //Exit if radio is already jamming
 

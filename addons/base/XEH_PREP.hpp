@@ -1,5 +1,6 @@
 PREP(cell_addChildren);
 PREP(cell_addChildrenChildren);
+PREP(cell_connectExplosive);
 PREP(cell_disableJamming);
 PREP(cell_enableJamming);
 PREP(cell_isJammer);
