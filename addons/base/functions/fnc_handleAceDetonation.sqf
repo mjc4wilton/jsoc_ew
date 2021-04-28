@@ -40,7 +40,7 @@ scopeName QGVAR(handleAceDetonation_main);
 				if ([_obj] call FUNC(cell_isJammer)) then {
 					if (_obj getVariable [QGVAR(cell_isJamming),false]) then {
 						_return = false;
-						[QGVAR(detonationAttempted), [_unit, _trigger], _obj] call CBA_fnc_targetEvent;
+						[QGVAR(detonationAttempted), [_explosive, _trigger], _obj] call CBA_fnc_targetEvent;
 						breakTo QGVAR(handleAceDetonation_main);
 					};
 				};

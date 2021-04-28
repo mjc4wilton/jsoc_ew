@@ -50,17 +50,17 @@ class CfgVehicles {
         author = "77th JSOC";
         category = "NO_CATEGORY";
         function = "";
+        functionPriority = 1;
+        isGlobal = 1;
+        isTriggerActivated = 0;
         scope = 1;
         scopeCurator = 2;
     };
 	class GVAR(Cell_ConnectExplosive): GVAR(ModuleBase) {
-		scope = 2;
         curatorCanAttach = 1;
         category = "ace_zeus_Utility";
         displayName = CSTRING(Modules_Cell_ConnectExplosive);
         function = QFUNC(cell_connectExplosive);
         icon = "z\ace\addons\explosives\UI\Explosives_Menu_ca.paa";
     };
-
-
 };

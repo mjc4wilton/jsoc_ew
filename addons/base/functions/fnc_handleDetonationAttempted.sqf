@@ -4,22 +4,22 @@
  * Handles detonation of ACE explosives (Executed where jammer is local)
  *
  * Arguments:
- * 0: TriggerHolder <UNIT>
+ * 0: Explosive <OBJECT>
  * 1: TriggerItem <STRING>
  *
  * Return Value:
  * None
  *
  * Example:
- * [_unit, _trigger] call jsoc_ew_base_fnc_handleDetonationAttempted;
+ * [_explosive, _trigger] call jsoc_ew_base_fnc_handleDetonationAttempted;
  *
  * Public: No
  */
 
-params ["_unit","_trigger"];
+params ["_explosive","_trigger"];
 
-private _direction = ACE_player getDir _unit;
-private _distance = ACE_player distance _unit;
+private _direction = ACE_player getDir _explosive;
+private _distance = ACE_player distance _explosive;
 private _directionFormatted = "";
 
 if (_distance > GVAR(exactRange)) then {
