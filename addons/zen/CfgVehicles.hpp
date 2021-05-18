@@ -1,3 +1,4 @@
+class CBA_Extended_EventHandlers_base;
 class CfgVehicles {
     class Module_F;
     class GVAR(ModuleBase): Module_F {

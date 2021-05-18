@@ -1,3 +1,4 @@
+class CBA_Extended_EventHandlers_base;
 class CfgVehicles {
 	class Man;
 	class CAManBase: Man {
@@ -25,9 +26,9 @@ class CfgVehicles {
 			};
 		};
 	};
-
+	
+	// Gear
 	class Bag_Base;
-
 	class GVAR(backpack_mc): Bag_Base {
 		author = "Chaser";
 		scope = 2;
@@ -51,10 +52,16 @@ class CfgVehicles {
         category = "NO_CATEGORY";
         function = "";
         functionPriority = 1;
-        isGlobal = 1;
+        isGlobal = 0;
         isTriggerActivated = 0;
         scope = 1;
         scopeCurator = 2;
+		class EventHandlers {
+            class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
+            class ADDON {
+                init = QUOTE(_this call FUNC(initModules));
+            };
+        };
     };
 	class GVAR(Cell_ConnectExplosive): GVAR(ModuleBase) {
         curatorCanAttach = 1;

@@ -7,6 +7,7 @@ PREP(cell_isJammer);
 PREP(cell_isJamming);
 PREP(handleAceDetonation);
 PREP(handleDetonationAttempted);
+PREP(initModules);
 PREP(rf_addChildren);
 PREP(rf_addChildrenChildren);
 PREP(rf_disableJamming);
