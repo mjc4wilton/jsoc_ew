@@ -6,6 +6,7 @@
  * Arguments:
  * 0: Unit <UNIT>
  * 1: Target <UNIT>
+ * 2: RadioID <STRING> (Optional: Default current active radio)
  *
  * Return Value:
  * None
@@ -18,28 +19,28 @@
 
 params ["_unit", "_target", ["_radioID", [] call acre_api_fnc_getCurrentRadio]];
 
-private _jammersClass = missionNamespace getVariable [QGVAR(jammersClass), []];
-if (_radioID in _jammersClass) exitWith {}; //Exit if radio is already jamming
+private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
+if (_radioID in _jammers) exitWith {}; //Exit if radio is already jamming
 
+// Add Jammer
+_jammers pushBack _radioID;
+missionNamespace setVariable [QGVAR(jammers), _jammers, true];
+
+// Lockout transmitting
+HASH_SET(_currentChannelData,"rxOnly",true);
+
+// Get data to present to user
 private _radioData = HASH_GET(acre_sys_data_radioData,_radioID);
 private _currentChannelId = HASH_GET(_radioData,"currentChannel");
 private _radioChannels = HASH_GET(_radioData,"channels");
 private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId);
 
 private _frequencyTX = HASH_GET(_currentChannelData,"frequencyTX");
-private _powerTX = GVAR(jammer_powerMult) * HASH_GET(_currentChannelData,"power"); // added power boost
-private _deviation = (GVAR(jammer_bandwidthMult) ^ 2) * 0.006; // 6 kHz with 3x (default) boost
+private _powerTX = HASH_GET(_currentChannelData,"power");
+private _deviation = BASE_RADIO_DEVIATION;
 if (HASH_HASKEY(_currentChannelData,"deviation")) then {
-	_deviation = (GVAR(jammer_bandwidthMult) ^ 2) * 0.001 * (HASH_GET(_currentChannelData,"deviation")); // kHz to MHz with x3 (default) boost (covers wider frequency)
+	_deviation = 0.001 * (HASH_GET(_currentChannelData,"deviation")); // kHz to MHz
 };
-
-private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
-
-_jammers pushBack [_radioID, _frequencyTX, _powerTX, _deviation];
-_jammersClass pushBack _radioID;
-missionNamespace setVariable [QGVAR(jammers), _jammers, true];
-missionNamespace setVariable [QGVAR(jammersClass), _jammersClass, true];
-HASH_SET(_currentChannelData,"rxOnly",true);
 
 [[LLSTRING(EnableJamming_Title), 1.3], [format [LLSTRING(EnableJamming_Frequency), _frequencyTX], 1], [format [LLSTRING(EnableJamming_Power), _powerTX], 1], [format [LLSTRING(EnableJamming_Deviation), _deviation], 1], true] call CBA_fnc_notify;
 

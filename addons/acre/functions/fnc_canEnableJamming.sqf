@@ -31,7 +31,7 @@ private _radioID = "";
 } forEach _radios;
 
 // Check if radio is currently jamming
-private _isJamming = _radioID in (missionNamespace getVariable [QGVAR(jammersClass), []]);
+private _isJamming = _radioID in (missionNamespace getVariable [QGVAR(jammers), []]);
 
 // Return
 _hasJammer && !_isJamming

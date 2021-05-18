@@ -1,3 +1,4 @@
+// ACRE Defines
 #define IS_HASH(hash) (hash isEqualType locationNull && {(type hash) isEqualTo "ACRE_FastHashNamespaceDummy"})
 
 #define HASH_CREATE_NAMESPACE (createLocation ["ACRE_FastHashNamespaceDummy", [-1000, -1000, 0], 0, 0])
@@ -23,3 +24,6 @@
 #define SIGNAL_MODEL_LOS_MULTIPATH 2
 #define SIGNAL_MODEL_ITM           3
 #define SIGNAL_MODEL_ITWOM         4  // This model is for now disabled.
+
+// JSOC_EW Defines
+#define BASE_RADIO_DEVIATION 0.006 // 6 kHz

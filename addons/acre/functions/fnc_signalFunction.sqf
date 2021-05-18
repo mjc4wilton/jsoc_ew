@@ -105,8 +105,21 @@ private _maxSignalJam = -993; // ACRE defined minimum for dbm
 // Omni-directional jammers
 private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
 {
-    _x params ["_radioIDJ", "_frequencyJ", "_powerJ", "_deviationJ"];
+    // Get required values from jammer (freq, power, deviation)
+    private _radioIDJ = _x;
+    private _radioDataJ = HASH_GET(acre_sys_data_radioData,_radioIDJ);
+    private _currentChannelIdJ = HASH_GET(_radioData,"currentChannel");
+    private _radioChannelsJ = HASH_GET(_radioData,"channels");
+    private _currentChannelDataJ = HASHLIST_SELECT(_radioChannelsJ, _currentChannelIdJ);
 
+    private _frequencyJ = HASH_GET(_currentChannelDataJ,"frequencyTX");
+    private _powerJ = HASH_GET(_currentChannelDataJ,"power");
+    private _deviationJ = BASE_RADIO_DEVIATION; // 6 kHz
+    if (HASH_HASKEY(_currentChannelDataJ,"deviation")) then {
+        _deviationJ = 0.001 * (HASH_GET(_currentChannelDataJ,"deviation")); // kHz to MHz
+    };
+
+    // Get frequency limits
     private _jFreqUp = (_frequencyJ + _deviationJ);
     private _jFreqLow = (_frequencyJ - _deviationJ);
     private _rFreqUp = (_f + _deviationRx);
@@ -150,7 +163,7 @@ private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
     };
 } forEach _jammers;
 
-// TODO: Directional jammers
+// TODO: Directional jammers (In theory would be handled via ACRE directional signal calculations which are not yet implemented)
 
 _Px = _Px * (1 - _maxPxJam);
 

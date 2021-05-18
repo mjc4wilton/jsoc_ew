@@ -29,28 +29,5 @@
             <English>Jamming Disabled</English>
             <Original>Jamming Disabled</Original>
         </Key>
-        <!--            CBA Settings           -->
-        <Key ID="STR_JSOC_EW_ACRE_Jammers_Settings">
-            <English>ACRE Jammers</English>
-            <Original>ACRE Jammers</Original>
-        </Key>
-        <!-- Bandwidth -->
-        <Key ID="STR_JSOC_EW_ACRE_Jammer_BandwidthMult_DisplayName">
-            <English>Bandwidth Multiplier</English>
-            <Original>Bandwidth Multiplier</Original>
-        </Key>
-        <Key ID="STR_JSOC_EW_ACRE_Jammer_BandwidthMult_Description">
-            <English>Square root of a multiplier applied to jammer's bandwidth \nLarger values mean more channels affected</English>
-            <Original>Square root of a multiplier applied to jammer's bandwidth \nLarger values mean more channels affected</Original>
-        </Key>
-        <!-- Power -->
-        <Key ID="STR_JSOC_EW_ACRE_Jammer_PowerMult_DisplayName">
-            <English>Power Multiplier</English>
-            <Original>Power Multiplier</Original>
-        </Key>
-        <Key ID="STR_JSOC_EW_ACRE_Jammer_PowerMult_Description">
-            <English>Multiplier of RF output power applied to a jammer\nEx: a value of 10 will make a 5W jammer a 50W jammer</English>
-            <Original>Multiplier of RF output power applied to a jammer\nEx: a value of 10 will make a 5W jammer a 50W jammer</Original>
-        </Key>
     </Package>
 </Project>

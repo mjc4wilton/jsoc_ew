@@ -19,15 +19,12 @@
 params ["_unit", "_target"];
 
 private _radioID = [] call acre_api_fnc_getCurrentRadio;
-private _jammersClass = missionNamespace getVariable [QGVAR(jammersClass), []];
-if !(_radioID in _jammersClass) exitWith {}; //Exit if radio is not jamming
-
 private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
-private _index = _jammersClass find _radioID;
+if !(_radioID in _jammers) exitWith {}; //Exit if radio is not jamming
+
+private _index = _jammers find _radioID;
 _jammers deleteAt _index;
-_jammersClass deleteAt _index;
 missionNamespace setVariable [QGVAR(jammers), _jammers, true];
-missionNamespace setVariable [QGVAR(jammersClass), _jammersClass, true];
 
 private _radioData = HASH_GET(acre_sys_data_radioData,_radioID);
 private _currentChannelId = HASH_GET(_radioData,"currentChannel");
