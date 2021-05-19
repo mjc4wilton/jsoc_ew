@@ -85,7 +85,7 @@ if (ACRE_SIGNAL_DEBUGGING > 1) then {
     systemChat format ["PRE: Px: %1 | maxSignal: %2", _Px, _maxSignal];
 };
 
-
+// Get deviation of Rx radio
 private _radioData = HASH_GET(acre_sys_data_radioData,_receiverClass);
 private _currentChannelId = HASH_GET(_radioData,"currentChannel");
 private _radioChannels = HASH_GET(_radioData,"channels");
@@ -112,8 +112,12 @@ private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
     private _radioChannelsJ = HASH_GET(_radioDataJ,"channels");
     private _currentChannelDataJ = HASHLIST_SELECT(_radioChannelsJ, _currentChannelIdJ);
 
-    private _frequencyJ = HASH_GET(_currentChannelDataJ,"frequencyTX");
-    private _powerJ = HASH_GET(_currentChannelDataJ,"power");
+    // Use function calls for freq and power
+    private _calledDataJ = ["", "", "", _radioDataJ] call acre_sys_prc117f_fnc_getCurrentChannelData;
+    private _frequencyJ = HASH_GET(_calledDataJ,"frequencyTX");
+    private _powerJ = HASH_GET(_calledDataJ,"power");
+
+    // Deviation is not returned from function calls and must be calculated manually
     private _deviationJ = BASE_RADIO_DEVIATION; // 6 kHz
     if (HASH_HASKEY(_currentChannelDataJ,"deviation")) then {
         _deviationJ = 0.001 * (HASH_GET(_currentChannelDataJ,"deviation")); // kHz to MHz

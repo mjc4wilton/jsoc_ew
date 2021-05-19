@@ -19,16 +19,14 @@
 params ["_unit", "_target"];
 
 // Check if they have a jammer
-private _radios = ["ACRE_PRC117F", _unit] call acre_api_fnc_getAllRadiosByType;
 private _activeRadio = [] call acre_api_fnc_getCurrentRadio;
 private _hasJammer = false;
 private _radioID = "";
-{
-	if (_x isEqualTo _activeRadio) exitWith {
-		_hasJammer = true;
-		_radioID = _x;
-	};	
-} forEach _radios;
+
+if ([_activeRadio, "ACRE_PRC117F"] call acre_api_fnc_isKindOf) then {
+	_hasJammer = true;
+	_radioID = _activeRadio;
+};
 
 // Check if radio is currently jamming
 private _isJamming = _radioID in (missionNamespace getVariable [QGVAR(jammers), []]);

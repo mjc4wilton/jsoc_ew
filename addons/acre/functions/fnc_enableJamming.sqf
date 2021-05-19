@@ -35,9 +35,13 @@ private _currentChannelId = HASH_GET(_radioData,"currentChannel");
 private _radioChannels = HASH_GET(_radioData,"channels");
 private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId);
 
-private _frequencyTX = HASH_GET(_currentChannelData,"frequencyTX");
-private _powerTX = HASH_GET(_currentChannelData,"power");
-private _deviation = BASE_RADIO_DEVIATION;
+// Use function calls for freq and power
+private _calledData = ["", "", "", _radioData] call acre_sys_prc117f_fnc_getCurrentChannelData;
+private _frequencyTX = HASH_GET(_calledData,"frequencyTX");
+private _powerTX = HASH_GET(_calledData,"power");
+
+// Deviation is not returned from function calls and must be calculated manually
+private _deviation = BASE_RADIO_DEVIATION; // 6 kHz
 if (HASH_HASKEY(_currentChannelData,"deviation")) then {
 	_deviation = 0.001 * (HASH_GET(_currentChannelData,"deviation")); // kHz to MHz
 };
