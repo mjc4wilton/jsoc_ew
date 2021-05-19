@@ -108,8 +108,8 @@ private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
     // Get required values from jammer (freq, power, deviation)
     private _radioIDJ = _x;
     private _radioDataJ = HASH_GET(acre_sys_data_radioData,_radioIDJ);
-    private _currentChannelIdJ = HASH_GET(_radioData,"currentChannel");
-    private _radioChannelsJ = HASH_GET(_radioData,"channels");
+    private _currentChannelIdJ = HASH_GET(_radioDataJ,"currentChannel");
+    private _radioChannelsJ = HASH_GET(_radioDataJ,"channels");
     private _currentChannelDataJ = HASHLIST_SELECT(_radioChannelsJ, _currentChannelIdJ);
 
     private _frequencyJ = HASH_GET(_currentChannelDataJ,"frequencyTX");
