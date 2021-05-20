@@ -4,8 +4,8 @@
  * Custom ACRE signal function to handle EW jamming capabilities
  *
  * Arguments:
- * 0: Frequency <NUMBER>
- * 1: Power <NUMBER>
+ * 0: Frequency (MHz) <NUMBER>
+ * 1: Power (mW) <NUMBER>
  * 2: Receiving Radio ID <STRING>
  * 3: Transmitting Radio ID <STRING>
  *
@@ -104,70 +104,86 @@ private _maxSignalJam = -993; // ACRE defined minimum for dbm
 
 // Omni-directional jammers
 private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
+private _updateJammers = false;
 {
-    // Get required values from jammer (freq, power, deviation)
-    private _radioIDJ = _x;
-    private _radioDataJ = HASH_GET(acre_sys_data_radioData,_radioIDJ);
-    private _currentChannelIdJ = HASH_GET(_radioDataJ,"currentChannel");
-    private _radioChannelsJ = HASH_GET(_radioDataJ,"channels");
-    private _currentChannelDataJ = HASHLIST_SELECT(_radioChannelsJ, _currentChannelIdJ);
+    // Sanitize jammers (Ensure it still exists)
+    if (isNil {[_x] call acre_sys_radio_fnc_getRadioObject}) then {
+        // Jammer no longer exists, delete it.
+        _updateJammers = true;
+        _jammers deleteAt _forEachIndex;
+    } else {
+        // Jammer still exists, process it.
 
-    // Use function calls for freq and power
-    private _calledDataJ = ["", "", "", _radioDataJ] call acre_sys_prc117f_fnc_getCurrentChannelData;
-    private _frequencyJ = HASH_GET(_calledDataJ,"frequencyTX");
-    private _powerJ = HASH_GET(_calledDataJ,"power");
+        // Get required values from jammer (freq, power, deviation)
+        private _radioIDJ = _x;
+        private _radioDataJ = HASH_GET(acre_sys_data_radioData,_radioIDJ);
+        private _currentChannelIdJ = HASH_GET(_radioDataJ,"currentChannel");
+        private _radioChannelsJ = HASH_GET(_radioDataJ,"channels");
+        private _currentChannelDataJ = HASHLIST_SELECT(_radioChannelsJ, _currentChannelIdJ);
 
-    // Deviation is not returned from function calls and must be calculated manually
-    private _deviationJ = BASE_RADIO_DEVIATION; // 6 kHz
-    if (HASH_HASKEY(_currentChannelDataJ,"deviation")) then {
-        _deviationJ = 0.001 * (HASH_GET(_currentChannelDataJ,"deviation")); // kHz to MHz
-    };
+        // Use function calls for freq and power
+        private _calledDataJ = ["", "", "", _radioDataJ] call acre_sys_prc117f_fnc_getCurrentChannelData;
+        private _frequencyJ = HASH_GET(_calledDataJ,"frequencyTX");
+        private _powerJ = HASH_GET(_calledDataJ,"power");
 
-    // Get frequency limits
-    private _jFreqUp = (_frequencyJ + _deviationJ);
-    private _jFreqLow = (_frequencyJ - _deviationJ);
-    private _rFreqUp = (_f + _deviationRx);
-    private _rFreqLow = (_f - _deviationRx);
-    
-    // Find effect over distance and terrain with respect to ACRE signal modeling
-    private _jammer = [_frequencyJ, _powerJ, _receiverClass, _radioIDJ] call FUNC(signalFunctionJammer);
-    _jammer params ["_PxJam", "_signalJam"];
-
-    // Adjust effect with frequency (works by calculating the % of overlap between Rx frequency bandwidth and jamming frequency bandwidth)
-    private _mult = 0;
-    if (_jFreqUp >= _rFreqUp) then {
-        if (_rFreqLow >= _jFreqLow) then {
-            _mult = (0 max ((_jFreqUp - _jFreqLow)/(_rFreqUp - _rFreqLow))) min 1;
+        // Deviation is not returned from function calls and must be calculated manually
+        private _deviationJ = BASE_RADIO_DEVIATION; // 6 kHz
+        if (HASH_HASKEY(_currentChannelDataJ,"deviation")) then {
+            _deviationJ = 0.001 * (HASH_GET(_currentChannelDataJ,"deviation")); // kHz to MHz
         };
-        if (_rFreqLow < _jFreqLow) then {
-            _mult = (0 max ((_rFreqUp - _jFreqLow)/(_rFreqUp - _rFreqLow))) min 1;
-        };
-    };
-    if (_jFreqUp < _rFreqUp) then {
-        if (_rFreqLow >= _jFreqLow) then {
-            _mult = (0 max ((_jFreqUp - _rFreqLow)/(_rFreqUp - _rFreqLow))) min 1;
-        };
-        if (_rFreqLow < _jFreqLow) then {
-            _mult = (0 max ((_jFreqUp - _jFreqLow)/(_rFreqUp - _rFreqLow))) min 1;
-        };
-    };
-    _PxJamF = _PxJam * _mult;
-    _signalJamF = (-1 * (10 ^ ((log (abs _signalJam)) * (1/(0.0001 max _mult))))) max -993;
 
-    if (ACRE_SIGNAL_DEBUGGING > 1) then {
-        hintSilent format ["Reciever: %1\nJammer: %2\nFrequency: %3\nMultiplier: %4\nPxJam: %5\nSignalJam: %6\nPxJamF: %7\nSignalJamF: %8", _receiverClass, _radioIDJ, _frequencyJ, _mult, _PxJam, _signalJam, _PxJamF, _signalJamF];
-    };
+        // Get frequency limits
+        private _jFreqUp = (_frequencyJ + _deviationJ);
+        private _jFreqLow = (_frequencyJ - _deviationJ);
+        private _rFreqUp = (_f + _deviationRx);
+        private _rFreqLow = (_f - _deviationRx);
+        
+        // Find effect over distance and terrain with respect to ACRE signal modeling
+        private _jammer = [_frequencyJ, _powerJ, _receiverClass, _radioIDJ] call FUNC(signalFunctionJammer);
+        _jammer params ["_PxJam", "_signalJam"];
 
-    // Adjust rolling values
-    if (_PxJamF > _maxPxJam) then {
-        _maxPxJam = _PxJamF;
-    };
-    if (_signalJamF > _maxSignalJam) then {
-        _maxSignalJam = _signalJamF;
+        // Adjust effect with frequency (works by calculating the % of overlap between Rx frequency bandwidth and jamming frequency bandwidth)
+        // TODO: Calculate it better than a simple linear percent overlap (difference of integrals?)
+        private _mult = 0;
+        if (_jFreqUp >= _rFreqUp) then {
+            if (_rFreqLow >= _jFreqLow) then {
+                _mult = (0 max ((_jFreqUp - _jFreqLow)/(_rFreqUp - _rFreqLow))) min 1;
+            };
+            if (_rFreqLow < _jFreqLow) then {
+                _mult = (0 max ((_rFreqUp - _jFreqLow)/(_rFreqUp - _rFreqLow))) min 1;
+            };
+        };
+        if (_jFreqUp < _rFreqUp) then {
+            if (_rFreqLow >= _jFreqLow) then {
+                _mult = (0 max ((_jFreqUp - _rFreqLow)/(_rFreqUp - _rFreqLow))) min 1;
+            };
+            if (_rFreqLow < _jFreqLow) then {
+                _mult = (0 max ((_jFreqUp - _jFreqLow)/(_rFreqUp - _rFreqLow))) min 1;
+            };
+        };
+        _PxJamF = _PxJam * _mult;
+        _signalJamF = (-1 * (10 ^ ((log (abs _signalJam)) * (1/(0.0001 max _mult))))) max -993;
+
+        if (ACRE_SIGNAL_DEBUGGING > 1) then {
+            hintSilent format ["Reciever: %1\nJammer: %2\nFrequency: %3\nMultiplier: %4\nPxJam: %5\nSignalJam: %6\nPxJamF: %7\nSignalJamF: %8", _receiverClass, _radioIDJ, _frequencyJ, _mult, _PxJam, _signalJam, _PxJamF, _signalJamF];
+        };
+
+        // Adjust rolling values
+        if (_PxJamF > _maxPxJam) then {
+            _maxPxJam = _PxJamF;
+        };
+        if (_signalJamF > _maxSignalJam) then {
+            _maxSignalJam = _signalJamF;
+        };
     };
 } forEach _jammers;
 
 // TODO: Directional jammers (In theory would be handled via ACRE directional signal calculations which are not yet implemented)
+
+// Check if jammers were removed, and update the variable if necessary.
+if (_updateJammers) then {
+    missionNamespace setVariable [QGVAR(jammers), _jammmers, true];
+};
 
 _Px = _Px * (1 - _maxPxJam);
 
