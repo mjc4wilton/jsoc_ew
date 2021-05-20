@@ -19,7 +19,8 @@ private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
 private _update = false;
 {
 	// Ensure jammer still exists, if not, remove it
-    if (isNil {[_x] call acre_sys_radio_fnc_getRadioObject}) then {
+	private _holder = [_x] call acre_sys_radio_fnc_getRadioObject;
+    if (isNil {_holder} || isNull _holder) then {
         _jammers deleteAt _forEachIndex;
 		_update = true;
     };
