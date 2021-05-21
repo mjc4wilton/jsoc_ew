@@ -4,60 +4,78 @@
  * Ran on each frame to update the display of the spectrum device
  *
  * Arguments:
- * None
+ * 0: Arguments from PFH <ARRAY>
+ *     0: Antenna <STRING>
+ * 1: PFH Handler ID <NUMBER>
  *
  * Return Value:
  * None
  *
  * Example:
- * [handgunWeapon player] call jsoc_ew_contact_fnc_drawSignalPF;
+ * [] call jsoc_ew_contact_fnc_drawSignalPF;
  *
  * Public: No
  */
 
-// Cleanup source list
-private _sourceList = missionNamespace getVariable [QGVAR(sources), []];
-{
-	if (!(_x select 3) && _x select 5 < diag_frameNo) then {
-		_sourceList deleteAt _forEachIndex;
-	};
-} forEach _sourceList;
-missionNamespace setVariable [QGVAR(sources), _sourceList];
+params ["_args", "_handle"];
+_args params ["_antenna"];
 
-// Check for jammers (ACRE)
-if (isClass(configFile >> "CfgPatches" >> "jsoc_ew_acre") then {
-	private _jammers = missionNamespace getVariable [QEGVAR(acre,jammers), []]
-	{
-		_x params ["_radioIDJ", "_frequencyJ", "_powerJ", "_deviationJ"];
-		
-	} forEach _jammers;
+private _sourceList = [];
+
+switch (_antenna) do {
+	case "muzzle_antenna_01_f": { 
+		// SD Military Antenna (78-89 MHz)
+		// Used for detecting ACRE / TFAR jammers
+
+		if (EGVAR(base,hasRadio)) then {
+			if (EGVAR(base,hasACRE)) then {
+				// Handle ACRE Jammers
+				{
+					// Function requires an AN/PRC-152 to utilize as a receiver
+					private _activeRadio = ["ACRE_PRC152", ACE_player] call acre_api_fnc_getRadioByType;
+					if (isNil {_activeRadio}) exitWith {
+						[[LLSTRING(DrawSignal_Error), 1.3], [LLSTRING(DrawSignal_ACRE_NoRadio), 1], true] call CBA_fnc_notify;
+					};
+
+					private _radioID = _x;
+					private _radioData = acre_sys_data_radioData getVariable _radioID;
+					private _calledData = ["", "", "", _radioData] call acre_sys_prc117f_fnc_getCurrentChannelData;
+					private _frequency = _calledData getVariable "frequencyTX";
+					private _power = _calledData getVariable "power";
+					private _jammerObject = [_x] call acre_sys_radio_fnc_getRadioObject;
+					private _signal = [_frequency, _power, _activeRadio, _radioID] call EFUNC(acre,signalFunctionJammer);
+					_signal params ["", "_maxSignal"];
+
+					private _bearingFacing = getDir ACE_player;
+					private _bearingJammer = ACE_player getDir _jammerObject;
+					private _angle = (_bearingFacing max _bearingJammer) - (_bearingFacing min _bearingJammer);
+					if (_angle > 180) then {
+						_angle = 360 - _angle
+					};
+					private _multiplier = 1 - ((1 / 180) * _angle) ^ 2; // Quadratically varied with 1 at 0 angle and 0 at 180 angle.
+					private _maxSignalFinal = (-1 * (10 ^ ((log (abs _maxSignal)) * (1/(0.0001 max _multiplier))))) max -993; // Vary signal strength with percent error
+
+					_sourceList pushBack [_frequency, _maxSignalFinal];
+				} forEach (missionNamespace getVariable [QEGVAR(acre,jammers), []]);
+			};
+		};
+	};
+	case "muzzle_antenna_02_f": { 
+		// SD Experimential Antenna (390-500 MHz)
+	};
+	case "muzzle_antenna_03_f": { 
+		// SD Jammer Antenna (433 MHz)
+	};
+	default { };
 };
-
-// Handle all vehicles
-private _fVehicles = 135;
-{
-	if (isEngineOn _x) then {
-		private _power = -993;
-		private _fSpace = 2.5;
-		if (unitIsUAV _x) then {
-			_power = -24;
-			_fSpace = 25
-		} else {
-			_power = -54;
-		};
-		if (_power > -993) then {
-			private _distance = ACE_player distance _x;
-			_power = ((_power * (1 / linearConversion [2500, 0, _distance, 0.0001, 1, true])) min 0) max -993;
-			_fVehicles = _fVehicles + (_fSpace + random 15);
-		};
-		_sourceList pushBack [str _x, _fVehicles, _power];
-	};
-} forEach ACE_player nearEntities [["LandVehicle", "Air", "Ship"], 2500];
 
 // Set vars for spectrum device
 private _deviceEM = [];
 {
-	_deviceEM pushback (_x select 1);
-	_deviceEM pushback (_x select 2);
+	_deviceEM append _x;
 } forEach _sourceList;
 missionNamespace setVariable ["#EM_Values",_deviceEM];
+missionNamespace setVariable ["#EM_FMin", SPECTRUM_FREQ_MIN];
+missionNamespace setVariable ["#EM_FMax", SPECTRUM_FREQ_MAX];
+missionNamespace setVariable ["#EM_SMin", SPECTRUM_SENS_MIN];
+missionNamespace setVariable ["#EM_SMax", SPECTRUM_SENS_MAX];

@@ -5,7 +5,8 @@
  *
  * Arguments:
  * 0: Unit <OBJECT>
- * 1: CurrentWeapon <STRING>
+ * 1: Current Weapon <STRING>
+ * 2: Previous Weapon <STRING>
  *
  * Return Value:
  * None
@@ -16,7 +17,7 @@
  * Public: No
  */
 
-params ["_unit", "_currentWeapon"]
+params ["_unit", "_currentWeapon", "_oldWeapon"];
 
 private _antenna = (_unit weaponAccessories _currentWeapon) select 0;
 
@@ -26,6 +27,6 @@ if (GVAR(PFH) > -1) exitWith {};
 
 GVAR(PFH) = [
 	{_this call FUNC(drawSignalPF)},
-	1,
-	[]
+	GVAR(spectrumUpdateRate),
+	[_antenna]
 ] call CBA_fnc_addPerFrameHandler;

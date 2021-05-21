@@ -8,17 +8,3 @@ GVAR(PFH) = -1;
 	[] call FUNC(disable);
 	[_unit, currentWeapon _unit] call FUNC(update);
 }] call CBA_fnc_addPlayerEventHandler;
-
-[
-	QGVAR(addSignal),
-	{
-		_this call FUNC(addSignal);
-	}
-] call CBA_fnc_addEventHandler;
-
-[
-	QGVAR(removeSignal),
-	{
-		_this call FUNC(removeSignal);
-	}
-] call CBA_fnc_addEventHandler;

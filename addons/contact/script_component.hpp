@@ -12,3 +12,8 @@
 #endif
 
 #include "\z\jsoc_ew\addons\main\script_macros.hpp"
+
+#define SPECTRUM_FREQ_MIN 40
+#define SPECTRUM_FREQ_MAX 75
+#define SPECTRUM_SENS_MIN -90
+#define SPECTRUM_SENS_MAX -10
