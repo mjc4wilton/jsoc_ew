@@ -13,7 +13,7 @@
  * Tuple of power and maximum signal strength <ARRAY>
  *
  * Example:
- * [30, 5000, "ACRE_PRC343_ID_1", "ACRE_PRC343_ID_2"] call jsoc_ew_acre_fnc_singalFunctionJammer
+ * [30, 5000, "ACRE_PRC343_ID_1", "ACRE_PRC343_ID_2"] call jsoc_ew_acre_fnc_signalFunctionJammer
  *
  * Public: No
  */
