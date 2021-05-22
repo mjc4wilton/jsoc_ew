@@ -26,9 +26,6 @@ if (_radioID in _jammers) exitWith {}; //Exit if radio is already jamming
 _jammers pushBack _radioID;
 missionNamespace setVariable [QGVAR(jammers), _jammers, true];
 
-// Lockout transmitting
-HASH_SET(_currentChannelData,"rxOnly",true);
-
 // Get data to present to user
 private _radioData = HASH_GET(acre_sys_data_radioData,_radioID);
 private _currentChannelId = HASH_GET(_radioData,"currentChannel");
@@ -45,6 +42,13 @@ private _deviation = BASE_RADIO_DEVIATION; // 6 kHz
 if (HASH_HASKEY(_currentChannelData,"deviation")) then {
     _deviation = 0.001 * (HASH_GET(_currentChannelData,"deviation")); // kHz to MHz
 };
+
+// Lockout transmitting
+HASH_SET(_currentChannelData,"rxOnly",true);
+
+// Send ACRE DataEvent
+HASHLIST_SET(_radioChannels,_currentChannelId,_currentChannelData);
+SET_STATE_RADIO(_radioID,"channels",_radioChannels);
 
 [[LLSTRING(EnableJamming_Title), 1.3], [format [LLSTRING(EnableJamming_Frequency), _frequencyTX], 1], [format [LLSTRING(EnableJamming_Power), _powerTX], 1], [format [LLSTRING(EnableJamming_Deviation), _deviation], 1], true] call CBA_fnc_notify;
 
