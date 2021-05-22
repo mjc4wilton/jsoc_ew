@@ -23,37 +23,37 @@ params ["_target", "_player", "_params"];
 _params params ["_class","_obj"];
 
 private _actionEnable = [
-	QGVAR(cell_enableJamming),
-	LLSTRING(Cell_EnableJamming),
-	"",
-	{
-		// Statement
-		(_this select 2) params ["_class","_obj"];
-		[_obj] call FUNC(cell_enableJamming);
-	},
-	{
-		// Condition
-		(_this select 2) params ["_class","_obj"];
-		!([_obj] call FUNC(cell_isJamming))
-	}, 
-	{},
-	[_class, _obj]
+    QGVAR(cell_enableJamming),
+    LLSTRING(Cell_EnableJamming),
+    "",
+    {
+        // Statement
+        (_this select 2) params ["_class","_obj"];
+        [_obj] call FUNC(cell_enableJamming);
+    },
+    {
+        // Condition
+        (_this select 2) params ["_class","_obj"];
+        !([_obj] call FUNC(cell_isJamming))
+    }, 
+    {},
+    [_class, _obj]
 ] call ace_interact_menu_fnc_createAction;
 
 private _actionDisable = [
-	QGVAR(cell_disableJamming),
-	LLSTRING(Cell_DisableJamming),
-	"",
-	{
-		(_this select 2) params ["_class","_obj"];
-		[_obj] call FUNC(cell_disableJamming);
-	},
-	{
-		(_this select 2) params ["_class","_obj"];
-		[_obj] call FUNC(cell_isJamming)
-	},
-	{},
-	[_class, _obj]
+    QGVAR(cell_disableJamming),
+    LLSTRING(Cell_DisableJamming),
+    "",
+    {
+        (_this select 2) params ["_class","_obj"];
+        [_obj] call FUNC(cell_disableJamming);
+    },
+    {
+        (_this select 2) params ["_class","_obj"];
+        [_obj] call FUNC(cell_isJamming)
+    },
+    {},
+    [_class, _obj]
 ] call ace_interact_menu_fnc_createAction;
 
 [[_actionEnable, [], _target], [_actionDisable, [], _target]]

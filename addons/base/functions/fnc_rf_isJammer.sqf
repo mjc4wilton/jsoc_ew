@@ -18,7 +18,7 @@
 params ["_obj"];
 
 if (getText (configOf _obj >> QGVAR(isRFJammer)) isEqualTo "true") exitWith {
-	true
+    true
 };
 
 false

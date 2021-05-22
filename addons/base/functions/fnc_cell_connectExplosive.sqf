@@ -26,27 +26,27 @@ private _explosive = attachedTo _logic;
 deleteVehicle _logic;
 
 if (isNull _explosive) exitWith {
-	if (GVAR(hasZEN)) then {
-		[localize "STR_ZEN_Modules_NoObjectSelected"] call zen_common_fnc_showMessage;
-	};
+    if (GVAR(hasZEN)) then {
+        [localize "STR_ZEN_Modules_NoObjectSelected"] call zen_common_fnc_showMessage;
+    };
 };
 
 if (_explosive isKindOf "CAManBase") exitWith {
-	if (GVAR(hasZEN)) then {
-		[localize "STR_ZEN_Modules_OnlyNonInfantry"] call zen_common_fnc_showMessage;	
-	};
+    if (GVAR(hasZEN)) then {
+        [localize "STR_ZEN_Modules_OnlyNonInfantry"] call zen_common_fnc_showMessage;	
+    };
 };
 
 if (isPlayer _explosive) exitWith {
-	if (GVAR(hasZEN)) then {
-		["str_a3_cfgvehicles_moduleremotecontrol_f_errorPlayer"] call zen_common_fnc_showMessage;
-	};
+    if (GVAR(hasZEN)) then {
+        ["str_a3_cfgvehicles_moduleremotecontrol_f_errorPlayer"] call zen_common_fnc_showMessage;
+    };
 };
 
 if !(alive _explosive) exitWith {
-	if (GVAR(hasZEN)) then {
-		[localize "STR_ZEN_Modules_OnlyAlive"] call zen_common_fnc_showMessage;
-	};
+    if (GVAR(hasZEN)) then {
+        [localize "STR_ZEN_Modules_OnlyAlive"] call zen_common_fnc_showMessage;
+    };
 };
 
 
@@ -55,7 +55,7 @@ private _unit = player;
 
 // Ensure unit has detonator
 if !([_unit, "ACE_Cellphone"] call BIS_fnc_hasItem) then {
-	_unit addItem "ACE_Cellphone";
+    _unit addItem "ACE_Cellphone";
 };
 
 // Works because ace_explosives_fnc_addCellphoneIED only uses _magazineClass to pull the fusetime, which is currently the same on all ACE explosives

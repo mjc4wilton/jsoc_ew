@@ -43,7 +43,7 @@ private _powerTX = HASH_GET(_calledData,"power");
 // Deviation is not returned from function calls and must be calculated manually
 private _deviation = BASE_RADIO_DEVIATION; // 6 kHz
 if (HASH_HASKEY(_currentChannelData,"deviation")) then {
-	_deviation = 0.001 * (HASH_GET(_currentChannelData,"deviation")); // kHz to MHz
+    _deviation = 0.001 * (HASH_GET(_currentChannelData,"deviation")); // kHz to MHz
 };
 
 [[LLSTRING(EnableJamming_Title), 1.3], [format [LLSTRING(EnableJamming_Frequency), _frequencyTX], 1], [format [LLSTRING(EnableJamming_Power), _powerTX], 1], [format [LLSTRING(EnableJamming_Deviation), _deviation], 1], true] call CBA_fnc_notify;

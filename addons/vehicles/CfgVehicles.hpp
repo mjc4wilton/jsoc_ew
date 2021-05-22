@@ -3,9 +3,9 @@ class CfgVehicles {
     class rhsusf_m1152_sicps_usarmy_d;
     class jsoc_m1152_ew_usarmy_wd: rhsusf_m1152_sicps_usarmy_wd {
         editorCategory = "JSOC_EW";
-	    editorSubcategory = "JSOC_EW_Car";
+        editorSubcategory = "JSOC_EW_Car";
         displayName="M1152A1 Electronic Warfare (Woodland)";
-	    author="RHS, 77th JSOC";
+        author="RHS, 77th JSOC";
 
         class AcreRacks {
             class Rack_1 {
@@ -112,9 +112,9 @@ class CfgVehicles {
     };
     class jsoc_m1152_ew_usarmy_d: rhsusf_m1152_sicps_usarmy_d {
         editorCategory = "JSOC_EW";
-	    editorSubcategory = "JSOC_EW_Car";
+        editorSubcategory = "JSOC_EW_Car";
         displayName="M1152A1 Electronic Warfare (Desert)";
-	    author="RHS, 77th JSOC";
+        author="RHS, 77th JSOC";
 
         class AcreRacks {
             class Rack_1 {

@@ -26,23 +26,23 @@ private _backpack = backpack _unit;
 private _backpackContainer = backpackContainer _unit;
 
 {
-	_x params ["_class","_obj"];
+    _x params ["_class","_obj"];
 
-	if ([_obj] call FUNC(rf_isJammer)) then {
-		private _config = configOf _obj;
-		private _name = getText (_config >> "displayName");
-		private _picture = getText (_config >> "picture");
-		private _action = [
-			str _obj, 
-			_name, 
-			_picture, 
-			{},
-			{true},
-			{_this call FUNC(rf_addChildrenChildren)}, 
-			[_class, _obj]
-		] call ace_interact_menu_fnc_createAction;
-		_actions pushBack [_action, [], _unit];
-	};
+    if ([_obj] call FUNC(rf_isJammer)) then {
+        private _config = configOf _obj;
+        private _name = getText (_config >> "displayName");
+        private _picture = getText (_config >> "picture");
+        private _action = [
+            str _obj, 
+            _name, 
+            _picture, 
+            {},
+            {true},
+            {_this call FUNC(rf_addChildrenChildren)}, 
+            [_class, _obj]
+        ] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _unit];
+    };
 } forEach [[_uniform, _uniformContainer], [_vest, _vestContainer], [_backpack, _backpackContainer]];
 
 _actions

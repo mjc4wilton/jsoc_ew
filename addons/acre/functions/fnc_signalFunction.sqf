@@ -93,7 +93,7 @@ private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId)
 private _deviationRx = 0.006;
 
 if (HASH_HASKEY(_currentChannelData,"deviation")) then {
-	_deviationRx = 0.001 * (HASH_GET(_currentChannelData,"deviation")); // kHz to MHz
+    _deviationRx = 0.001 * (HASH_GET(_currentChannelData,"deviation")); // kHz to MHz
 };
 
 /*

@@ -26,7 +26,7 @@ if !(_antenna isKindOf ["muzzle_antenna_base_01_F", configFile >> "CfgWeapons"])
 if (GVAR(PFH) > -1) exitWith {};
 
 GVAR(PFH) = [
-	{_this call FUNC(drawSignalPF)},
-	GVAR(spectrumUpdateRate),
-	[_antenna]
+    {_this call FUNC(drawSignalPF)},
+    GVAR(spectrumUpdateRate),
+    [_antenna]
 ] call CBA_fnc_addPerFrameHandler;

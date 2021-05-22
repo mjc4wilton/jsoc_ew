@@ -24,8 +24,8 @@ private _hasJammer = false;
 private _radioID = "";
 
 if ([_activeRadio, "ACRE_PRC117F"] call acre_api_fnc_isKindOf) then {
-	_hasJammer = true;
-	_radioID = _activeRadio;
+    _hasJammer = true;
+    _radioID = _activeRadio;
 };
 
 // Check if radio is currently jamming
