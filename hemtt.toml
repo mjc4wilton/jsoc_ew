@@ -1,10 +1,20 @@
 name = "jsoc_ew"
 prefix = "jsoc_ew"
 author = "77th JSOC"
-template = "cba"
 mainprefix = "z"
 folder_optionals = true
-sig_version = 3
+
 include = [
     "./include"
 ]
+
+keyname = "{{prefix}}_{{version}}"
+signame = "{{prefix}}_{{version}}-{{git \"id8\"}}"
+sig_version = 3
+
+releasebuild = [
+    "@zip jsoc_ew_{{semver.major}}.{{semver.minor}}.{{semver.patch}}"
+]
+
+[header_exts]
+version = "{{git \"id8\"}}"
