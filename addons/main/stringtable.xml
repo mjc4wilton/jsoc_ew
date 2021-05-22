@@ -2,10 +2,11 @@
 <Project name="JSOC_EW">
     <Package name="Main">
         <Key ID="STR_JSOC_EW_Main_Author">
-            <English>77th JSOC</English>
             <Original>77th JSOC</Original>
+            <English>77th JSOC</English>
         </Key>
         <Key ID="STR_JSOC_EW_Main_URL">
+            <Original>https://77th-jsoc.com/forum/index.php</Original>
             <English>https://77th-jsoc.com/forum/index.php</English>
             <German>https://77th-jsoc.com/forum/index.php</German>
             <Polish>https://77th-jsoc.com/forum/index.php</Polish>
@@ -19,11 +20,10 @@
             <Japanese>https://77th-jsoc.com/forum/index.php</Japanese>
             <Chinese>https://77th-jsoc.com/forum/index.php</Chinese>
             <Chinesesimp>https://77th-jsoc.com/forum/index.php</Chinesesimp>
-            <Original>https://77th-jsoc.com/forum/index.php</Original>
         </Key>
         <Key ID="STR_JSOC_EW_Main_Title">
-            <English>JSOC EW</English>
             <Original>JSOC EW</Original>
+            <English>JSOC EW</English>
         </Key>
     </Package>
 </Project>

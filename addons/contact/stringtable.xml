@@ -2,24 +2,24 @@
 <Project name="JSOC_EW">
     <Package name="Contact">
         <Key ID="STR_JSOC_EW_Contact_Category">
-            <English>Contact</English>
             <Original>Contact</Original>
+            <English>Contact</English>
         </Key>
         <Key ID="STR_JSOC_EW_Contact_SpectrumUpdateRate_DisplayName">
-            <English>Spectrum Device Interval</English>
             <Original>Spectrum Device Interval</Original>
+            <English>Spectrum Device Interval</English>
         </Key>
         <Key ID="STR_JSOC_EW_Contact_SpectrumUpdateRate_Description">
-            <English>Amount of time (in seconds) between updates on the spectrum device screen.\nSet to 0 for every frame.</English>
             <Original>Amount of time (in seconds) between updates on the spectrum device screen.\nSet to 0 for every frame.</Original>
+            <English>Amount of time (in seconds) between updates on the spectrum device screen.\nSet to 0 for every frame.</English>
         </Key>
         <Key ID="STR_JSOC_EW_Contact_DrawSignal_Error">
-            <English>ERROR:</English>
             <Original>ERROR:</Original>
+            <English>ERROR:</English>
         </Key>
         <Key ID="STR_JSOC_EW_Contact_DrawSignal_ACRE_NoRadio">
-            <English>Cannot Process Signal\nNo AN/PRC-152 Found</English>
             <Original>Cannot Process Signal\nNo AN/PRC-152 Found</Original>
+            <English>Cannot Process Signal\nNo AN/PRC-152 Found</English>
         </Key>
     </Package>
 </Project>

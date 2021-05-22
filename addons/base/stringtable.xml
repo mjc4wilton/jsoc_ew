@@ -2,80 +2,80 @@
 <Project name="JSOC_EW">
     <Package name="Base">
         <Key ID="STR_JSOC_EW_Base_Interaction">
-            <English>JSOC EW</English>
             <Original>JSOC EW</Original>
+            <English>JSOC EW</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_DetonationAttempted_Title">
-            <English>Detonation Attempted!</English>
             <Original>Detonation Attempted!</Original>
+            <English>Detonation Attempted!</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_DetonationAttempted_Type">
-            <English>Detonator Type: %1</English>
             <Original>Detonator Type: %1</Original>
+            <English>Detonator Type: %1</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_DetonationAttempted_Angle">
-            <English>Bearing: %1</English>
             <Original>Bearing: %1</Original>
+            <English>Bearing: %1</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_DegreesFormat">
-            <English>%1 deg</English>
             <Original>%1 deg</Original>
+            <English>%1 deg</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_Cell">
-            <English>Cell</English>
             <Original>Cell</Original>
+            <English>Cell</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_Cell_Jamming">
-            <English>Cell Jamming</English>
             <Original>Cell Jamming</Original>
+            <English>Cell Jamming</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_Cell_EnableJamming">
-            <English>Enable</English>
             <Original>Enable</Original>
+            <English>Enable</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_Cell_DisableJamming">
-            <English>Disable</English>
             <Original>Disable</Original>
+            <English>Disable</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_RF">
-            <English>RF</English>
             <Original>RF</Original>
+            <English>RF</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_RF_Jamming">
-            <English>RF Jamming</English>
             <Original>RF Jamming</Original>
+            <English>RF Jamming</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_RF_EnableJamming">
-            <English>Enable</English>
             <Original>Enable</Original>
+            <English>Enable</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_RF_DisableJamming">
-            <English>Disable</English>
             <Original>Disable</Original>
+            <English>Disable</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_IEDJamming">
-            <English>IED Jamming</English>
             <Original>IED Jamming</Original>
+            <English>IED Jamming</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_MaxJamRange_DisplayName">
-            <English>Max Jammer Range</English>
             <Original>Max Jammer Range</Original>
+            <English>Max Jammer Range</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_MaxJamRange_Description">
-            <English>Max range for a jammer to successfully jam, provided it is closer to the explosive than the detonator in meters</English>
             <Original>Max range for a jammer to successfully jam, provided it is closer to the explosive than the detonator in meters</Original>
+            <English>Max range for a jammer to successfully jam, provided it is closer to the explosive than the detonator in meters</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_ExactRange_DisplayName">
-            <English>Exact Bearing Range</English>
             <Original>Exact Bearing Range</Original>
+            <English>Exact Bearing Range</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_ExactRange_Description">
-            <English>When an IED is jammed, if the jammer is within this radius of the explosive it will provice the exact bearing to the explosive</English>
             <Original>When an IED is jammed, if the jammer is within this radius of the explosive it will provice the exact bearing to the explosive</Original>
+            <English>When an IED is jammed, if the jammer is within this radius of the explosive it will provice the exact bearing to the explosive</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_Modules_Cell_ConnectExplosive">
-            <English>Connect Explosive (Cell)</English>
             <Original>Connect Explosive (Cell)</Original>
+            <English>Connect Explosive (Cell)</English>
         </Key>
     </Package>
 </Project>
