@@ -1,7 +1,0 @@
-name = "jsoc_ew"
-prefix = "jsoc_ew"
-author = "77th JSOC"
-template = "cba"
-mainprefix = "z"
-folder_optionals = true
-sig_version = 3
