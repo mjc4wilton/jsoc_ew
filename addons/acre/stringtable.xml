@@ -2,31 +2,24 @@
 <Project name="JSOC_EW">
     <Package name="ACRE">
         <Key ID="STR_JSOC_EW_ACRE_EnableJamming">
-            <Original>Enable ACRE Jamming</Original>
             <English>Enable ACRE Jamming</English>
         </Key>
         <Key ID="STR_JSOC_EW_ACRE_EnableJamming_Title">
-            <Original>Jamming Enabled</Original>
             <English>Jamming Enabled</English>
         </Key>
         <Key ID="STR_JSOC_EW_ACRE_EnableJamming_Frequency">
-            <Original>Frequency: %1 MHz</Original>
             <English>Frequency: %1 MHz</English>
         </Key>
         <Key ID="STR_JSOC_EW_ACRE_EnableJamming_Power">
-            <Original>Power: %1 mW</Original>
             <English>Power: %1 mW</English>
         </Key>
         <Key ID="STR_JSOC_EW_ACRE_EnableJamming_Deviation">
-            <Original>Deviation: %1 MHz</Original>
             <English>Deviation: %1 MHz</English>
         </Key>
         <Key ID="STR_JSOC_EW_ACRE_DisableJamming">
-            <Original>Disable ACRE Jamming</Original>
             <English>Disable ACRE Jamming</English>
         </Key>
         <Key ID="STR_JSOC_EW_ACRE_DisableJamming_Title">
-            <Original>Jamming Disabled</Original>
             <English>Jamming Disabled</English>
         </Key>
     </Package>

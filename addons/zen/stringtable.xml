@@ -2,15 +2,12 @@
 <Project name="JSOC_EW">
     <Package name="ZEN">
         <Key ID="STR_JSOC_EW_ZEN_EquipRadioJammer_Title">
-            <Original>Equip Radio Jammer</Original>
             <English>Equip Radio Jammer</English>
         </Key>
         <Key ID="STR_JSOC_EW_ZEN_EquipRadioJammer_Frequency_Title">
-            <Original>Frequency (MHz)</Original>
             <English>Frequency (MHz)</English>
         </Key>
         <Key ID="STR_JSOC_EW_ZEN_EquipRadioJammer_Frequency_Tooltip">
-            <Original>Frequency to jam in MHz</Original>
             <English>Frequency to jam in MHz</English>
         </Key>
     </Package>
