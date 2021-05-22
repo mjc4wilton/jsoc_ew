@@ -15,11 +15,15 @@ if (hasInterface) then {
     private _radioID = _radios select 0;
 
     private _radioData = HASH_GET(acre_sys_data_radioData,_radioID);
-    private _currentChannelId = HASH_GET(_radioData,"currentChannel");
-    private _radioChannels = HASH_GET(_radioData,"channels");
-    private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId);
+    private _channelNumber = HASH_GET(_radioData,"currentChannel");
+    private _channels = GET_STATE_RADIO(_radioID,"channels");
+    private _channel = HASHLIST_SELECT(_channels,_channelNumber);
 
-    private _frequencyTX = HASH_SET(_currentChannelData,"frequencyTX",_f);
+    HASH_SET(_channel,"frequencyRX",_f);
+    HASH_SET(_channel,"frequencyTX",_f);
+
+    HASHLIST_SET(_channels,_channelNumber,_channel);
+    SET_STATE_RADIO(_radioID,"channels",_channels);
 
     [_unit, _unit, _radioID] call FUNC(enableJamming);
 

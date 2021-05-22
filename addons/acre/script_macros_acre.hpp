@@ -25,5 +25,12 @@
 #define SIGNAL_MODEL_ITM           3
 #define SIGNAL_MODEL_ITWOM         4  // This model is for now disabled.
 
+#define GET_STATE(id)            ([acre_main_currentRadioId, "getState", id] call acre_sys_data_fnc_dataEvent)
+#define SET_STATE(id, val)        ([acre_main_currentRadioId, "setState", [id, val]] call acre_sys_data_fnc_dataEvent)
+#define SET_STATE_CRIT(id, val)    ([acre_main_currentRadioId, "setStateCritical", [id, val]] call acre_sys_data_fnc_dataEvent)
+#define GET_STATE_DEF(id, default)    ([id, default] call acre_main_fnc_getDefaultState)
+#define SET_STATE_RADIO(radio, id, val) ([radio, "setState", [id, val]] call acre_sys_data_fnc_dataEvent)
+#define GET_STATE_RADIO(radio, id)            ([radio, "getState", id] call acre_sys_data_fnc_dataEvent)
+
 // JSOC_EW Defines
 #define BASE_RADIO_DEVIATION 0.006 // 6 kHz
