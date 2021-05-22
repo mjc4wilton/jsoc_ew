@@ -33,7 +33,7 @@ if (isNull _explosive) exitWith {
 
 if (_explosive isKindOf "CAManBase") exitWith {
     if (GVAR(hasZEN)) then {
-        [localize "STR_ZEN_Modules_OnlyNonInfantry"] call zen_common_fnc_showMessage;	
+        [localize "STR_ZEN_Modules_OnlyNonInfantry"] call zen_common_fnc_showMessage;
     };
 };
 
