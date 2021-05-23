@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: Wilton
- * Custom ACRE signal function to handle EW jamming capabilities
+ * Checks if all active jammers still exist and removes ones which don't.
  *
  * Arguments:
  * None

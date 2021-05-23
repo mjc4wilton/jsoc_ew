@@ -23,7 +23,7 @@ _args params ["_antenna"];
 private _sourceList = [];
 
 switch (_antenna) do {
-    case "muzzle_antenna_01_f": { 
+    case "muzzle_antenna_01_f": {
         // SD Military Antenna (78-89 MHz)
         // Used for detecting ACRE / TFAR jammers
 
@@ -38,10 +38,9 @@ switch (_antenna) do {
                     };
 
                     private _radioID = _x;
-                    private _radioData = acre_sys_data_radioData getVariable _radioID;
-                    private _calledData = ["", "", "", _radioData] call acre_sys_prc117f_fnc_getCurrentChannelData;
-                    private _frequency = _calledData getVariable "frequencyTX";
-                    private _power = _calledData getVariable "power";
+                    private _jammerSettings = [_radioID] call EFUNC(acre,getJammerSettings);
+                    _jammerSettings params ["_frequency", "_power"];
+
                     private _jammerObject = [_x] call acre_sys_radio_fnc_getRadioObject;
                     private _signal = [_frequency, _power, _activeRadio, _radioID] call EFUNC(acre,signalFunctionJammer);
                     _signal params ["", "_maxSignal"];
@@ -60,10 +59,10 @@ switch (_antenna) do {
             };
         };
     };
-    case "muzzle_antenna_02_f": { 
+    case "muzzle_antenna_02_f": {
         // SD Experimential Antenna (390-500 MHz)
     };
-    case "muzzle_antenna_03_f": { 
+    case "muzzle_antenna_03_f": {
         // SD Jammer Antenna (433 MHz)
     };
     default { };
