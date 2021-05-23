@@ -105,7 +105,8 @@ private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
 private _updateJammers = false;
 {
     // Sanitize jammers (Ensure it still exists)
-    private _holderJ = [_x] call acre_sys_radio_fnc_getRadioObject;
+    private _radioIDJ = _x;
+    private _holderJ = [_radioIDJ] call acre_sys_radio_fnc_getRadioObject;
     if (isNil {_holderJ} || isNull _holderJ) then {
         // Jammer no longer exists, delete it.
         _updateJammers = true;
@@ -114,14 +115,13 @@ private _updateJammers = false;
         // Jammer still exists, process it.
 
         // Get required values from jammer (freq, power, deviation)
-        private _radioIDJ = _x;
         private _channelNumberJ = GET_CHANNEL_NUM(_radioIDJ);
-        private _channelsJ = GET_STATE_RADIO(_radioDataJ,"channels");
+        private _channelsJ = GET_STATE_RADIO(_radioIDJ,"channels");
         private _channelJ = HASHLIST_SELECT(_channelsJ, _channelNumberJ);
 
         // Use "getChannelData" event to ensure vehicle rack interoperability
         private _channelDataJ = GET_CHANNEL_DATA(_radioIDJ);
-        private _frequencyJ = HASH_GET(_channelDataJ,"frequencyTX");
+        private _frequencyJ = HASH_GET(_channelDataJ,"frequencytx");
         private _powerJ = HASH_GET(_channelDataJ,"power");
 
         // Deviation is not returned from function calls and must be calculated manually
