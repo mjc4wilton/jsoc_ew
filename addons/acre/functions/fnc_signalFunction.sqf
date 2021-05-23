@@ -86,14 +86,12 @@ if (ACRE_SIGNAL_DEBUGGING > 1) then {
 };
 
 // Get deviation of Rx radio
-private _radioData = HASH_GET(acre_sys_data_radioData,_receiverClass);
-private _currentChannelId = HASH_GET(_radioData,"currentChannel");
-private _radioChannels = HASH_GET(_radioData,"channels");
-private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId);
+private _channelNumberRx = GET_CHANNEL_NUM(_receiverClass);
+private _channelsRx = GET_STATE_RADIO(_receiverClass,"channels");
+private _channelRx = HASHLIST_SELECT(_channelsRx, _channelNumberRx);
 private _deviationRx = 0.006;
-
-if (HASH_HASKEY(_currentChannelData,"deviation")) then {
-    _deviationRx = 0.001 * (HASH_GET(_currentChannelData,"deviation")); // kHz to MHz
+if (HASH_HASKEY(_channelRx,"deviation")) then {
+    _deviationRx = 0.001 * (HASH_GET(_channelRx,"deviation")); // kHz to MHz
 };
 
 /*
@@ -117,20 +115,19 @@ private _updateJammers = false;
 
         // Get required values from jammer (freq, power, deviation)
         private _radioIDJ = _x;
-        private _radioDataJ = HASH_GET(acre_sys_data_radioData,_radioIDJ);
-        private _currentChannelIdJ = HASH_GET(_radioDataJ,"currentChannel");
-        private _radioChannelsJ = HASH_GET(_radioDataJ,"channels");
-        private _currentChannelDataJ = HASHLIST_SELECT(_radioChannelsJ, _currentChannelIdJ);
+        private _channelNumberJ = GET_CHANNEL_NUM(_radioIDJ);
+        private _channelsJ = GET_STATE_RADIO(_radioDataJ,"channels");
+        private _channelJ = HASHLIST_SELECT(_channelsJ, _channelNumberJ);
 
-        // Use function calls for freq and power
-        private _calledDataJ = ["", "", "", _radioDataJ] call acre_sys_prc117f_fnc_getCurrentChannelData;
-        private _frequencyJ = HASH_GET(_calledDataJ,"frequencyTX");
-        private _powerJ = HASH_GET(_calledDataJ,"power");
+        // Use "getChannelData" event to ensure vehicle rack interoperability
+        private _channelDataJ = GET_CHANNEL_DATA(_radioIDJ);
+        private _frequencyJ = HASH_GET(_channelDataJ,"frequencyTX");
+        private _powerJ = HASH_GET(_channelDataJ,"power");
 
         // Deviation is not returned from function calls and must be calculated manually
         private _deviationJ = BASE_RADIO_DEVIATION; // 6 kHz
-        if (HASH_HASKEY(_currentChannelDataJ,"deviation")) then {
-            _deviationJ = 0.001 * (HASH_GET(_currentChannelDataJ,"deviation")); // kHz to MHz
+        if (HASH_HASKEY(_channelJ,"deviation")) then {
+            _deviationJ = 0.001 * (HASH_GET(_channelJ,"deviation")); // kHz to MHz
         };
 
         // Get frequency limits
@@ -138,7 +135,7 @@ private _updateJammers = false;
         private _jFreqLow = (_frequencyJ - _deviationJ);
         private _rFreqUp = (_f + _deviationRx);
         private _rFreqLow = (_f - _deviationRx);
-        
+
         // Find effect over distance and terrain with respect to ACRE signal modeling
         private _jammer = [_frequencyJ, _powerJ, _receiverClass, _radioIDJ] call FUNC(signalFunctionJammer);
         _jammer params ["_PxJam", "_signalJam"];
@@ -202,4 +199,3 @@ if (ACRE_SIGNAL_DEBUGGING > 1) then {
 };
 
 [_Px, _maxSignal]
- 

@@ -27,28 +27,27 @@ _jammers pushBack _radioID;
 missionNamespace setVariable [QGVAR(jammers), _jammers, true];
 
 // Get data to present to user
-private _radioData = HASH_GET(acre_sys_data_radioData,_radioID);
-private _currentChannelId = HASH_GET(_radioData,"currentChannel");
-private _radioChannels = HASH_GET(_radioData,"channels");
-private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId);
+private _channelNumber = GET_CHANNEL_NUM(_radioID);
+private _channels = GET_STATE_RADIO(_radioID,"channels");
+private _channel = HASHLIST_SELECT(_channels, _channelNumber);
 
-// Use function calls for freq and power
-private _calledData = ["", "", "", _radioData] call acre_sys_prc117f_fnc_getCurrentChannelData;
-private _frequencyTX = HASH_GET(_calledData,"frequencyTX");
-private _powerTX = HASH_GET(_calledData,"power");
-
-// Deviation is not returned from function calls and must be calculated manually
+// Deviation is not returned from "getChannelData" event, must be manually extracted
 private _deviation = BASE_RADIO_DEVIATION; // 6 kHz
-if (HASH_HASKEY(_currentChannelData,"deviation")) then {
-    _deviation = 0.001 * (HASH_GET(_currentChannelData,"deviation")); // kHz to MHz
+if (HASH_HASKEY(_channel,"deviation")) then {
+    _deviation = 0.001 * (HASH_GET(_channel,"deviation")); // kHz to MHz
 };
 
+// Use "getChannelData" event to ensure vehicle rack interoperability
+private _channelData = GET_CHANNEL_DATA(_radioID);
+private _frequencyTX = HASH_GET(_channelData,"frequencyTX");
+private _powerTX = HASH_GET(_channelData,"power");
+
 // Lockout transmitting
-HASH_SET(_currentChannelData,"rxOnly",true);
+HASH_SET(_channel,"rxOnly",true);
 
 // Send ACRE DataEvent
-HASHLIST_SET(_radioChannels,_currentChannelId,_currentChannelData);
-SET_STATE_RADIO(_radioID,"channels",_radioChannels);
+HASHLIST_SET(_channels,_channelNumber,_channel);
+SET_STATE_RADIO(_radioID,"channels",_channels);
 
 [[LLSTRING(EnableJamming_Title), 1.3], [format [LLSTRING(EnableJamming_Frequency), _frequencyTX], 1], [format [LLSTRING(EnableJamming_Power), _powerTX], 1], [format [LLSTRING(EnableJamming_Deviation), _deviation], 1], true] call CBA_fnc_notify;
 

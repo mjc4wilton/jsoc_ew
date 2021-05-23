@@ -14,8 +14,7 @@ if (hasInterface) then {
     if (_radios isEqualTo []) exitWith {};
     private _radioID = _radios select 0;
 
-    private _radioData = HASH_GET(acre_sys_data_radioData,_radioID);
-    private _channelNumber = HASH_GET(_radioData,"currentChannel");
+    private _channelNumber = GET_CHANNEL_NUM(_radioID);
     private _channels = GET_STATE_RADIO(_radioID,"channels");
     private _channel = HASHLIST_SELECT(_channels,_channelNumber);
 

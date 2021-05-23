@@ -26,13 +26,12 @@ private _index = _jammers find _radioID;
 _jammers deleteAt _index;
 missionNamespace setVariable [QGVAR(jammers), _jammers, true];
 
-private _radioData = HASH_GET(acre_sys_data_radioData,_radioID);
-private _currentChannelId = HASH_GET(_radioData,"currentChannel");
-private _radioChannels = HASH_GET(_radioData,"channels");
-private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId);
-HASH_SET(_currentChannelData,"rxOnly",false);
+private _channelNumber = GET_CHANNEL_NUM(_radioID);
+private _channels = GET_STATE_RADIO(_radioID,"channels");
+private _channel = HASHLIST_SELECT(_channels, _channelNumber);
+HASH_SET(_channel,"rxOnly",false);
 
-HASHLIST_SET(_radioChannels,_currentChannelId,_currentChannelData);
+HASHLIST_SET(_radioChannels,_channelNumber,_channel);
 SET_STATE_RADIO(_radioID,"channels",_radioChannels);
 
 [[LLSTRING(DisableJamming_Title), 1.3], true] call CBA_fnc_notify;

@@ -32,5 +32,8 @@
 #define SET_STATE_RADIO(radio, id, val) ([radio, "setState", [id, val]] call acre_sys_data_fnc_dataEvent)
 #define GET_STATE_RADIO(radio, id)            ([radio, "getState", id] call acre_sys_data_fnc_dataEvent)
 
+#define GET_CHANNEL_NUM(radio)    ([radio, "getCurrentChannel"] call acre_sys_data_fnc_dataEvent)
+#define GET_CHANNEL_DATA(radio)     ([radio, "getCurrentChannelData"] call acre_sys_data_fnc_dataEvent)
+
 // JSOC_EW Defines
 #define BASE_RADIO_DEVIATION 0.006 // 6 kHz
