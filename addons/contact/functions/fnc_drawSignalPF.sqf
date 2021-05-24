@@ -74,7 +74,3 @@ private _deviceEM = [];
     _deviceEM append _x;
 } forEach _sourceList;
 missionNamespace setVariable ["#EM_Values",_deviceEM];
-missionNamespace setVariable ["#EM_FMin", SPECTRUM_FREQ_MIN];
-missionNamespace setVariable ["#EM_FMax", SPECTRUM_FREQ_MAX];
-missionNamespace setVariable ["#EM_SMin", SPECTRUM_SENS_MIN];
-missionNamespace setVariable ["#EM_SMax", SPECTRUM_SENS_MAX];
