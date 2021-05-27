@@ -30,17 +30,17 @@ scopeName QGVAR(handleAceDetonation_main);
 
 {
     if (_x isKindOf "Man") then {
-        private _unit = _x;
-        private _uniformContainer = uniformContainer _unit;
-        private _vestContainer = vestContainer _unit;
-        private _backpackContainer = backpackContainer _unit;
+        private _jammerUnit = _x;
+        private _uniformContainer = uniformContainer _jammerUnit;
+        private _vestContainer = vestContainer _jammerUnit;
+        private _backpackContainer = backpackContainer _jammerUnit;
         {
             private _obj = _x;
             if (_trigger isEqualTo "ACE_Cellphone") then {
                 if ([_obj] call FUNC(cell_isJammer)) then {
                     if (_obj getVariable [QGVAR(cell_isJamming),false]) then {
                         _return = false;
-                        [QGVAR(detonationAttempted), [_explosive, _trigger], _obj] call CBA_fnc_targetEvent;
+                        [QGVAR(detonationAttempted), [_explosive, _unit, _trigger], _jammerUnit] call CBA_fnc_targetEvent;
                         breakTo QGVAR(handleAceDetonation_main);
                     };
                 };
@@ -49,7 +49,7 @@ scopeName QGVAR(handleAceDetonation_main);
                 if ([_obj] call FUNC(rf_isJammer)) then {
                     if (_obj getVariable [QGVAR(rf_isJamming),false]) then {
                         _return = false;
-                        [QGVAR(detonationAttempted), [_unit, _trigger], _obj] call CBA_fnc_targetEvent;
+                        [QGVAR(detonationAttempted), [_explosive, _unit, _trigger], _jammerUnit] call CBA_fnc_targetEvent;
                         breakTo QGVAR(handleAceDetonation_main);
                     };
                 };

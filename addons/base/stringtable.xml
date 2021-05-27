@@ -13,6 +13,9 @@
         <Key ID="STR_JSOC_EW_Base_DetonationAttempted_Angle">
             <English>Bearing: %1</English>
         </Key>
+        <Key ID="STR_JSOC_EW_Base_DetonationAttempted_Explosive_Angle">
+            <English>Explosive Bearing: %1</English>
+        </Key>
         <Key ID="STR_JSOC_EW_Base_DegreesFormat">
             <English>%1 deg</English>
         </Key>
