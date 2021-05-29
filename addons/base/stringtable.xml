@@ -58,6 +58,15 @@
         <Key ID="STR_JSOC_EW_Base_ExactRange_Description">
             <English>When an IED is jammed, if the jammer is within this radius of the explosive it will provice the exact bearing to the explosive</English>
         </Key>
+        <Key ID="STR_JSOC_EW_Base_AI">
+            <English>AI</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_EnemyFrequency_DisplayName">
+            <English>Enemy Frequency</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_EnemyFrequency_Description">
+            <English>Radio frequency AI use to communicate. Jamming this frequency will prevent enemy AI radio communications.</English>
+        </Key>
         <Key ID="STR_JSOC_EW_Base_Modules_Cell_ConnectExplosive">
             <English>Connect Explosive (Cell)</English>
         </Key>

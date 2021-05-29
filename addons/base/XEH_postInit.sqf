@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-/* 
+/*
  *	Check for mods
  */
 
@@ -28,6 +28,12 @@ if (isClass(configFile >> "CfgPatches" >> "achilles_functions_f_achilles")) then
     GVAR(hasAchilles) = true;
 };
 
+// LAMBS Danger FSM
+GVAR(hasLAMBS) = false;
+if (isClass(configFile >> "CfgPatches" >> "lambs_main")) then {
+    GVAR(hasLAMBS) = true;
+};
+
 
 if (hasInterface) then {
     // ACE Explosives Jamming
@@ -35,6 +41,13 @@ if (hasInterface) then {
         _this call FUNC(handleAceDetonation)
     }] call ace_explosives_fnc_addDetonateHandler;
     [QGVAR(detonationAttempted), {_this call FUNC(handleDetonationAttempted)}] call CBA_fnc_addEventHandler;
+
+    // LAMBS AI Information Sharing Jammer
+    if (GVAR(hasLAMBS)) then {
+        [{
+            _this call FUNC(handleLambsShare)
+        }] call lambs_main_fnc_addShareInformationHandler;
+    };
 };
 
 // Radio Jamming
