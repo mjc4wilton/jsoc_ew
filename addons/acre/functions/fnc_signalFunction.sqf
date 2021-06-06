@@ -183,6 +183,18 @@ if (_updateJammers) then {
     missionNamespace setVariable [QGVAR(jammers), _jammmers, true];
 };
 
+if ((_maxPxJam != 0) && (_maxPxJam >= -90)) then {
+    if (GVAR(jammedTone) isEqualTo objNull) then {
+        // Play 9s jamming tone
+        switch (GVAR(jammedTone)) do {
+            case 275: {GVAR(toneSpeaker) = playSound QGVAR(sound_jammed_275);};
+            case 575: {GVAR(toneSpeaker) = playSound QGVAR(sound_jammed_575);};
+            case 1075: {GVAR(toneSpeaker) = playSound QGVAR(sound_jammed_1075);};
+            case 2075: {GVAR(toneSpeaker) = playSound QGVAR(sound_jammed_2075);};
+        };
+    };
+};
+
 _Px = _Px * (1 - _maxPxJam);
 
 private _diffSignal = -1 * ((abs _maxSignalJam) - (abs _maxSignal));

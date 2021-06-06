@@ -4,6 +4,8 @@ if (hasInterface) then {
     [FUNC(signalFunction)] call acre_api_fnc_setCustomSignalFunc;
 };
 
+GVAR(jammedTone) = objNull;
+
 // Radio Jamming
 [QGVAR(equipRadioJammer), {
     params ["_unit", "_f"];

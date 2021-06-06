@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="JSOC_EW">
     <Package name="ACRE">
+        <Key ID="STR_JSOC_EW_ACRE_Category">
+            <English>ACRE</English>
+        </Key>
         <Key ID="STR_JSOC_EW_ACRE_EnableJamming">
             <English>Enable ACRE Jamming</English>
         </Key>
@@ -21,6 +24,12 @@
         </Key>
         <Key ID="STR_JSOC_EW_ACRE_DisableJamming_Title">
             <English>Jamming Disabled</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_ACRE_JammedTone_DisplayName">
+            <English>Jamming Tone (Hz)</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_ACRE_JammedTone_Description">
+            <English>Tone which plays when you are being jammed</English>
         </Key>
     </Package>
 </Project>
