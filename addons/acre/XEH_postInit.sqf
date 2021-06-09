@@ -1,10 +1,20 @@
 #include "script_component.hpp"
 
+// Variables
+GVAR(toneSpeaker) = objNull;
+GVAR(tonedUnits) = [];
+
+// Client / interface events
 if (hasInterface) then {
+    // Custom Signal Function
     [FUNC(signalFunction)] call acre_api_fnc_setCustomSignalFunc;
+
+    // Jammer tone start/stop
+    ["acre_remoteStartedSpeaking", {_this call FUNC(remoteStartedSpeaking)}] call CBA_fnc_addEventHandler;
+    ["acre_remoteStoppedSpeaking", {_this call FUNC(remoteStoppedSpeaking)}] call CBA_fnc_addEventHandler;
 };
 
-GVAR(jammedTone) = objNull;
+
 
 // Radio Jamming
 [QGVAR(equipRadioJammer), {

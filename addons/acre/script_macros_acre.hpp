@@ -25,6 +25,14 @@
 #define SIGNAL_MODEL_ITM           3
 #define SIGNAL_MODEL_ITWOM         4  // This model is for now disabled.
 
+#define SPEAKING_TYPE_DIRECT    0
+#define SPEAKING_TYPE_RADIO     1
+#define SPEAKING_TYPE_UNKNOWN   2
+#define SPEAKING_TYPE_INTERCOM  3
+#define SPEAKING_TYPE_SPECTATE  4
+#define SPEAKING_TYPE_GOD       5
+#define SPEAKING_TYPE_ZEUS      6
+
 #define GET_STATE(id)            ([acre_main_currentRadioId, "getState", id] call acre_sys_data_fnc_dataEvent)
 #define SET_STATE(id, val)        ([acre_main_currentRadioId, "setState", [id, val]] call acre_sys_data_fnc_dataEvent)
 #define SET_STATE_CRIT(id, val)    ([acre_main_currentRadioId, "setStateCritical", [id, val]] call acre_sys_data_fnc_dataEvent)
