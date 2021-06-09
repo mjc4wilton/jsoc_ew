@@ -8,7 +8,7 @@ class CfgVehicles {
                 condition = QUOTE(true);
                 exceptions[] = {"isNotInside", "isNotSitting"};
                 statement = ""; // With no statement the action will only show if it has children
-                
+
                 class GVAR(cell) {
                     displayName = CSTRING(Cell_Jamming);
                     condition = QUOTE(true);
@@ -26,7 +26,7 @@ class CfgVehicles {
             };
         };
     };
-    
+
     // Gear
     class Bag_Base;
     class GVAR(backpack_mc): Bag_Base {
@@ -69,5 +69,22 @@ class CfgVehicles {
         displayName = CSTRING(Modules_Cell_ConnectExplosive);
         function = QFUNC(cell_connectExplosive);
         icon = "z\ace\addons\explosives\UI\Explosives_Menu_ca.paa";
+    };
+
+    // Equipment
+    class Land_Laptop_03_black_F;
+    class GVAR(Laptop): Land_Laptop_03_black_F {
+        author = "77th JSOC";
+        category = "JSOC_EW_PROP";
+        displayName = "[JSOC] EW Laptop";
+        hiddenSelections[] = {"Camo_1","Screen_1"};
+        hiddenSelectionsTextures[] = {
+            "a3\Props_F_Enoch\Military\Equipment\data\Laptop_03_black_CO.paa",
+            QPATHTOF(data\GVAR(laptop_screen.paa))
+        };
+        model = "\a3\Props_F_Enoch\Military\Equipment\Laptop_03_F.p3d";
+        picture = "pictureThing";
+        scope = 2;
+        scopeCurator = 2;
     };
 };

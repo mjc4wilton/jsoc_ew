@@ -6,7 +6,8 @@ class CfgPatches {
         units[] = {
             "jsoc_ew_base_backpack_mc",
             QGVAR(ModuleBase),
-            QGVAR(Cell_ConnectExplosive)
+            QGVAR(Cell_ConnectExplosive),
+            QGVAR(Laptop)
         };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;

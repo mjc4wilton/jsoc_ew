@@ -31,6 +31,9 @@
         <Key ID="STR_JSOC_EW_Base_Cell_DisableJamming">
             <English>Disable</English>
         </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_HackFinished">
+            <English>Hacking Finished</English>
+        </Key>
         <Key ID="STR_JSOC_EW_Base_RF">
             <English>RF</English>
         </Key>
