@@ -52,7 +52,7 @@ if (hasInterface) then {
     // Hacking Intel (Appears the same as ZEN intel)
     [QGVAR(addIntel), {
         params ["_title", "_text"];
-        if !(player diarySubjectExists "zen_modules_intel")) then {
+        if !(player diarySubjectExists "zen_modules_intel") then {
             player createDiarySubject ["zen_modules_intel", localize "str_disp_intel_title"];
         };
 
