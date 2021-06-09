@@ -1,7 +1,11 @@
 {
     "inputDirs": ["P:/z/jsoc_ew/addons"],
     "includePaths": ["P:/"],
-    "excludeList": [],
+    "excludeList": [
+        "initsettings.sqf",
+        "initkeybinds.sqf",
+        "xeh_prep.sqf"
+    ],
     "outputDir": "P:/",
     "workerThreads": 0
 }
