@@ -1,4 +1,6 @@
 *.pbo
+*.exe
+*.sqfc
 ## Added by HEMTT
 releases/*
 *.biprivatekey

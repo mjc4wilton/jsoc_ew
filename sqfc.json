@@ -1,0 +1,7 @@
+{
+    "inputDirs": ["P:/z/jsoc_ew/addons"],
+    "includePaths": ["P:/"],
+    "excludeList": [],
+    "outputDir": "P:/",
+    "workerThreads": 0
+}
