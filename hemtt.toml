@@ -4,8 +4,18 @@ author = "77th JSOC"
 mainprefix = "z"
 folder_optionals = true
 
+files = [
+    "mod.cpp"
+]
+
 include = [
     "./include"
+]
+
+exclude = [
+    "*.psd",
+    "*.png",
+    "*.tga"
 ]
 
 keyname = "{{prefix}}_{{version}}"
