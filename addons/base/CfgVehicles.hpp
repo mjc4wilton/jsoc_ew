@@ -74,9 +74,9 @@ class CfgVehicles {
     // Equipment
     class Land_Laptop_03_black_F;
     class GVAR(Laptop): Land_Laptop_03_black_F {
-        author = "77th JSOC";
+        author = ECSTRING(main,Author);
         category = "JSOC_EW_PROP";
-        displayName = "[JSOC] EW Laptop";
+        displayName = CSTRING(Hack_Laptop);
         hiddenSelections[] = {"Camo_1","Screen_1"};
         hiddenSelectionsTextures[] = {
             "a3\Props_F_Enoch\Military\Equipment\data\Laptop_03_black_CO.paa",
@@ -85,6 +85,22 @@ class CfgVehicles {
         model = "\a3\Props_F_Enoch\Military\Equipment\Laptop_03_F.p3d";
         picture = "pictureThing";
         scope = 2;
+        scopeArsenal = 2;
         scopeCurator = 2;
+        class ACE_Actions {
+            class GVAR(Hack_TakeConnector) {
+                displayName = CSTRING(Hack_TakeConnector);
+                condition = QUOTE([ARR_2(_player,_target)] call FUNC(hack_canTakeConnector));
+                exceptions[] = {"isNotInside", "isNotSitting"};
+                statement = QUOTE([ARR_2(_player,_target)] call FUNC(hack_takeConnector));
+            };
+            class GVAR(Hack_Devices) {
+                displayName = CSTRING(Hack_Devices);
+                condition = QUOTE(true);
+                statement = ""; // With no statement the action will only show if it has children
+                priority = 0.5;
+                insertChildren = QUOTE(_this call FUNC(hack_devices_addChildren));
+            };
+        };
     };
 };

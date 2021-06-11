@@ -33,12 +33,12 @@ private _backpackContainer = backpackContainer _unit;
         private _name = getText (_config >> "displayName");
         private _picture = getText (_config >> "picture");
         private _action = [
-            str _obj, 
-            _name, 
-            _picture, 
+            str _obj,
+            _name,
+            _picture,
             {},
             {true},
-            {_this call FUNC(cell_addChildrenChildren)}, 
+            {_this call FUNC(cell_addChildrenChildren)},
             [_class, _obj]
         ] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _unit];

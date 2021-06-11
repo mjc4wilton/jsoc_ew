@@ -15,6 +15,8 @@
  * Public: No
  */
 
+params ["_obj"];
+
 private _share = _obj getVariable [QGVAR(hack_share), 2];
 private _actionText = _obj getVariable [QGVAR(hack_actionText), "Hack"];
 private _duration = _obj getVariable [QGVAR(hack_duration), 1];
