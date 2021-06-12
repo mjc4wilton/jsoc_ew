@@ -20,38 +20,36 @@ params ["_unit", "_class"];
 
 _unit removeItem _class;
 
-if ((_unit call CBA_fnc_getUnitAnim) select 0 == "stand") then {
-    _unit playMove "AmovPercMstpSrasWrflDnon_diary";
+if (stance _unit == "STAND") then {
+    [_unit, "AmovPercMstpSrasWrflDnon_diary"] call ace_common_fnc_doAnimation;
 };
 
 [{
     params ["_unit"];
 
-    // prevent collision damage
-    ["ace_common_fixCollision", _unit] call CBA_fnc_localEvent;
-
-    // Check for a place to land the laptop
     private _direction = getDir _unit;
-    private _position = (getPosASL _unit) vectorAdd [0.8 * sin(_direction), 0.8 * cos(_direction), 0];
-    private _vectorUp = [0, 0, 1];
-    private _intersections = lineIntersectsSurfaces [_position vectorAdd [0, 0, 1.5], _position vectorDiff [0, 0, 1.5], _unit, objNull, true, 1, "GEOM", "FIRE"];
-    if (_intersections isEqualTo []) then {
-        TRACE_1("No intersections",_intersections);
+    private _position = getPosASL _unit vectorAdd [0.8 * sin _direction, 0.8 * cos _direction, 0.02];
+
+    // 180 degree rotation
+    if (_direction > 180) then {
+        _direction = _direction - 180;
     } else {
-        (_intersections select 0) params ["_touchingPoint", "_surfaceNormal"];
-        _position = _touchingPoint vectorAdd [0, 0, 0.05];
-        _vectorUp = _surfaceNormal;
+        _direction = _direction + 180;
     };
 
-    // Create the laptop and set its position and orientation
-    private _laptop = QGVAR(LaptopObject) createVehicle [0, 0, 0];
-    _laptop setDir _direction;
-    _laptop setPosASL _position;
-    _laptop setVectorUp _vectorUp;
-    ["ace_common_fixPosition", _laptop, _laptop] call CBA_fnc_targetEvent;
-    ["ace_common_fixFloating", _laptop, _laptop] call CBA_fnc_targetEvent;
+    private _laptop = "jsoc_ew_base_LaptopObject" createVehicle [0, 0, 0];
 
-    _unit reveal _laptop;
+    [{
+        (_this select 0) params ["_laptop", "_direction", "_position"];
 
-}, [_unit], 1, 0] call CBA_fnc_waitAndExecute;
+        _laptop setDir _direction;
+        _laptop setPosASL _position;
 
+        if ((getPosATL _laptop select 2) - (getPos _laptop select 2) < 1E-5) then { // if not on object, then adjust to surface normale
+            _laptop setVectorUp (surfaceNormal (position _laptop));
+        };
+
+        [_this select 1] call CBA_fnc_removePerFrameHandler;
+    }, 0, [_laptop, _direction, _position]] call CBA_fnc_addPerFrameHandler;
+
+}, [_unit], 1] call CBA_fnc_waitAndExecute;

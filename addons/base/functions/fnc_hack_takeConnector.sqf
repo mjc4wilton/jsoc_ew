@@ -18,10 +18,8 @@
 
 params ["_player", "_target"];
 
-_player setVariable [QGVAR(hasConnector), true];
-
 {
-    if (_x getVariable [GVAR(hack_hackable), false] isEqualTo true) then {
+    if (_x getVariable [QGVAR(hack_hackable), false] isEqualTo true) then {
         // Object is hackable, add connect interaction
         private _action = [
             (str _x),                           // Action Name (STRING)
@@ -34,4 +32,6 @@ _player setVariable [QGVAR(hasConnector), true];
         ] call ace_interact_menu_fnc_createAction;
         [_x, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
     };
-} forEach ((getPos _target) nearEntities GVAR(hack_connectorLength));
+} forEach (_target nearEntities GVAR(hack_connectorLength));
+
+_player setVariable [QGVAR(hasConnector), true];

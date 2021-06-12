@@ -20,12 +20,12 @@ params ["_player", "_target"];
 
 private _return = true;
 
-if (_player getVariable [QGVAR(hasConnector), false] isEqualTo true) exitWith {
+if (_player getVariable [QGVAR(hasConnector), false] isEqualTo true) then {
     _return = false;
 };
 
 private _devices = _target getVariable [QGVAR(connectedDevices), []];
-if (count _devices >= GVAR(hack_maxDevices)) exitWith {
+if (count _devices >= GVAR(hack_maxDevices)) then {
     _return = false;
 };
 

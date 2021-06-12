@@ -1,4 +1,5 @@
 class CBA_Extended_EventHandlers_base;
+class CBA_Extended_EventHandlers;
 class CfgVehicles {
     class Man;
     class CAManBase: Man {
@@ -80,20 +81,22 @@ class CfgVehicles {
     };
 
     // Equipment
-    class Items_base_F;
-    class GVAR(LaptopObject): Items_base_F {
+    class ThingX;
+    class GVAR(LaptopObject): ThingX {
+        ace_dragging_canDrag = 1;
+        ace_dragging_dragPosition[] = {0,1,0};
+        ace_dragging_dragDirection = 0;
         author = ECSTRING(main,Author);
         _generalMacro = QGVAR(LaptopObject);
         displayName = CSTRING(Hack_Laptop);
-        hiddenSelections[] = {"Camo_1","Screen_1"};
-        hiddenSelectionsTextures[] = {
-            "a3\Props_F_Enoch\Military\Equipment\data\Laptop_03_black_CO.paa",
-            QPATHTOF(data\GVAR(laptop_screen.paa))
-        };
-        icon = "iconObject_1x2";
-        model = "\a3\Props_F_Enoch\Military\Equipment\Laptop_03_F.p3d";
-        scope = 1;
-        vehicleClass = "Cargo";
+        hiddenSelections[] = {"camo"};
+        hiddenSelectionsMaterials[] = {"\A3\Structures_F\Items\Electronics\Data\electronics_screens.rvmat"};
+        hiddenSelectionsTextures[] = {QPATHTOF(data\GVAR(laptop_screen.paa))};
+        icon = "iconObject_3x2";
+        model = "\A3\Structures_F\Items\Electronics\Laptop_unfolded_F.p3d";
+        scope = 2;
+        scopeCurator = 2;
+        //vehicleClass = "Cargo";
 
         class EventHandlers {
             class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers {};
@@ -101,6 +104,10 @@ class CfgVehicles {
 
         class ACE_Actions {
             class ACE_MainActions {
+                selection = "";
+                distance = 5;
+                condition = "(true)";
+
                 class GVAR(Hack_TakeConnector) {
                     selection = "";
                     displayName = CSTRING(Hack_TakeConnector);
@@ -122,7 +129,7 @@ class CfgVehicles {
                     selection = "";
                     displayName = CSTRING(Hack_Pickup);
                     condition = "true";
-                    statement = QUOTE([ARR_2(_player,_target getVariable QUOTE(QGVAR(class)))] call ace_common_fnc_addToInventory;deleteVehicle _target;);
+                    statement = QUOTE([ARR_2(_player, QQGVAR(Laptop))] call CBA_fnc_addItem; deleteVehicle _target;);
                 };
             };
         };
