@@ -13,6 +13,7 @@ PREP(hack_devices_addChildren);
 PREP(hack_devices_addChildrenChildren);
 PREP(hack_disconnect);
 PREP(hack_foundIntel);
+PREP(hack_place);
 PREP(hack_removeIntel);
 PREP(hack_startHack);
 PREP(hack_takeConnector);

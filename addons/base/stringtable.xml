@@ -58,6 +58,12 @@
         <Key ID="STR_JSOC_EW_Base_Hack_HackStarted">
             <English>Hacking Started</English>
         </Key>
+        <Key ID="STR_JSOC_EW_Base_Laptop_Place">
+            <English>Place Laptop</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_Pickup">
+            <English>Pickup Laptop</English>
+        </Key>
         <!-- RF Detonator Jamming -->
         <Key ID="STR_JSOC_EW_Base_RF">
             <English>RF</English>

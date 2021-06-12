@@ -3,6 +3,14 @@ class CfgVehicles {
     class Man;
     class CAManBase: Man {
         class ACE_SelfActions {
+            class ACE_Equipment {
+                class GVAR(laptop_place) {
+                    displayName = CSTRING(laptop_place);
+                    condition = QUOTE([ARR_2(_player,QQGVAR(Laptop))] call ace_common_fnc_hasItem);
+                    statement = QUOTE([ARR_2(_player,QQGVAR(Laptop))] call FUNC(hack_place));
+                    showDisabled = 0;
+                };
+            };
             class jsoc_ew {
                 displayName = CSTRING(Interaction);
                 condition = QUOTE(true);
@@ -72,35 +80,51 @@ class CfgVehicles {
     };
 
     // Equipment
-    class Land_Laptop_03_black_F;
-    class GVAR(Laptop): Land_Laptop_03_black_F {
+    class Items_base_F;
+    class GVAR(LaptopObject): Items_base_F {
         author = ECSTRING(main,Author);
-        category = "JSOC_EW_PROP";
+        _generalMacro = QGVAR(LaptopObject);
         displayName = CSTRING(Hack_Laptop);
         hiddenSelections[] = {"Camo_1","Screen_1"};
         hiddenSelectionsTextures[] = {
             "a3\Props_F_Enoch\Military\Equipment\data\Laptop_03_black_CO.paa",
             QPATHTOF(data\GVAR(laptop_screen.paa))
         };
+        icon = "iconObject_1x2";
         model = "\a3\Props_F_Enoch\Military\Equipment\Laptop_03_F.p3d";
-        picture = "pictureThing";
-        scope = 2;
-        scopeArsenal = 2;
-        scopeCurator = 2;
+        scope = 1;
+        vehicleClass = "Cargo";
+
+        class EventHandlers {
+            class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers {};
+        };
+
         class ACE_Actions {
-            class GVAR(Hack_TakeConnector) {
-                displayName = CSTRING(Hack_TakeConnector);
-                condition = QUOTE([ARR_2(_player,_target)] call FUNC(hack_canTakeConnector));
-                exceptions[] = {"isNotInside", "isNotSitting"};
-                statement = QUOTE([ARR_2(_player,_target)] call FUNC(hack_takeConnector));
-            };
-            class GVAR(Hack_Devices) {
-                displayName = CSTRING(Hack_Devices);
-                condition = QUOTE(true);
-                statement = ""; // With no statement the action will only show if it has children
-                priority = 0.5;
-                insertChildren = QUOTE(_this call FUNC(hack_devices_addChildren));
+            class ACE_MainActions {
+                class GVAR(Hack_TakeConnector) {
+                    selection = "";
+                    displayName = CSTRING(Hack_TakeConnector);
+                    condition = QUOTE([ARR_2(_player,_target)] call FUNC(hack_canTakeConnector));
+                    exceptions[] = {"isNotInside", "isNotSitting"};
+                    statement = QUOTE([ARR_2(_player,_target)] call FUNC(hack_takeConnector));
+                    showDisabled = 0;
+                };
+                class GVAR(Hack_Devices) {
+                    selection = "";
+                    displayName = CSTRING(Hack_Devices);
+                    condition = QUOTE(true);
+                    exceptions[] = {"isNotInside", "isNotSitting"};
+                    statement = ""; // With no statement the action will only show if it has children
+                    insertChildren = QUOTE(_this call FUNC(hack_devices_addChildren));
+                    showDisabled = 0;
+                };
+                class GVAR(Hack_PickUp) {
+                    selection = "";
+                    displayName = CSTRING(Hack_Pickup);
+                    condition = "true";
+                    statement = QUOTE([ARR_2(_player,_target getVariable QUOTE(QGVAR(class)))] call ace_common_fnc_addToInventory;deleteVehicle _target;);
+                }
             };
         };
-    };
+    }
 };
