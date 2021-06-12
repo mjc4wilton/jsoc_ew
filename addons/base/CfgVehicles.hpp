@@ -123,8 +123,8 @@ class CfgVehicles {
                     displayName = CSTRING(Hack_Pickup);
                     condition = "true";
                     statement = QUOTE([ARR_2(_player,_target getVariable QUOTE(QGVAR(class)))] call ace_common_fnc_addToInventory;deleteVehicle _target;);
-                }
+                };
             };
         };
-    }
+    };
 };
