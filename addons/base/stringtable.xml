@@ -52,6 +52,9 @@
         <Key ID="STR_JSOC_EW_Base_Hack_TakeConnector">
             <English>Take Cable</English>
         </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_ReturnConnector">
+            <English>Return Cable</English>
+        </Key>
         <Key ID="STR_JSOC_EW_Base_Hack_HackFinished">
             <English>Hacking Finished</English>
         </Key>

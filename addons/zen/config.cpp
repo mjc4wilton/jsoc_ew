@@ -4,7 +4,8 @@ class CfgPatches {
     class ADDON {
         name = QUOTE(COMPONENT);
         units[] = {
-            QGVAR(EquipRadioJammer)
+            QGVAR(EquipRadioJammer),
+            QGVAR(AddHackIntel)
         };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;

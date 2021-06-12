@@ -85,7 +85,10 @@ class CfgVehicles {
     class GVAR(LaptopObject): ThingX {
         ace_dragging_canDrag = 1;
         ace_dragging_dragPosition[] = {0,1,0};
-        ace_dragging_dragDirection = 0;
+        ace_dragging_dragDirection = 1;
+        ace_dragging_canCarry = 1;
+        ace_dragging_carryPosition[] = {0, 1, 0};
+        ace_dragging_carryDirection = 1;
         author = ECSTRING(main,Author);
         _generalMacro = QGVAR(LaptopObject);
         displayName = CSTRING(Hack_Laptop);
@@ -114,6 +117,14 @@ class CfgVehicles {
                     condition = QUOTE([ARR_2(_player,_target)] call FUNC(hack_canTakeConnector));
                     exceptions[] = {"isNotInside", "isNotSitting"};
                     statement = QUOTE([ARR_2(_player,_target)] call FUNC(hack_takeConnector));
+                    showDisabled = 0;
+                };
+                class GVAR(Hack_ReturnConnector) {
+                    selection = "";
+                    displayName = CSTRING(Hack_ReturnConnector);
+                    condition = QUOTE([ARR_2(_player,_target)] call FUNC(hack_canReturnConnector));
+                    exceptions[] = {"isNotInside", "isNotSitting"};
+                    statement = QUOTE([ARR_2(_player,_target)] call FUNC(hack_returnConnector));
                     showDisabled = 0;
                 };
                 class GVAR(Hack_Devices) {

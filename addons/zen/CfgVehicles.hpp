@@ -18,4 +18,10 @@ class CfgVehicles {
         displayName = CSTRING(EquipRadioJammer_Title);
         function = QFUNC(equipRadioJammer);
     };
+    class GVAR(AddHackIntel): GVAR(ModuleBase) {
+        curatorCanAttach = 1;
+        category = "JSOC_EW";
+        displayName = CSTRING(AddHackIntel_Title);
+        function = QFUNC(addHackIntel);
+    };
 };

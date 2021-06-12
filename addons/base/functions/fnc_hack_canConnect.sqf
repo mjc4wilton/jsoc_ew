@@ -20,12 +20,12 @@ params ["_player", "_target"];
 
 private _return = false;
 
-if (_target getVariable [QGVAR(connected), false] isEqualTo true) exitWith {
-    _return = false;
-};
-
 if (_player getVariable [QGVAR(hasConnector), false] isEqualTo true) then {
     _return = true;
+};
+
+if (_target getVariable [QGVAR(connected), false] isEqualTo true) then {
+    _return = false;
 };
 
 _return
