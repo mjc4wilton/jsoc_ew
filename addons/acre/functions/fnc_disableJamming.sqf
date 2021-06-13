@@ -31,8 +31,8 @@ private _channels = GET_STATE_RADIO(_radioID,"channels");
 private _channel = HASHLIST_SELECT(_channels, _channelNumber);
 HASH_SET(_channel,"rxOnly",false);
 
-HASHLIST_SET(_radioChannels,_channelNumber,_channel);
-SET_STATE_RADIO(_radioID,"channels",_radioChannels);
+HASHLIST_SET(_channels,_channelNumber,_channel);
+SET_STATE_RADIO(_radioID,"channels",_channels);
 
 [[LLSTRING(DisableJamming_Title), 1.3], true] call CBA_fnc_notify;
 
