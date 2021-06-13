@@ -133,14 +133,14 @@ class CfgVehicles {
                     condition = QUOTE(true);
                     exceptions[] = {"isNotInside", "isNotSitting"};
                     statement = ""; // With no statement the action will only show if it has children
-                    insertChildren = QUOTE(_this call FUNC(hack_devices_addChildren));
+                    insertChildren = QUOTE([ARR_2(_player,_target)] call FUNC(hack_devices_addChildren));
                     showDisabled = 0;
                 };
                 class GVAR(Hack_PickUp) {
                     selection = "";
                     displayName = CSTRING(Hack_Pickup);
                     condition = "true";
-                    statement = QUOTE([ARR_2(_player, QQGVAR(Laptop))] call CBA_fnc_addItem; deleteVehicle _target;);
+                    statement = QUOTE([ARR_2(_player,_target)] call FUNC(hack_pickup));
                 };
             };
         };

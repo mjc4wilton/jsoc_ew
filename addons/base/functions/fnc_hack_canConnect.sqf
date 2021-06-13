@@ -16,16 +16,17 @@
  * Public: No
  */
 
-params ["_player", "_target"];
+params ["_target", "_player", "_params"];
+_params params ["_obj", "_laptop"];
 
 private _return = false;
 
-if (_player getVariable [QGVAR(hasConnector), false] isEqualTo true) then {
+if ((_player getVariable [QGVAR(hasConnector), false]) isEqualTo true) then {
     _return = true;
 };
 
-if (_target getVariable [QGVAR(connected), false] isEqualTo true) then {
-    _return = false;
+if ((_obj getVariable [QGVAR(connected), false]) isEqualTo false) then {
+    _return = true;
 };
 
 _return

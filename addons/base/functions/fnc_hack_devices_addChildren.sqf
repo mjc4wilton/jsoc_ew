@@ -23,15 +23,11 @@ private _devices = _target getVariable [QGVAR(connectedDevices), []];
 {
     private _config = configOf _x;
     private _name = getText (_config >> "displayName");
-    private _picture = "";
-    if (isText (_config >> "picture")) then {
-        _picture = getText (_config >> "picture");
-    };
 
     private _action = [
         (str _x),                           // Action Name (STRING)
         _name,                              // Name shown in menu
-        _picture,                           // Icon (STRING)
+        "",                           // Icon (STRING)
         {},                                 // Statement (CODE)
         {true},                             // Condition (CODE)
         {_this call FUNC(hack_devices_addChildrenChildren)}, // Insert Children (CODE)

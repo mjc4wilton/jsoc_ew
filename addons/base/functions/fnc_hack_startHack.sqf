@@ -1,23 +1,23 @@
 #include "script_component.hpp"
 /*
  * Author: Wilton
- * Adds child interactions to "devices > device" interaction
+ * Starts hacking on object
  *
  * Arguments:
- * 0: Player <OBJECT>
- * 1: Target <OBJECT>
+ * 0: Target <OBJECT>
+ * 1: Player <OBJECT>
  * 2: Parameters <ARRAY>
  *
  * Return Value:
  * 0: Actions <ARRAY>
  *
  * Example:
- * [player] call jsoc_ew_base_fnc_cell_addChildren;
+ * [ACE_player, cursorTarget, [test01, test02]] call jsoc_ew_base_fnc_hack_startHack;
  *
  * Public: No
  */
 
-params ["_player", "_target", "_parameters"];
+params ["_target", "_player", "_parameters"];
 _parameters params ["_obj", "_laptop"];
 
 _laptop setVariable [QGVAR(hack_isHacking), true, true];
@@ -31,7 +31,10 @@ private _duration = _obj getVariable [QGVAR(hack_duration), 1];
 ] call CBA_fnc_notify;
 
 [
-    {_this call FUNC(hack_foundIntel)},
-    [_obj],
+    {
+        params ["_player", "_obj"];
+        [_player, _obj] call FUNC(hack_foundIntel);
+    },
+    [_player, _obj],
     _duration
 ] call CBA_fnc_waitAndExecute;
