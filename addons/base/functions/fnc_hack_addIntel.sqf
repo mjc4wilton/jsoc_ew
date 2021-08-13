@@ -22,12 +22,12 @@
 
 params ["_obj", "_share", "_actionText", "_duration", "_title", "_text"];
 
-_obj setVariable [QGVAR(hack_hackable), true];
-_obj setVariable [QGVAR(hack_share), _share];
-_obj setVariable [QGVAR(hack_actionText), _actionText];
-_obj setVariable [QGVAR(hack_duration), _duration];
-_obj setVariable [QGVAR(hack_title), _title];
-_obj setVariable [QGVAR(hack_text), _text];
+_obj setVariable [QGVAR(hack_hackable), true, true];
+_obj setVariable [QGVAR(hack_share), _share, true];
+_obj setVariable [QGVAR(hack_actionText), _actionText, true];
+_obj setVariable [QGVAR(hack_duration), _duration, true];
+_obj setVariable [QGVAR(hack_title), _title, true];
+_obj setVariable [QGVAR(hack_text), _text, true];
 
 private _currentIntelObjs = missionNamespace getVariable [QGVAR(hack_intelObjects), []];
 _currentIntelObjs pushBack _obj;

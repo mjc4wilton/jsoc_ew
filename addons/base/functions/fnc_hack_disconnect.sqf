@@ -26,7 +26,7 @@ _devices deleteAt (_devices find _obj);
 _laptop setVariable [QGVAR(connectedDevices), _devices, true];
 
 // Remove connection
-_obj setVariable [QGVAR(connected), nil];
+_obj setVariable [QGVAR(connected), nil, true];
 
 // Remove Interaction
 private _interactDisconnect = (str _obj + "_disconnect");

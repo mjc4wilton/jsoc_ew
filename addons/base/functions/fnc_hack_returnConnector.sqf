@@ -18,4 +18,4 @@
 
 params ["_player", "_target"];
 
-_player setVariable [QGVAR(hasConnector), false];
+_player setVariable [QGVAR(hasConnector), false, true];

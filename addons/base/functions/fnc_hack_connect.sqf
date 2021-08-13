@@ -20,8 +20,8 @@
 params ["_target", "_player", "_params"];
 _params params ["_obj", "_laptop"];
 
-_player setVariable [QGVAR(hasConnector), nil];
-_obj setVariable [QGVAR(connected), true];
+_player setVariable [QGVAR(hasConnector), nil, true];
+_obj setVariable [QGVAR(connected), true, true];
 
 private _devices = _laptop getVariable [QGVAR(connectedDevices), []];
 _devices pushBack _obj;
