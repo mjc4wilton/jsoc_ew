@@ -107,10 +107,9 @@ private _updateJammers = false;
     // Sanitize jammers (Ensure it still exists)
     private _radioIDJ = _x;
     private _holderJ = [_radioIDJ] call acre_sys_radio_fnc_getRadioObject;
-    if (isNil {_holderJ} || isNull _holderJ) then {
-        // Jammer no longer exists, delete it.
-        _updateJammers = true;
+    if (isNil {_holderJ}) then {
         _jammers deleteAt _forEachIndex;
+        _updateJammers = true;
     } else {
         // Jammer still exists, process it.
 
