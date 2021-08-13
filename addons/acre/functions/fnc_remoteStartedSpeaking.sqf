@@ -37,7 +37,7 @@ if (_speakingType isEqualTo SPEAKING_TYPE_RADIO) then {
     {
         {
             _localRadios pushBackUnique _x;
-        } forEach [_x] call acre_api_fnc_getAllRadiosByType;
+        } forEach ([_x] call acre_api_fnc_getAllRadiosByType);
     } forEach ([] call acre_api_fnc_getAllRadios select 0);
 
     // Check if player can listen to transmission and apply sound

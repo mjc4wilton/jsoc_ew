@@ -27,14 +27,14 @@ deleteVehicle _logic;
 
 private _share = _object getVariable [QEGVAR(base,hack_share), 2];
 private _actionText = _object getVariable [QEGVAR(base,hack_actionText), ""];
-private _duration = _object getVariable [QEGVAR(base,hack_duration), 1];
+private _duration = _object getVariable [QEGVAR(base,hack_duration), 20];
 private _title = _object getVariable [QEGVAR(base,hack_title), ""];
 private _text = _object getVariable [QEGVAR(base,hack_text), ""];
 
 private _options = [
     ["TOOLBOX", localize "STR_ZEN_Modules_ModuleCreateIntel_ShareWith", [_share, 1, 3, ["str_eval_typeside", "str_word_allgroup", "str_disp_intel_none_friendly"]]],
     ["EDIT", localize "STR_ZEN_Modules_ModuleCreateIntel_ActionText", _actionText],
-    ["SLIDER", localize "STR_ZEN_Modules_ModuleCreateIntel_ActionDuration", [0, 60, _duration, 0]],
+    ["SLIDER", localize "STR_ZEN_Modules_ModuleCreateIntel_ActionDuration", [0, 600, _duration, 0]],
     ["EDIT", localize "STR_ZEN_Modules_ModuleCreateIntel_IntelTitle", _title],
     ["EDIT:MULTI", localize "STR_ZEN_Modules_ModuleCreateIntel_IntelText", _text]
 ];
