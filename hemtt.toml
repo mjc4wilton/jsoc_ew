@@ -18,13 +18,32 @@ exclude = [
     "*.tga"
 ]
 
-keyname = "{{prefix}}_{{version}}"
-signame = "{{prefix}}_{{version}}-{{git \"id8\"}}"
+key_name = "{{prefix}}_{{version}}"
+authority = "{{prefix}}_{{version}}-{{git \"id8\"}}"
 sig_version = 3
 
+prebuild = ["!compile_scripts"]
+postbuild = ["!remove_compiled_scripts"]
+
 releasebuild = [
-    "@zip jsoc_ew_{{semver.major}}.{{semver.minor}}.{{semver.patch}}"
+    "@zip jsoc_ew_{{semver.major}}.{{semver.minor}}.{{semver.patch}}.{{semver.build}}"
 ]
 
 [header_exts]
 version = "{{git \"id8\"}}"
+
+[scripts.compile_scripts]
+steps_windows = [
+    "echo STEP: Compile Arma Scripts",
+    "ArmaScriptCompiler"
+]
+only_release = false
+show_output = true
+
+[scripts.remove_compiled_scripts]
+steps_windows = [
+    "echo STEP: Remove Compiled Scripts (*.sqfc)",
+    "powershell -Command Remove-Item './addons/*' -Recurse -Include *.sqfc"
+]
+only_release = false
+show_output = true

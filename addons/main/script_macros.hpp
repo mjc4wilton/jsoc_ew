@@ -13,3 +13,7 @@
     #define LINKFUNC(x) FUNC(x)
 #endif
 
+// nextcba
+#ifndef COMPILE_SCRIPT
+    #define COMPILE_SCRIPT(var1) compileScript ['PATHTO_SYS(PREFIX,COMPONENT_F,var1)']
+#endif
