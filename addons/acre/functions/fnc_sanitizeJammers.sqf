@@ -20,7 +20,7 @@ private _update = false;
 {
     // Ensure jammer still exists, if not, remove it
     private _holder = [_x] call acre_sys_radio_fnc_getRadioObject;
-    if (isNil {_holder} || isNull _holder) then {
+    if (isNil {_holder}) then {
         _jammers deleteAt _forEachIndex;
         _update = true;
     };

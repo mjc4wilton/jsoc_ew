@@ -1,8 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="JSOC_EW">
     <Package name="Base">
+        <!-- General Strings -->
         <Key ID="STR_JSOC_EW_Base_Interaction">
             <English>JSOC EW</English>
+        </Key>
+        <!-- Cell Jamming -->
+        <Key ID="STR_JSOC_EW_Base_Cell">
+            <English>Cell</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Cell_DisableJamming">
+            <English>Disable</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Cell_EnableJamming">
+            <English>Enable</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Cell_Jamming">
+            <English>Cell Jamming</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Modules_Cell_ConnectExplosive">
+            <English>Connect Explosive (Cell)</English>
+        </Key>
+        <!-- Hacking -->
+        <Key ID="STR_JSOC_EW_Base_Hacking">
+            <English>Hacking</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_ConnectorLength_DisplayName">
+            <English>Laptop Cable Length</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_ConnectorLength_Description">
+            <English>Length of laptop cable to hackable objects (meters)</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_Connect">
+            <English>Connect to Laptop</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_Disconnect">
+            <English>Disconnect</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_Devices">
+            <English>Devices</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_Laptop">
+            <English>[JSOC] EW Laptop</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_MaxDevices_DisplayName">
+            <English>Maximum Connected Devices</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_MaxDevices_Description">
+            <English>Maximum amount of devices that can be connected to a laptop at once</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_TakeConnector">
+            <English>Take Cable</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_ReturnConnector">
+            <English>Return Cable</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_HackFinished">
+            <English>Hacking Finished</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_HackStarted">
+            <English>Hacking Started</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Laptop_Place">
+            <English>Place Laptop</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_Pickup">
+            <English>Pickup Laptop</English>
+        </Key>
+        <!-- RF Detonator Jamming -->
+        <Key ID="STR_JSOC_EW_Base_RF">
+            <English>RF</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_RF_Jamming">
+            <English>RF Jamming</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_RF_EnableJamming">
+            <English>Enable</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_RF_DisableJamming">
+            <English>Disable</English>
+        </Key>
+        <!-- General IED Jamming -->
+        <Key ID="STR_JSOC_EW_Base_IEDJamming">
+            <English>IED Jamming</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_MaxJamRange_DisplayName">
+            <English>Max Jammer Range</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_MaxJamRange_Description">
+            <English>Max range for a jammer to successfully jam, provided it is closer to the explosive than the detonator in meters</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_ExactRange_DisplayName">
+            <English>Exact Bearing Range</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_ExactRange_Description">
+            <English>When an IED is jammed, if the jammer is within this radius of the explosive it will provice the exact bearing to the explosive</English>
         </Key>
         <Key ID="STR_JSOC_EW_Base_DetonationAttempted_Title">
             <English>Detonation Attempted!</English>
@@ -19,48 +111,7 @@
         <Key ID="STR_JSOC_EW_Base_DegreesFormat">
             <English>%1 deg</English>
         </Key>
-        <Key ID="STR_JSOC_EW_Base_Cell">
-            <English>Cell</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Cell_Jamming">
-            <English>Cell Jamming</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Cell_EnableJamming">
-            <English>Enable</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Cell_DisableJamming">
-            <English>Disable</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Hack_HackFinished">
-            <English>Hacking Finished</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_RF">
-            <English>RF</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_RF_Jamming">
-            <English>RF Jamming</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_RF_EnableJamming">
-            <English>Enable</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_RF_DisableJamming">
-            <English>Disable</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_IEDJamming">
-            <English>IED Jamming</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_MaxJamRange_DisplayName">
-            <English>Max Jammer Range</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_MaxJamRange_Description">
-            <English>Max range for a jammer to successfully jam, provided it is closer to the explosive than the detonator in meters</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_ExactRange_DisplayName">
-            <English>Exact Bearing Range</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_ExactRange_Description">
-            <English>When an IED is jammed, if the jammer is within this radius of the explosive it will provice the exact bearing to the explosive</English>
-        </Key>
+        <!-- Enemy Radio Jamming -->
         <Key ID="STR_JSOC_EW_Base_AI">
             <English>AI</English>
         </Key>
@@ -69,9 +120,6 @@
         </Key>
         <Key ID="STR_JSOC_EW_Base_EnemyFrequency_Description">
             <English>Radio frequency AI use to communicate. Jamming this frequency will prevent enemy AI radio communications.</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Modules_Cell_ConnectExplosive">
-            <English>Connect Explosive (Cell)</English>
         </Key>
     </Package>
 </Project>

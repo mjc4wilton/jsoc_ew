@@ -1,1 +1,2 @@
+PREP(addHackIntel);
 PREP(equipRadioJammer);

@@ -4,7 +4,8 @@
  * Handles gathered intel from an object
  *
  * Arguments:
- * 0: Object <OBJECT>
+ * 0: Unit <OBJECT>
+ * 1: Object <OBJECT>
  *
  * Return Value:
  * None
@@ -14,6 +15,8 @@
  *
  * Public: No
  */
+
+params ["_unit", "_obj"];
 
 private _share = _obj getVariable [QGVAR(hack_share), 2];
 private _actionText = _obj getVariable [QGVAR(hack_actionText), "Hack"];

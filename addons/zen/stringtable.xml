@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="JSOC_EW">
     <Package name="ZEN">
+        <Key ID="STR_JSOC_EW_ZEN_AddHackIntel_Title">
+            <English>Add Hackable Intel</English>
+        </Key>
         <Key ID="STR_JSOC_EW_ZEN_EquipRadioJammer_Title">
             <English>Equip Radio Jammer</English>
         </Key>

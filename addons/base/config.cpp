@@ -7,7 +7,8 @@ class CfgPatches {
             "jsoc_ew_base_backpack_mc",
             QGVAR(ModuleBase),
             QGVAR(Cell_ConnectExplosive),
-            QGVAR(Laptop)
+            QGVAR(Laptop),
+            QGVAR(LaptopObject)
         };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
@@ -20,4 +21,5 @@ class CfgPatches {
 
 #include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
+#include "CfgWeapons.hpp"
 #include "Ace_ZeusActions.hpp"
