@@ -1,1 +1,1 @@
-hemtt build
+hemtt build --release

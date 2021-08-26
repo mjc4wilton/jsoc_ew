@@ -2,6 +2,7 @@ PREP(canDisableJamming);
 PREP(canEnableJamming);
 PREP(disableJamming);
 PREP(enableJamming);
+PREP(getAudibleTransmissions);
 PREP(getJammerSettings);
 PREP(remoteStartedSpeaking);
 PREP(remoteStoppedSpeaking);
