@@ -20,7 +20,7 @@ params ["_unit"];
 if (_unit in GVAR(tonedUnits)) then {
     GVAR(tonedUnits) deleteAt (GVAR(tonedUnits) find _unit);
     // Ensure tone isn't accentially stopped
-    if (GVAR(tonedUnits isEqualTo [])) then {
+    if (GVAR(tonedUnits) isEqualTo []) then {
         deleteVehicle GVAR(toneSpeaker);
     };
 };

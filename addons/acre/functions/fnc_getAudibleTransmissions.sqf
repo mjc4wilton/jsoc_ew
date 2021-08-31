@@ -33,7 +33,7 @@ private _TxPower = HASH_GET(_TxChData, "power");
         private _RxSql = HASH_GET
 
         if (_RxF isEqualTo _TxF) then {
-            ([_TxF, _TxPower, _RxID, _TxID] call jsoc_ew_acre_fnc_signalFunctionJammer) params ["", "_maxSignal"];
+            ([_TxF, _TxPower, _RxID, _TxID] call FUNC(signalFunctionJammer)) params ["", "_maxSignal"];
             if (_maxSignal >= _sensitivityMin) then {
                 _return pushBack _RxID;
             };

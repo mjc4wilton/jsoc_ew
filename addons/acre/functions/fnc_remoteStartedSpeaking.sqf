@@ -25,11 +25,11 @@ if ((missionNamespace getVariable [QGVAR(jammers), []]) isEqualTo []) exitWith {
 // Apply processing as jammer exists
 if (_speakingType isEqualTo SPEAKING_TYPE_RADIO) then {
     // Remote is speaking on radio
-    if (([_radioID, ACE_player] call jsoc_ew_acre_fnc_getAudibleTransmissions) isNotEqualTo []) then {
+    if (([_radioID, ACE_player] call FUNC(getAudibleTransmissions)) isNotEqualTo []) then {
         // Unit can hear transmission
         private _foundJammer = false;
         {
-            if (([_x, ACE_player] call jsoc_ew_acre_fnc_getAudibleTransmissions) isNotEqualTo []) exitWith {
+            if (([_x, ACE_player] call FUNC(getAudibleTransmissions)) isNotEqualTo []) exitWith {
                 _foundJammer = true;
             };
         } forEach (missionNamespace getVariable [QGVAR(jammers), []]);
