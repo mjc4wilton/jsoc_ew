@@ -27,5 +27,5 @@ private _update = false;
 } forEach _jammers;
 
 if (_update) then {
-    missionNamespace setVariable [QGVAR(jammers), _jammmers, true];
+    missionNamespace setVariable [QGVAR(jammers), _jammers, true];
 };
