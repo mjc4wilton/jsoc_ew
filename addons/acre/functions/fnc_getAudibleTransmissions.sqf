@@ -30,7 +30,6 @@ private _TxPower = HASH_GET(_TxChData, "power");
         private _RxID = _x;
         private _RxChData = GET_CHANNEL_DATA(_RxID);
         private _RxF = HASH_GET(_RxChData,"frequencyrx");
-        private _RxSql = HASH_GET
 
         if (_RxF isEqualTo _TxF) then {
             ([_TxF, _TxPower, _RxID, _TxID] call FUNC(signalFunctionJammer)) params ["", "_maxSignal"];
