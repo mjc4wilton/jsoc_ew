@@ -22,8 +22,9 @@ key_name = "{{prefix}}_{{version}}"
 authority = "{{prefix}}_{{version}}-{{git \"id8\"}}"
 sig_version = 3
 
-prebuild = ["!compile_scripts"]
-postbuild = ["!remove_compiled_scripts"]
+# ArmaScriptCompiler steps (Disabled until HEMTT supports signing PBOs with *.sfqc files)
+#prebuild = ["!compile_scripts"]
+#postbuild = ["!remove_compiled_scripts"]
 
 releasebuild = [
     "@zip jsoc_ew_{{semver.major}}.{{semver.minor}}.{{semver.patch}}.{{semver.build}}"
