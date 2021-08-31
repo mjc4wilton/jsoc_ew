@@ -1,6 +1,9 @@
 *.pbo
-*.exe
 *.sqfc
+## ArmaScriptCompiler (Get latest build from Dedmen's Repo)
+*.exe
+*.pdb
+*.dll
 ## Added by HEMTT
 releases/*
 *.biprivatekey
