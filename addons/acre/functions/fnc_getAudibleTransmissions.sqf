@@ -32,7 +32,7 @@ private _TxPower = HASH_GET(_TxChData, "power");
         private _RxF = HASH_GET(_RxChData,"frequencyrx");
 
         if (_RxF isEqualTo _TxF) then {
-            ([_TxF, _TxPower, _RxID, _TxID] call ACRE_FUNC(sys_signal,getSignalCore) params ["", "_maxSignal"];
+            ([_TxF, _TxPower, _RxID, _TxID] call ACRE_FUNC(sys_signal,getSignalCore)) params ["", "_maxSignal"];
             if (_maxSignal >= _sensitivityMin) then {
                 _return pushBack _RxID;
             };
