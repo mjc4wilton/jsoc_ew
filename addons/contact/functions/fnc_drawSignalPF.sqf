@@ -42,7 +42,7 @@ switch (_antenna) do {
                     _jammerSettings params ["_frequency", "_power"];
 
                     private _jammerObject = [_x] call acre_sys_radio_fnc_getRadioObject;
-                    private _signal = [_frequency, _power, _activeRadio, _radioID] call EFUNC(acre,signalFunctionJammer);
+                    private _signal = [_frequency, _power, _activeRadio, _radioID] call ACRE_FUNC(sys_signal,getSignalCore);
                     _signal params ["", "_maxSignal"];
 
                     private _bearingFacing = getDir ACE_player;

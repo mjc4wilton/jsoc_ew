@@ -24,59 +24,7 @@
 
 params ["_f", "_mW", "_receiverClass", "_transmitterClass"];
 
-private _count = (missionNamespace getVariable [_transmitterClass + "_running_count", 0]) max 0;
-if (_count == 0) then {
-    private _rxAntennas = [_receiverClass] call acre_sys_components_fnc_findAntenna;
-    private _txAntennas = [_transmitterClass] call acre_sys_components_fnc_findAntenna;
-
-    {
-        private _txAntenna = _x;
-        {
-            private _rxAntenna = _x;
-            private _model = acre_sys_signal_signalModel; // TODO: Change models on the fly if compatible (underwater, better frequency matching)
-
-            // Make sure ITWOM is not used for the moment
-            if (_model > SIGNAL_MODEL_ITWOM || {_model < SIGNAL_MODEL_CASUAL}) then {
-                _model = SIGNAL_MODEL_LOS_MULTIPATH;  // Default to LOS Multipath if the model is out of range
-                acre_sys_signal_signalModel = _model;           // And make sure we do not use an invalid mode next time
-            };
-
-            _count = _count + 1;
-            private _id = format ["%1_%2_%3_%4", _transmitterClass, (_txAntenna select 0), _receiverClass, (_rxAntenna select 0)];
-            [
-                "process_signal",
-                [
-                    _model,
-                    _id,
-                    (_txAntenna select 2),
-                    (_txAntenna select 3),
-                    (_txAntenna select 0),
-                    (_rxAntenna select 2),
-                    (_rxAntenna select 3),
-                    (_rxAntenna select 0),
-                    _f,
-                    _mW,
-                    acre_sys_signal_terrainScaling,
-                    diag_tickTime,
-                    ACRE_SIGNAL_DEBUGGING,
-                    acre_sys_signal_omnidirectionalRadios
-                ],
-                2,
-                acre_sys_signal_fnc_handleSignalReturn,
-                [_transmitterClass, _receiverClass]
-            ] call acre_sys_core_fnc_callExt;
-        } forEach _rxAntennas;
-    } forEach _txAntennas;
-    missionNamespace setVariable [_transmitterClass + "_running_count", _count];
-};
-private _maxSignal = missionNamespace getVariable [_transmitterClass + "_best_signal", -992];
-private _Px = missionNamespace getVariable [_transmitterClass + "_best_px", 0];
-
-if (ACRE_SIGNAL_DEBUGGING > 0) then {
-    private _signalTrace = missionNamespace getVariable [_transmitterClass + "_signal_trace", []];
-    _signalTrace pushBack _maxSignal;
-    missionNamespace setVariable [_transmitterClass + "_signal_trace", _signalTrace];
-};
+([_f, _mW, _receiverClass, _transmitterClass] call ACRE_FUNC(sys_signal,getSignalCore)) params ["_Px", "_maxSignal"];
 
 /*
  * End of ACRE code
@@ -136,7 +84,7 @@ private _updateJammers = false;
         private _rFreqLow = (_f - _deviationRx);
 
         // Find effect over distance and terrain with respect to ACRE signal modeling
-        private _jammer = [_frequencyJ, _powerJ, _receiverClass, _radioIDJ] call FUNC(signalFunctionJammer);
+        private _jammer = [_frequencyJ, _powerJ, _receiverClass, _radioIDJ] call ACRE_FUNC(sys_signal,getSignalCore);
         _jammer params ["_PxJam", "_signalJam"];
 
         // Adjust effect with frequency (works by calculating the % of overlap between Rx frequency bandwidth and jamming frequency bandwidth)

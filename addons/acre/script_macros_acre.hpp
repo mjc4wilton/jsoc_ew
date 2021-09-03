@@ -45,3 +45,4 @@
 
 // JSOC_EW Defines
 #define BASE_RADIO_DEVIATION 0.006 // 6 kHz
+#define ACRE_FUNC(var1,var2) TRIPLES(DOUBLES(acre,var1),fnc,var2)

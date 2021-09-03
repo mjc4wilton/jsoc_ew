@@ -8,4 +8,3 @@ PREP(remoteStartedSpeaking);
 PREP(remoteStoppedSpeaking);
 PREP(sanitizeJammers);
 PREP(signalFunction);
-PREP(signalFunctionJammer);
