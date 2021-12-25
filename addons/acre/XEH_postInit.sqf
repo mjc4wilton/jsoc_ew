@@ -3,10 +3,12 @@
 // Variables
 GVAR(toneSpeaker) = objNull;
 GVAR(tonedUnits) = [];
-GVAR(jammers) = [];
 
 // Server events
 if (isServer) then {
+    // Variables
+    GVAR(jammers) = [];
+
     [QGVAR(registerJammer), {
         params ["_radioID"];
 
