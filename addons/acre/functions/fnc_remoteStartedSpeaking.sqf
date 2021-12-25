@@ -20,7 +20,7 @@
 params ["_unit", "_speakingType", "_radioID"];
 
 // Check if there is a jammer
-if ((missionNamespace getVariable [QGVAR(jammers), []]) isEqualTo []) exitWith {};
+if (GVAR(jammers) isEqualTo []) exitWith {};
 
 // Apply processing as jammer exists
 if (_speakingType isEqualTo SPEAKING_TYPE_RADIO) then {
@@ -32,7 +32,7 @@ if (_speakingType isEqualTo SPEAKING_TYPE_RADIO) then {
             if (([_x, ACE_player] call FUNC(getAudibleTransmissions)) isNotEqualTo []) exitWith {
                 _foundJammer = true;
             };
-        } forEach (missionNamespace getVariable [QGVAR(jammers), []]);
+        } forEach (GVAR(jammers));
 
         if (_foundJammer isEqualTo true) then {
             // Apply sound

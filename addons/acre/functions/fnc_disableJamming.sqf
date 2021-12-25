@@ -19,12 +19,10 @@
 params ["_unit", "_target"];
 
 private _radioID = [] call acre_api_fnc_getCurrentRadio;
-private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
-if !(_radioID in _jammers) exitWith {}; //Exit if radio is not jamming
+if !(_radioID in GVAR(jammers)) exitWith {}; //Exit if radio is not jamming
 
-private _index = _jammers find _radioID;
-_jammers deleteAt _index;
-missionNamespace setVariable [QGVAR(jammers), _jammers, true];
+// deregister radio from jammers list
+[QGVAR(deregisterJammer), [_radioID]] call CBA_fnc_serverEvent;
 
 private _channelNumber = GET_CHANNEL_NUM(_radioID);
 private _channels = GET_STATE_RADIO(_radioID,"channels");
