@@ -4,6 +4,31 @@
 GVAR(toneSpeaker) = objNull;
 GVAR(tonedUnits) = [];
 
+// Server events
+if (isServer) then {
+    // Variables
+    GVAR(jammers) = [];
+
+    [QGVAR(registerJammer), {
+        params ["_radioID"];
+
+        // Update jammer list on server
+        GVAR(jammers) pushBack _radioID;
+
+        // Update clients jammer lists
+        publicVariable QGVAR(jammers);
+    }] call CBA_fnc_addEventHandler;
+    [QGVAR(deregisterJammer), {
+        params ["_radioID"];
+
+        // Update jammer list on server
+        GVAR(jammers) deleteAt (GVAR(jammers) find _radioID);
+
+        // Update clients jammer lists
+        publicVariable QGVAR(jammers);
+    }] call CBA_fnc_addEventHandler;
+};
+
 // Client / interface events
 if (hasInterface) then {
     // Custom Signal Function
@@ -13,8 +38,6 @@ if (hasInterface) then {
     ["acre_remoteStartedSpeaking", {_this call FUNC(remoteStartedSpeaking)}] call CBA_fnc_addEventHandler;
     ["acre_remoteStoppedSpeaking", {_this call FUNC(remoteStoppedSpeaking)}] call CBA_fnc_addEventHandler;
 };
-
-
 
 // Radio Jamming
 [QGVAR(equipRadioJammer), {

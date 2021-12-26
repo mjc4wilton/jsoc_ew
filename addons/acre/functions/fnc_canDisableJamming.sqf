@@ -29,7 +29,7 @@ if ([_activeRadio, "ACRE_PRC117F"] call acre_api_fnc_isKindOf) then {
 };
 
 // Check if radio is currently jamming
-private _isJamming = _radioID in (missionNamespace getVariable [QGVAR(jammers), []]);
+private _isJamming = _radioID in GVAR(jammers);
 
 // Return
 _hasJammer && _isJamming

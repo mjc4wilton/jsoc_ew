@@ -15,17 +15,10 @@
  * Public: No
  */
 
-private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
-private _update = false;
 {
     // Ensure jammer still exists, if not, remove it
     private _holder = [_x] call acre_sys_radio_fnc_getRadioObject;
     if (isNil {_holder}) then {
-        _jammers deleteAt _forEachIndex;
-        _update = true;
+        [QGVAR(deregisterJammer), [_x]] call CBA_fnc_serverEvent;
     };
-} forEach _jammers;
-
-if (_update) then {
-    missionNamespace setVariable [QGVAR(jammers), _jammers, true];
-};
+} forEach GVAR(jammers);

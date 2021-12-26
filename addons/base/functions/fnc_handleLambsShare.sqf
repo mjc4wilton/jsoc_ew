@@ -10,7 +10,7 @@
  * 3: override radio ranges, default false <BOOLEAN>
  *
  * Return Value:
- * None
+ * 0: allow units to share information <BOOLEAN>
  *
  * Example:
  * [player, cursorTarget] call jsoc_ew_base_fnc_handleLambsShare;
@@ -29,7 +29,6 @@ if (_override) exitWith {false};
 if (EGVAR(base,hasACRE)) then {
     // Sanitize jammers
     [] call EFUNC(acre,sanitizeJammers);
-    private _jammers = missionNamespace getVariable [QEGVAR(acre,jammers), []];
     {
         private _radioID = _x;
         private _settings = [_radioID] call EFUNC(acre,getJammerSettings);
@@ -43,7 +42,7 @@ if (EGVAR(base,hasACRE)) then {
                 _return = true;
             };
         };
-    } forEach _jammers;
+    } forEach EGVAR(acre,jammers);
 };
 
 _return

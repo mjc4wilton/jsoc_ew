@@ -19,12 +19,10 @@
 
 params ["_unit", "_target", ["_radioID", [] call acre_api_fnc_getCurrentRadio]];
 
-private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
-if (_radioID in _jammers) exitWith {}; //Exit if radio is already jamming
+if (_radioID in GVAR(jammers)) exitWith {}; //Exit if radio is already jamming
 
 // Add Jammer
-_jammers pushBack _radioID;
-missionNamespace setVariable [QGVAR(jammers), _jammers, true];
+[QGVAR(registerJammer), [_radioID]] call CBA_fnc_serverEvent;
 
 // Get data to present to user
 private _channelNumber = GET_CHANNEL_NUM(_radioID);

@@ -18,17 +18,10 @@
  * Public: No
  */
 
-/*
- * Start copied ACRE code (Credit to ACRE2 Development Team)
-*/
-
 params ["_f", "_mW", "_receiverClass", "_transmitterClass"];
 
 ([_f, _mW, _receiverClass, _transmitterClass] call ACRE_FUNC(sys_signal,getSignalCore)) params ["_Px", "_maxSignal"];
 
-/*
- * End of ACRE code
-*/
 if (ACRE_SIGNAL_DEBUGGING > 1) then {
     systemChat format ["PRE: Px: %1 | maxSignal: %2", _Px, _maxSignal];
 };
@@ -49,15 +42,13 @@ private _maxPxJam = 0;
 private _maxSignalJam = -993; // ACRE defined minimum for dbm
 
 // Omni-directional jammers
-private _jammers = missionNamespace getVariable [QGVAR(jammers), []];
 private _updateJammers = false;
 {
     // Sanitize jammers (Ensure it still exists)
     private _radioIDJ = _x;
     private _holderJ = [_radioIDJ] call acre_sys_radio_fnc_getRadioObject;
     if (isNil {_holderJ}) then {
-        _jammers deleteAt _forEachIndex;
-        _updateJammers = true;
+        [QGVAR(deregisterJammer), [_radioIDJ]] call CBA_fnc_serverEvent;
     } else {
         // Jammer still exists, process it.
 
@@ -109,6 +100,7 @@ private _updateJammers = false;
         _PxJamF = _PxJam * _mult;
         _signalJamF = (-1 * (10 ^ ((log (abs _signalJam)) * (1/(0.0001 max _mult))))) max -993;
 
+        // Debug screen logging
         if (ACRE_SIGNAL_DEBUGGING > 1) then {
             hintSilent format ["Reciever: %1\nJammer: %2\nFrequency: %3\nMultiplier: %4\nPxJam: %5\nSignalJam: %6\nPxJamF: %7\nSignalJamF: %8", _receiverClass, _radioIDJ, _frequencyJ, _mult, _PxJam, _signalJam, _PxJamF, _signalJamF];
         };
@@ -121,14 +113,9 @@ private _updateJammers = false;
             _maxSignalJam = _signalJamF;
         };
     };
-} forEach _jammers;
+} forEach GVAR(jammers);
 
 // TODO: Directional jammers (In theory would be handled via ACRE directional signal calculations which are not yet implemented)
-
-// Check if jammers were removed, and update the variable if necessary.
-if (_updateJammers) then {
-    missionNamespace setVariable [QGVAR(jammers), _jammmers, true];
-};
 
 _Px = _Px * (1 - _maxPxJam);
 
