@@ -25,6 +25,9 @@
         <Key ID="STR_JSOC_EW_Base_Hacking">
             <English>Hacking</English>
         </Key>
+        <Key ID="STR_JSOC_EW_Base_Hack_CheckProgress">
+            <English>Check Progress</English>
+        </Key>
         <Key ID="STR_JSOC_EW_Base_Hack_ConnectorLength_DisplayName">
             <English>Laptop Cable Length</English>
         </Key>
