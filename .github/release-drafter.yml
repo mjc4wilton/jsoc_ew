@@ -31,6 +31,9 @@ exclude-labels:
 change-template: '- $TITLE (#$NUMBER)'
 template: |
   _Requires CBA version X.Y.Z or later and Arma 3 version X.Y or later._
+  _ACRE component requires ACRE2 version X.Y.Z or later._
+  _ZEN component requires ZEN version X.Y.Z or later._
+  _Vehicles component requires RHS:USAF version X.Y.Z or later._
   ## Change Log Summary
   $CHANGES
 replacers:
