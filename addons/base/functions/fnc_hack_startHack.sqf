@@ -21,6 +21,8 @@ params ["_target", "_player", "_parameters"];
 _parameters params ["_obj", "_laptop"];
 
 _laptop setVariable [QGVAR(hack_isHacking), true, true];
+private _timeVar = QGVAR(hack_) + (str _obj) + "_time";
+_laptop setVariable [_timeVar, systemTimeUTC];
 
 private _duration = _obj getVariable [QGVAR(hack_duration), 1];
 

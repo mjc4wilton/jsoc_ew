@@ -21,18 +21,32 @@ params ["_target", "_player", "_parameters"];
 _parameters params ["_obj", "_laptop"];
 
 private _actions = [];
-private _name = _obj getVariable [QGVAR(hack_actionText), ""];
 
-private _action = [
-    (str _x),                           // Action Name (STRING)
-    _name,                              // Name shown in menu
-    "",                                 // Icon (STRING)
-    {_this call FUNC(hack_startHack)},  // Statement (CODE)
+// Start hack action
+private _hack_name = _obj getVariable [QGVAR(hack_actionText), ""];
+private _hack_action = [
+    (str _x + "_hack"),                       // Action Name (STRING)
+    _name,                                    // Name shown in menu
+    "",                                       // Icon (STRING)
+    {_this call FUNC(hack_startHack)},        // Statement (CODE)
     {(_target getVariable [QGVAR(hack_isHacking), false] isNotEqualTo true)}, // Condition (CODE)
-    {},                                 // Insert Children (CODE)
+    {},                                       // Insert Children (CODE)
     [_obj, _laptop]                           // Parameters (ANY)
 ] call ace_interact_menu_fnc_createAction;
 
-_actions pushBack [_action, [], _target];
+_actions pushBack [_hack_action, [], _target];
+
+// Check hack progress action
+private _progress_action = [
+    (str _x + "_progress"),
+    LLSTRING(Hack_CheckProgress),
+    "",
+    {_this call FUNC(hack_showProgress)},
+    {(_target getVariable [QGVAR(hack_isHacking), false])},
+    {},
+    [_obj, _laptop]
+] call ace_interact_menu_fnc_createAction;
+
+_actions pushBack [_progress_action, [], _target];
 
 _actions

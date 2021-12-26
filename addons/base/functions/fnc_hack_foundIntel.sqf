@@ -46,10 +46,11 @@ if (GVAR(hasZEN)) then {
 };
 
 // Notify player that hack has finished
+playSound QGVAR(sound_hack_notification);
 [
     ["\a3\ui_f\data\igui\cfg\simpletasks\types\download_ca.paa", 1.25],
     [LLSTRING(Hack_HackFinished)],
-    true
+    false
 ] call CBA_fnc_notify;
 
 // Relay intel to diary entry
