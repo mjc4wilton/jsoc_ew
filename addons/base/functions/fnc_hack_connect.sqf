@@ -21,7 +21,7 @@ params ["_target", "_player", "_params"];
 _params params ["_obj", "_laptop"];
 
 _player setVariable [QGVAR(hasConnector), nil, true];
-_obj setVariable [QGVAR(connected), true, true];
+_obj setVariable [QGVAR(connected), _laptop, true];
 
 private _devices = _laptop getVariable [QGVAR(connectedDevices), []];
 _devices pushBack _obj;
@@ -32,7 +32,7 @@ private _action = [
     LLSTRING(hack_disconnect),          // Name shown in menu
     "",                                 // Icon (STRING)
     {_this call FUNC(hack_disconnect)}, // Statement (CODE)
-    {((_this select 2) select 0) getVariable [QGVAR(connected), false]}, // Condition (CODE)
+    {_this call FUNC(hack_canDisconnect)}, // Condition (CODE)
     {},                                 // Insert Children (CODE)
     [_obj, _laptop]                  // Parameters (ANY)
 ] call ace_interact_menu_fnc_createAction;

@@ -24,7 +24,7 @@ params ["_player", "_target"];
         // Object is hackable, add connect interaction
         private _action = [
             (str _obj + "_connect"),                           // Action Name (STRING)
-            (LLSTRING(Hack_Connect)),           // Name shown in menu
+            LLSTRING(hack_connect),             // Name shown in menu
             "",                                 // Icon (STRING)
             {_this call FUNC(hack_connect)},    // Statement (CODE)
             {_this call FUNC(hack_canConnect)}, // Condition (CODE)

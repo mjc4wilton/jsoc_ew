@@ -68,3 +68,6 @@ if (hasInterface) then {
         [QEGVAR(acre,equipRadioJammer), [_unit, _f]] call CBA_fnc_localEvent;
     };
 }] call CBA_fnc_addEventHandler;
+
+// Time variables
+GVAR(missionTime) = {[] call {[time, serverTime] select isMultiplayer}};

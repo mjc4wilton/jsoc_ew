@@ -26,7 +26,7 @@ private _actions = [];
 private _hack_name = _obj getVariable [QGVAR(hack_actionText), ""];
 private _hack_action = [
     (str _x + "_hack"),                       // Action Name (STRING)
-    _name,                                    // Name shown in menu
+    _hack_name,                                    // Name shown in menu
     "",                                       // Icon (STRING)
     {_this call FUNC(hack_startHack)},        // Statement (CODE)
     {(_target getVariable [QGVAR(hack_isHacking), false] isNotEqualTo true)}, // Condition (CODE)
@@ -42,7 +42,7 @@ private _progress_action = [
     LLSTRING(Hack_CheckProgress),
     "",
     {_this call FUNC(hack_showProgress)},
-    {(_target getVariable [QGVAR(hack_isHacking), false])},
+    {(_target getVariable [QGVAR(hack_isHacking), false]) && {_target getVariable [QGVAR(hack_object), nil] isEqualTo ((_this select 2) select 0)}},
     {},
     [_obj, _laptop]
 ] call ace_interact_menu_fnc_createAction;

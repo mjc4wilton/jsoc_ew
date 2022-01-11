@@ -19,14 +19,16 @@
 params ["_target", "_player", "_params"];
 _params params ["_obj", "_laptop"];
 
-private _return = false;
+private _return = true;
 
-if ((_player getVariable [QGVAR(hasConnector), false]) isEqualTo true) then {
-    _return = true;
+// Player does not have connector
+if ((_player getVariable [QGVAR(hasConnector), false]) isNotEqualTo true) then {
+    _return = false;
 };
 
-if ((_obj getVariable [QGVAR(connected), false]) isEqualTo false) then {
-    _return = true;
+// Device is not already connected to something
+if ((_obj getVariable [QGVAR(connected), nil]) isNotEqualTo nil) then {
+    _return = false;
 };
 
 _return
