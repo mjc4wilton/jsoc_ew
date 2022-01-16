@@ -16,13 +16,15 @@
  * Public: No
  */
 
-params ["_unit", "_target"];
+params ["_unit", "_target", ["_radioID", [] call acre_api_fnc_getCurrentRadio]];
 
-private _radioID = [] call acre_api_fnc_getCurrentRadio;
-if !(_radioID in GVAR(jammers)) exitWith {}; //Exit if radio is not jamming
+//Exit if radio is not jamming
+private _stateJamming = GET_STATE_RADIO(_radioID, QGVAR(jamming))
+if (isNil "_stateJamming" || !_stateJamming) exitWith {};
 
 // deregister radio from jammers list
 [QGVAR(deregisterJammer), [_radioID]] call CBA_fnc_serverEvent;
+SET_STATE_RADIO(_radioID, QGVAR(jamming), nil);
 
 private _channelNumber = GET_CHANNEL_NUM(_radioID);
 private _channels = GET_STATE_RADIO(_radioID,"channels");
