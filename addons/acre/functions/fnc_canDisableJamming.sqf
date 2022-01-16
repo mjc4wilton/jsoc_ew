@@ -21,16 +21,12 @@ params ["_unit", "_target"];
 // Check if they have a jammer
 private _activeRadio = [] call acre_api_fnc_getCurrentRadio;
 
-if !([_activeRadio, JSOC_EW_JAMMER_RADIO] call acre_api_fnc_isKindOf) exitWith {
-    // Radio is not a jammer, return false
-    false
-};
+// Radio is not a jammer, return false
+if !([_activeRadio, JSOC_EW_JAMMER_RADIO] call acre_api_fnc_isKindOf) exitWith { false };
 
 private _stateJamming = GET_STATE_RADIO(_activeRadio, QGVAR(jamming));
 
 // Radio is not actively jamming
-if (isNil "_stateJamming" || !_stateJamming) exitWith {
-    false
-};
+if (isNil "_stateJamming" || !_stateJamming) exitWith { false };
 
 true

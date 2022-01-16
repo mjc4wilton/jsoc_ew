@@ -6,6 +6,7 @@
  * Arguments:
  * 0: Unit <UNIT>
  * 1: Target <UNIT>
+ * 2: RadioID <STRING> (Optional: Default current active radio)
  *
  * Return Value:
  * None
@@ -19,7 +20,7 @@
 params ["_unit", "_target", ["_radioID", [] call acre_api_fnc_getCurrentRadio]];
 
 //Exit if radio is not jamming
-private _stateJamming = GET_STATE_RADIO(_radioID, QGVAR(jamming))
+private _stateJamming = GET_STATE_RADIO(_radioID, QGVAR(jamming));
 if (isNil "_stateJamming" || !_stateJamming) exitWith {};
 
 // deregister radio from jammers list
