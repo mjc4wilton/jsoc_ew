@@ -21,7 +21,7 @@ params ["_unit", "_target", ["_radioID", [] call acre_api_fnc_getCurrentRadio]];
 
 //Exit if radio is already jamming
 private _stateJamming = GET_STATE_RADIO(_radioID, QGVAR(jamming));
-if (!isNil "_stateJamming" && _stateJamming) exitWith {};
+if (!isNil "_stateJamming" && {_stateJamming}) exitWith {};
 
 // Add Jammer
 [QGVAR(registerJammer), [_radioID]] call CBA_fnc_serverEvent;

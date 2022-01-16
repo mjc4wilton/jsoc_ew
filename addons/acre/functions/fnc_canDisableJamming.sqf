@@ -27,6 +27,6 @@ if !([_activeRadio, JSOC_EW_JAMMER_RADIO] call acre_api_fnc_isKindOf) exitWith {
 private _stateJamming = GET_STATE_RADIO(_activeRadio, QGVAR(jamming));
 
 // Radio is not actively jamming
-if (isNil "_stateJamming" || !_stateJamming) exitWith { false };
+if (isNil "_stateJamming" || {!_stateJamming}) exitWith { false };
 
 true
