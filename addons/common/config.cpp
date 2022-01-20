@@ -7,13 +7,11 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
-            "cba_main",
-            "ace_main"
+            "jsoc_ew_main"
         };
         author = ECSTRING(main,Author);
         VERSION_CONFIG;
     };
 };
 
-#include "CfgEditorCategories.hpp"
-#include "CfgFactionClasses.hpp"
+#include "CfgEventHandlers.hpp"
