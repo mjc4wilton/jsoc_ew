@@ -17,18 +17,23 @@
 
 // Cache global variables into private variables
 private _trackedVariables = GVAR(EH_trackedVariables);
-private _gvarCache = GVAR(EH_trackedVariables_cache);
-private _trackedVaraibles_code = GVAR(EH_trackedVariables_code);
 
 // Check if cache has changed
 {
-    private _val = missionNamespace getVariable [_x, nil];
-    if !(isNil "_val") then {
+    _x params ["_var", "_namespace", "_code", "_cache"];
+    private _val = _namespace getVariable [_x, nil];
+    if (isNil "_val" && {!(isNil "_cache")}) then {
+        // Variable went from defined to nil
+        // Call EH with params [newValue, oldValue, Variable, Namespace]
+        [_val, _cache, _var, _namespace] call _code;
+        // Update cache
+        (GVAR(EH_trackedVariables) select _forEachIndex) set [3, _val];
+    } else if !(isNil "_val") then {
         if (_x isNotEqualTo (_gvarCache select _forEachIndex)) then {
-            // Call EH with params [newValue, oldValue, Variable]
-            [_val, _gvarCache select _forEachIndex, _x] call (_trackedVaraibles_code select _forEachIndex);
+            // Call EH with params [newValue, oldValue, Variable, Namespace]
+            [_val, _cache, _var, _namespace] call _code;
             // Update cache
-            GVAR(EH_trackedVariables_cache) set [_forEachIndex, _val];
+            (GVAR(EH_trackedVariables) select _forEachIndex) set [3, _val];
         };
     };
 } forEach _trackedVariables;

@@ -14,4 +14,4 @@
 #include "\z\jsoc_ew\addons\main\script_macros.hpp"
 #include "script_macros_acre.hpp"
 
-#define JSOC_EW_JAMMER_RADIO "ACRE_PRC117F"
+#define JSOC_EW_JAMMER_RADIO "acre_prc117f"

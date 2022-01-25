@@ -23,9 +23,9 @@ params ["_unit", "_target", ["_radioID", [] call acre_api_fnc_getCurrentRadio]];
 private _stateJamming = GET_STATE_RADIO(_radioID, QGVAR(jamming));
 if (isNil "_stateJamming" || {!_stateJamming}) exitWith {};
 
-// deregister radio from jammers list
-[QGVAR(deregisterJammer), [_radioID]] call CBA_fnc_serverEvent;
+// Deregister jammer
 SET_STATE_RADIO(_radioID, QGVAR(jamming), nil);
+[QGVAR(registerJammer), [_radioID, false]] call CBA_fnc_serverEvent;
 
 private _channelNumber = GET_CHANNEL_NUM(_radioID);
 private _channels = GET_STATE_RADIO(_radioID,"channels");

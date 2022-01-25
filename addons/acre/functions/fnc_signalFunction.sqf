@@ -42,16 +42,12 @@ private _maxPxJam = 0;
 private _maxSignalJam = -993; // ACRE defined minimum for dbm
 
 // Omni-directional jammers
-private _updateJammers = false;
 {
     // Sanitize jammers (Ensure it still exists)
     private _radioIDJ = _x;
     private _holderJ = [_radioIDJ] call acre_sys_radio_fnc_getRadioObject;
-    if (isNil {_holderJ}) then {
-        [QGVAR(deregisterJammer), [_radioIDJ]] call CBA_fnc_serverEvent;
-    } else {
+    if !(isNil {_holderJ}) then {
         // Jammer still exists, process it.
-
         // Get required values from jammer (freq, power, deviation)
         private _channelNumberJ = GET_CHANNEL_NUM(_radioIDJ);
         private _channelsJ = GET_STATE_RADIO(_radioIDJ,"channels");

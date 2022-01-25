@@ -6,25 +6,29 @@ GVAR(tonedUnits) = [];
 
 // Server events
 if (isServer) then {
-    // Variables
+    // Server variable initialization (for publicVars to maintain JIP compatibility)
     GVAR(jammers) = [];
 
     [QGVAR(registerJammer), {
-        params ["_radioID"];
+        params ["_radioID", ["_register", true, [true]]];
 
-        // Update jammer list on server
-        GVAR(jammers) pushBack _radioID;
+        // Ensure server has sanitize process running to filter deleted radios
+        if (isNil QGVAR(sanitizePID)) then {
+            GVAR(sanitizePID) = [{
+                call FUNC(sanitizeJammers);
+            }] call CBA_fnc_addPerFrameHandler;
+        };
 
-        // Update clients jammer lists
-        publicVariable QGVAR(jammers);
-    }] call CBA_fnc_addEventHandler;
-    [QGVAR(deregisterJammer), {
-        params ["_radioID"];
+        // Ensure radio is a jammer
+        if !([_radioID, JSOC_EW_JAMMER_RADIO] call acre_api_fnc_isKindOf) exitWith {};
 
-        // Update jammer list on server
-        GVAR(jammers) deleteAt (GVAR(jammers) find _radioID);
+        // Add/remove jammer to/from global jammer list
+        if (_register) then {
+            GVAR(jammers) pushBackUnique _radioID;
+        } else {
+            GVAR(jammers) deleteAt (GVAR(jammers) find _radioID);
+        };
 
-        // Update clients jammer lists
         publicVariable QGVAR(jammers);
     }] call CBA_fnc_addEventHandler;
 };

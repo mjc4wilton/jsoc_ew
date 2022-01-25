@@ -24,7 +24,7 @@ private _stateJamming = GET_STATE_RADIO(_radioID, QGVAR(jamming));
 if (!isNil "_stateJamming" && {_stateJamming}) exitWith {};
 
 // Add Jammer
-[QGVAR(registerJammer), [_radioID]] call CBA_fnc_serverEvent;
+[QGVAR(registerJammer), [_radioID, true]] call CBA_fnc_serverEvent;
 SET_STATE_RADIO(_radioID, QGVAR(jamming), true);
 
 // Get data to present to user

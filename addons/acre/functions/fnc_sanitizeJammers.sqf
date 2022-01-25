@@ -15,10 +15,13 @@
  * Public: No
  */
 
+
+if !(isServer) exitWith {};
+
 {
     // Ensure jammer still exists, if not, remove it
     private _holder = [_x] call acre_sys_radio_fnc_getRadioObject;
     if (isNil {_holder}) then {
-        [QGVAR(deregisterJammer), [_x]] call CBA_fnc_serverEvent;
+        [QGVAR(registerJammer), [_x, false]] call CBA_fnc_serverEvent;
     };
 } forEach GVAR(jammers);
