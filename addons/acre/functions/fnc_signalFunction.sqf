@@ -46,7 +46,7 @@ private _maxSignalJam = -993; // ACRE defined minimum for dbm
     // Sanitize jammers (Ensure it still exists)
     private _radioIDJ = _x;
     private _holderJ = [_radioIDJ] call acre_sys_radio_fnc_getRadioObject;
-    if !(isNil {_holderJ}) then {
+    if !(isNil {_holderJ} || _holder isEqualTo objNull) then {
         // Jammer still exists, process it.
         // Get required values from jammer (freq, power, deviation)
         private _channelNumberJ = GET_CHANNEL_NUM(_radioIDJ);
