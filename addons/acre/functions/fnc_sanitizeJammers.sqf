@@ -21,7 +21,7 @@ if !(isServer) exitWith {};
 {
     // Ensure jammer still exists, if not, remove it
     private _holder = [_x] call acre_sys_radio_fnc_getRadioObject;
-    if (isNil {_holder}) then {
+    if (isNil "_holder") then {
         [QGVAR(registerJammer), [_x, false]] call CBA_fnc_serverEvent;
     };
 } forEach GVAR(jammers);
