@@ -24,4 +24,16 @@ class CfgVehicles {
         displayName = CSTRING(AddHackIntel_Title);
         function = QFUNC(addHackIntel);
     };
+    class GVAR(AddSignal): GVAR(ModuleBase) {
+        curatorCanAttach = 1;
+        category = "JSOC_EW";
+        displayName = CSTRING(AddSignal_Title);
+        function = QFUNC(addSignal);
+    };
+    class GVAR(RemoveSignal): GVAR(ModuleBase) {
+        curatorCanAttach = 1;
+        category = "JSOC_EW";
+        displayName = CSTRING(RemoveSignal_Title);
+        function = QFUNC(removeSignal);
+    };
 };

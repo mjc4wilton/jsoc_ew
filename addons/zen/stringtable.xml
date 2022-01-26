@@ -13,5 +13,17 @@
         <Key ID="STR_JSOC_EW_ZEN_EquipRadioJammer_Frequency_Tooltip">
             <English>Frequency to jam in MHz</English>
         </Key>
+        <Key ID="STR_JSOC_EW_ZEN_AddSignal_Title">
+            <English>Add Signal</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_ZEN_AddSignal_Frequency">
+            <English>Frequency (MHz)</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_ZEN_AddSignal_Power">
+            <English>Power (W)</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_ZEN_RemoveSignal_Title">
+            <English>Remove Signal</English>
+        </Key>
     </Package>
 </Project>

@@ -58,6 +58,19 @@ switch (_antenna) do {
                 } forEach (missionNamespace getVariable [QEGVAR(acre,jammers), []]);
             };
         };
+
+        // Handle trackable signals
+        {
+            _x params ["_obj", "_freq", "_power"];
+
+            // Sanitize or draw
+            if (isNil "_obj" || _obj isEqualTo objNull) then {
+                [_obj] call FUNC(removeSignal);
+            } else {
+                private _strength = [_obj, _power] call FUNC(getSignalStrength);
+                _sourceList pushBack [_freq, _power];
+            };
+        } forEach (missionNamespace getVariable [QGVAR(signals)]);
     };
     case "muzzle_antenna_02_f": {
         // SD Experimential Antenna (390-500 MHz)

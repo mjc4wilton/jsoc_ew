@@ -16,5 +16,11 @@
         <Key ID="STR_JSOC_EW_Contact_DrawSignal_ACRE_NoRadio">
             <English>Cannot Process Signal\nNo AN/PRC-152 Found</English>
         </Key>
+        <Key ID="STR_JSOC_EW_Contact_Signal_Coefficient_DisplayName">
+            <English>Signal Tracking Coefficient</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Contact_Signal_Coefficient_Description">
+            <English>Variable m in y = -(20*x/P)^3 equation where\ny is the received signal power,\nP is the transmitter power,\nand x is the distance from the transmitter.</English>
+        </Key>
     </Package>
 </Project>
