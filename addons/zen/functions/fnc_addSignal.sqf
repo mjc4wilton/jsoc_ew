@@ -48,7 +48,7 @@ private _freq = missionNamespace getVariable [QEGVAR(contact,frequency), 72.25];
 
 private _options = [
     ["SLIDER", LLSTRING(AddSignal_Frequency), [58, 75, _freq, 2]],
-    ["SLIDER", LLSTRING(AddSignal_Power), [0, 100, _power, 0]],
+    ["SLIDER", LLSTRING(AddSignal_Power), [0, 100, _power, 0]]
 ];
 
 [LLSTRING(AddSignal_Title), _options, {
