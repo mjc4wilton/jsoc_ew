@@ -49,7 +49,7 @@ switch (_antenna) do {
                     private _bearingJammer = ACE_player getDir _jammerObject;
                     private _angle = (_bearingFacing max _bearingJammer) - (_bearingFacing min _bearingJammer);
                     if (_angle > 180) then {
-                        _angle = 360 - _angle
+                        _angle = 360 - _angle;
                     };
                     private _multiplier = 1 - ((1 / 180) * _angle) ^ 2; // Quadratically varied with 1 at 0 angle and 0 at 180 angle.
                     private _maxSignalFinal = (-1 * (10 ^ ((log (abs _maxSignal)) * (1/(0.0001 max _multiplier))))) max -993; // Vary signal strength with percent error

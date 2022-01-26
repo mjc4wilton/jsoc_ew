@@ -23,7 +23,7 @@ private _bearingFacing = getDir ACE_player;
 private _bearingJammer = ACE_player getDir _obj;
 private _angle = (_bearingFacing max _bearingJammer) - (_bearingFacing min _bearingJammer);
 if (_angle > 180) then {
-    _angle = 360 - _angle
+    _angle = 360 - _angle;
 };
 private _angleMultiplier = 1 - ((1 / 180) * _angle) ^ 2; // Quadratically varied with 1 at 0 angle and 0 at 180 angle.
 
