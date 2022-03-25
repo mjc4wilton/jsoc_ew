@@ -18,9 +18,11 @@
 
 params ["_obj", "_power"];
 
+private _player = [] call CBA_fnc_currentUnit;
+
 // Calculate angle
-private _bearingFacing = getDir ACE_player;
-private _bearingJammer = ACE_player getDir _obj;
+private _bearingFacing = getDir _player;
+private _bearingJammer = _player getDir _obj;
 private _angle = (_bearingFacing max _bearingJammer) - (_bearingFacing min _bearingJammer);
 if (_angle > 180) then {
     _angle = 360 - _angle;
@@ -28,8 +30,8 @@ if (_angle > 180) then {
 private _angleMultiplier = 1 - ((1 / 180) * _angle) ^ 2; // Quadratically varied with 1 at 0 angle and 0 at 180 angle.
 
 // Calculate final
-private _distance = (_obj distance ACE_player) / 1000; // distance 3D in km
-private _rxPower = -1 * ((20 / _power) * _distance)^3 * _angleMultiplier;
+private _distance = (_obj distance _player); // distance 3D
+private _rxPower = -7 * (1/_angleMultiplier) * (sqrt (_distance / (_power)));
 
 // Return
 _rxPower

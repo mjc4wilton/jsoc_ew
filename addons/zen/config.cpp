@@ -5,7 +5,9 @@ class CfgPatches {
         name = QUOTE(COMPONENT);
         units[] = {
             QGVAR(EquipRadioJammer),
-            QGVAR(AddHackIntel)
+            QGVAR(AddHackIntel),
+            QGVAR(AddSignal),
+            QGVAR(RemoveSignal)
         };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;

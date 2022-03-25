@@ -67,10 +67,10 @@ switch (_antenna) do {
             if (isNil "_obj" || _obj isEqualTo objNull) then {
                 [_obj] call FUNC(removeSignal);
             } else {
-                private _strength = [_obj, _power] call FUNC(getSignalStrength);
-                _sourceList pushBack [_freq, _power];
+                private _rxSignal = [_obj, _power] call FUNC(getSignalStrength);
+                _sourceList pushBack [_freq, _rxSignal];
             };
-        } forEach (missionNamespace getVariable [QGVAR(signals)]);
+        } forEach (missionNamespace getVariable [QGVAR(signals), []]);
     };
     case "muzzle_antenna_02_f": {
         // SD Experimential Antenna (390-500 MHz)
