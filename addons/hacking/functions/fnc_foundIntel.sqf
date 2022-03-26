@@ -11,18 +11,18 @@
  * None
  *
  * Example:
- * [_this] call jsoc_ew_base_fnc_hack_foundIntel;
+ * [_this] call jsoc_ew_hacking_fnc_foundIntel;
  *
  * Public: No
  */
 
 params ["_unit", "_obj"];
 
-private _share = _obj getVariable [QGVAR(hack_share), 2];
-private _actionText = _obj getVariable [QGVAR(hack_actionText), "Hack"];
-private _duration = _obj getVariable [QGVAR(hack_duration), 1];
-private _title = _obj getVariable [QGVAR(hack_title), "Intel"];
-private _text = _obj getVariable [QGVAR(hack_text), "Intel"];
+private _share = _obj getVariable [QGVAR(share), 2];
+private _actionText = _obj getVariable [QGVAR(actionText), "Hack"];
+private _duration = _obj getVariable [QGVAR(duration), 1];
+private _title = _obj getVariable [QGVAR(title), "Intel"];
+private _text = _obj getVariable [QGVAR(text), "Intel"];
 
 private _targets = switch (_share) do {
     case 0: {
@@ -49,7 +49,7 @@ if (GVAR(hasZEN)) then {
 playSound QGVAR(sound_hack_notification);
 [
     ["\a3\ui_f\data\igui\cfg\simpletasks\types\download_ca.paa", 1.25],
-    [LLSTRING(Hack_HackFinished)],
+    [LLSTRING(HackFinished)],
     false
 ] call CBA_fnc_notify;
 

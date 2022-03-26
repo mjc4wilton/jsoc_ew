@@ -12,7 +12,7 @@
  * 0: Can Disconnect <BOOLEAN>
  *
  * Example:
- * [ACE_player, cursorTarget, [cursorTarget]] call jsoc_ew_base_fnc_hack_canDisconnect;
+ * [ACE_player, cursorTarget, [cursorTarget]] call jsoc_ew_hacking_fnc_canDisconnect;
  *
  * Public: No
  */

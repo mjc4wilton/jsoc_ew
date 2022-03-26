@@ -12,7 +12,7 @@
  * 0: Actions <ARRAY>
  *
  * Example:
- * [cursorTarget, player] call jsoc_ew_base_fnc_cell_addChildren;
+ * [cursorTarget, player] call jsoc_ew_hacking_fnc_devices_addChildrenChildren;
  *
  * Public: No
  */
@@ -23,26 +23,26 @@ _parameters params ["_obj", "_laptop"];
 private _actions = [];
 
 // Start hack action
-private _hack_name = _obj getVariable [QGVAR(hack_actionText), ""];
-private _hack_action = [
+private _name = _obj getVariable [QGVAR(actionText), ""];
+private _action = [
     (str _x + "_hack"),                       // Action Name (STRING)
-    _hack_name,                                    // Name shown in menu
+    _name,                                    // Name shown in menu
     "",                                       // Icon (STRING)
-    {_this call FUNC(hack_startHack)},        // Statement (CODE)
-    {(_target getVariable [QGVAR(hack_isHacking), false] isNotEqualTo true)}, // Condition (CODE)
+    {_this call FUNC(startHack)},        // Statement (CODE)
+    {(_target getVariable [QGVAR(isHacking), false] isNotEqualTo true)}, // Condition (CODE)
     {},                                       // Insert Children (CODE)
     [_obj, _laptop]                           // Parameters (ANY)
 ] call ace_interact_menu_fnc_createAction;
 
-_actions pushBack [_hack_action, [], _target];
+_actions pushBack [_action, [], _target];
 
 // Check hack progress action
 private _progress_action = [
     (str _x + "_progress"),
-    LLSTRING(Hack_CheckProgress),
+    LLSTRING(CheckProgress),
     "",
-    {_this call FUNC(hack_showProgress)},
-    {(_target getVariable [QGVAR(hack_isHacking), false]) && {_target getVariable [QGVAR(hack_object), nil] isEqualTo ((_this select 2) select 0)}},
+    {_this call FUNC(showProgress)},
+    {(_target getVariable [QGVAR(isHacking), false]) && {_target getVariable [QGVAR(object), nil] isEqualTo ((_this select 2) select 0)}},
     {},
     [_obj, _laptop]
 ] call ace_interact_menu_fnc_createAction;

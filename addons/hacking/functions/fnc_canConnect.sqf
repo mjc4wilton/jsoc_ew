@@ -11,7 +11,7 @@
  * 0: Can Connect <BOOLEAN>
  *
  * Example:
- * [ACE_player, cursorTarget] call jsoc_ew_base_fnc_hack_canConnect;
+ * [ACE_player, cursorTarget] call jsoc_ew_hacking_fnc_canConnect;
  *
  * Public: No
  */

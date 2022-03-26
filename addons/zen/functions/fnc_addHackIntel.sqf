@@ -25,11 +25,11 @@ private _object = attachedTo _logic;
 
 deleteVehicle _logic;
 
-private _share = _object getVariable [QEGVAR(base,hack_share), 2];
-private _actionText = _object getVariable [QEGVAR(base,hack_actionText), ""];
-private _duration = _object getVariable [QEGVAR(base,hack_duration), 20];
-private _title = _object getVariable [QEGVAR(base,hack_title), ""];
-private _text = _object getVariable [QEGVAR(base,hack_text), ""];
+private _share = _object getVariable [QEGVAR(hacking,share), 2];
+private _actionText = _object getVariable [QEGVAR(hacking,actionText), ""];
+private _duration = _object getVariable [QEGVAR(hacking,duration), 20];
+private _title = _object getVariable [QEGVAR(hacking,title), ""];
+private _text = _object getVariable [QEGVAR(hacking,text), ""];
 
 private _options = [
     ["TOOLBOX", localize "STR_ZEN_Modules_ModuleCreateIntel_ShareWith", [_share, 1, 3, ["str_eval_typeside", "str_word_allgroup", "str_disp_intel_none_friendly"]]],
@@ -65,6 +65,6 @@ if (isPlayer _object) exitWith {
       _values params ["_share", "_actionText", "_duration", "_title", "_text"];
       _args params ["_object"];
 
-      [_object, _share, _actionText, _duration, _title, _text] call EFUNC(base,hack_addIntel);
+      [_object, _share, _actionText, _duration, _title, _text] call EFUNC(hacking,addIntel);
     },
 {}, [_object]] call zen_dialog_fnc_create;

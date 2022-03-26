@@ -11,7 +11,7 @@
  * 0: Actions <ARRAY>
  *
  * Example:
- * [player] call jsoc_ew_base_fnc_cell_addChildren;
+ * [player] call jsoc_ew_hacking_fnc_devices_addChildren;
  *
  * Public: No
  */
@@ -30,7 +30,7 @@ private _devices = _target getVariable [QGVAR(connectedDevices), []];
         "",                           // Icon (STRING)
         {},                                 // Statement (CODE)
         {true},                             // Condition (CODE)
-        {_this call FUNC(hack_devices_addChildrenChildren)}, // Insert Children (CODE)
+        {_this call FUNC(devices_addChildrenChildren)}, // Insert Children (CODE)
         [_x, _target]                           // Parameters (ANY)
     ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
