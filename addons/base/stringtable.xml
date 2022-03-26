@@ -5,6 +5,13 @@
         <Key ID="STR_JSOC_EW_Base_Interaction">
             <English>JSOC EW</English>
         </Key>
+        <!-- Equipment -->
+        <Key ID="STR_JSOC_EW_Base_Backpack_Multicam_DisplayName">
+            <English>[JSOC] EW Backpack Multicam</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Backpack_DisplayName_Short">
+            <English>[JSOC] EW Backpack</English>
+        </Key>
         <!-- Enemy Radio Jamming -->
         <Key ID="STR_JSOC_EW_Base_AI">
             <English>AI</English>

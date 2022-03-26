@@ -46,6 +46,9 @@
         <Key ID="STR_JSOC_EW_Explosives_ExactRange_Description">
             <English>When an IED is jammed, if the jammer is within this radius of the explosive it will provice the exact bearing to the explosive</English>
         </Key>
+        <Key ID="STR_JSOC_EW_Explosives_DetonationAttempted_Position">
+            <English>Grid Reference: %1</English>
+        </Key>
         <Key ID="STR_JSOC_EW_Explosives_DetonationAttempted_Title">
             <English>Detonation Attempted!</English>
         </Key>
@@ -60,6 +63,10 @@
         </Key>
         <Key ID="STR_JSOC_EW_Explosives_DegreesFormat">
             <English>%1 deg</English>
+        </Key>
+        <!-- Diary Entries -->
+        <Key ID="STR_JSOC_EW_Explosives_Diary_AttemptedDetonations">
+            <English>Attempted Detonations</English>
         </Key>
     </Package>
 </Project>
