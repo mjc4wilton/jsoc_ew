@@ -19,7 +19,7 @@ class CfgVehicles {
         author = "Chaser";
         scope = 2;
         model = "a3\Supplies_F_Enoch\Bags\B_RadioBag_01_F.p3d";
-        displayName = "[JSOC] EW Backpack Multicam";
+        displayName = CSTRING(Backpack_Multicam_DisplayName);
         picture = QPATHTOF(ui\UMB_Chaser.paa);
         hiddenSelections[] = { "Camo1" };
         hiddenSelectionsTextures[] = {
@@ -27,6 +27,7 @@ class CfgVehicles {
         };
         maximumLoad = 250;
         mass = 150;
+        GVAR(displayNameShort) = CSTRING(Backpack_DisplayName_Short);
     };
 
     // ZEUS Modules

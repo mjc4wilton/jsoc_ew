@@ -104,5 +104,27 @@ switch (_trigger) do {
     default { };
 };
 
-[[LLSTRING(DetonationAttempted_Title), 1.3], [format [LLSTRING(DetonationAttempted_Type), _detonatorType]], [format [LLSTRING(DetonationAttempted_Angle), _directionFormattedTrig]], [format [LLSTRING(DetonationAttempted_Explosive_Angle), _directionFormattedExp]], false] call CBA_fnc_notify;
+// Play sound to player
 playSound "Spawn";
+
+// Notify play on screen
+[
+    [LLSTRING(DetonationAttempted_Title), 1.3],
+    [format [LLSTRING(DetonationAttempted_Type), _detonatorType]],
+    [format [LLSTRING(DetonationAttempted_Angle), _directionFormattedTrig]],
+    [format [LLSTRING(DetonationAttempted_Explosive_Angle), _directionFormattedExp]],
+    false
+] call CBA_fnc_notify;
+
+// Add diary entry to search again
+private _time = [time, serverTime] select isMultiplayer;
+private _timeStr = [_time] call CBA_fnc_formatElapsedTime;
+private _grid = mapGridPosition ACE_player;
+
+private _title = _timeStr + " - " + _detonatorType;
+private _body = (format [LLSTRING(DetonationAttempted_Position), _grid]) + "<br/>" +
+                (format [LLSTRING(DetonationAttempted_Type), _detonatorType]) + "<br/>" +
+                (format [LLSTRING(DetonationAttempted_Angle), _directionFormattedTrig]) + "<br/>" +
+                (format [LLSTRING(DetonationAttempted_Explosive_Angle), _directionFormattedExp]);
+
+[QGVAR(addExplosionAttempt), [_title, _body]] call CBA_fnc_localEvent;
