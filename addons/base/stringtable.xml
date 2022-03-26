@@ -21,55 +21,6 @@
         <Key ID="STR_JSOC_EW_Base_Modules_Cell_ConnectExplosive">
             <English>Connect Explosive (Cell)</English>
         </Key>
-        <!-- Hacking -->
-        <Key ID="STR_JSOC_EW_Base_Hacking">
-            <English>Hacking</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Hack_CheckProgress">
-            <English>Check Progress</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Hack_ConnectorLength_DisplayName">
-            <English>Laptop Cable Length</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Hack_ConnectorLength_Description">
-            <English>Length of laptop cable to hackable objects (meters)</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Hack_Connect">
-            <English>Connect to Laptop</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Hack_Disconnect">
-            <English>Disconnect</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Hack_Devices">
-            <English>Devices</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Hack_Laptop">
-            <English>[JSOC] EW Laptop</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Hack_MaxDevices_DisplayName">
-            <English>Maximum Connected Devices</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Hack_MaxDevices_Description">
-            <English>Maximum amount of devices that can be connected to a laptop at once</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Hack_TakeConnector">
-            <English>Take Cable</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Hack_ReturnConnector">
-            <English>Return Cable</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Hack_HackFinished">
-            <English>Hacking Finished</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Hack_HackStarted">
-            <English>Hacking Started</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Laptop_Place">
-            <English>Place Laptop</English>
-        </Key>
-        <Key ID="STR_JSOC_EW_Base_Hack_Pickup">
-            <English>Pickup Laptop</English>
-        </Key>
         <!-- RF Detonator Jamming -->
         <Key ID="STR_JSOC_EW_Base_RF">
             <English>RF</English>

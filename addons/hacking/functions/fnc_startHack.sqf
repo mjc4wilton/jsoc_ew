@@ -12,7 +12,7 @@
  * 0: Actions <ARRAY>
  *
  * Example:
- * [ACE_player, cursorTarget, [test01, test02]] call jsoc_ew_base_fnc_hack_startHack;
+ * [ACE_player, cursorTarget, [test01, test02]] call jsoc_ew_hacking_fnc_startHack;
  *
  * Public: No
  */

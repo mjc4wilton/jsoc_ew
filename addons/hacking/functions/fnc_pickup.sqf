@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [player, "jsoc_ew_base_Laptop"] call jsoc_ew_base_fnc_hack_pickup;
+ * [player, "jsoc_ew_base_Laptop"] call jsoc_ew_hacking_fnc_pickup;
  *
  * Public: No
  */

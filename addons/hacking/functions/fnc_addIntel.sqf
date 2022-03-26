@@ -15,7 +15,7 @@
  * None
  *
  * Example:
- * [_this, 2, "Crack Password", 15, "Decrypted Password", "P4$$W0RD"] call jsoc_ew_base_fnc_hack_addIntel;
+ * [_this, 2, "Crack Password", 15, "Decrypted Password", "P4$$W0RD"] call jsoc_ew_hacking_fnc_addIntel;
  *
  * Public: No
  */

@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [_this] call jsoc_ew_base_fnc_hack_removeIntel;
+ * [_this] call jsoc_ew_hacking_fnc_removeIntel;
  *
  * Public: No
  */

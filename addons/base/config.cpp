@@ -20,7 +20,5 @@ class CfgPatches {
 
 
 #include "CfgEventHandlers.hpp"
-#include "CfgSounds.hpp"
 #include "CfgVehicles.hpp"
-#include "CfgWeapons.hpp"
 #include "Ace_ZeusActions.hpp"

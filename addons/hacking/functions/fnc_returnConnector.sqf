@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [ACE_player, cursorTarget] call jsoc_ew_base_fnc_hack_takeConnector;
+ * [ACE_player, cursorTarget] call jsoc_ew_hacking_fnc_takeConnector;
  *
  * Public: No
  */
