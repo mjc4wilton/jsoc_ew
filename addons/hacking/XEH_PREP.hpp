@@ -1,0 +1,17 @@
+PREP(addIntel);
+PREP(canConnect);
+PREP(canDisconnect);
+PREP(canReturnConnector);
+PREP(canTakeConnector);
+PREP(connect);
+PREP(devices_addChildren);
+PREP(devices_addChildrenChildren);
+PREP(disconnect);
+PREP(foundIntel);
+PREP(pickup);
+PREP(place);
+PREP(removeIntel);
+PREP(returnConnector);
+PREP(showProgress);
+PREP(startHack);
+PREP(takeConnector);

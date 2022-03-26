@@ -12,7 +12,7 @@
  * 0: Actions <ARRAY>
  *
  * Example:
- * [cursorTarget, player] call jsoc_ew_base_fnc_cell_addChildren;
+ * [cursorTarget, player] call jsoc_ew_hacking_fnc_devices_addChildrenChildren;
  *
  * Public: No
  */

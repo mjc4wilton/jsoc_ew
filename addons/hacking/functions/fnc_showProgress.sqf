@@ -12,7 +12,7 @@
  * 0: Actions <ARRAY>
  *
  * Example:
- * [ACE_player, cursorTarget, [test01, test02]] call jsoc_ew_base_fnc_hack_showProgress;
+ * [ACE_player, cursorTarget, [test01, test02]] call jsoc_ew_hacking_fnc_showProgress;
  *
  * Public: No
  */
@@ -26,8 +26,9 @@ private _startTime = _laptop getVariable [_timeVar, 0];
 private _currentTime = [time, serverTime] select isMultiplayer;
 private _deltaTime = _currentTime - _startTime;
 private _percentTimeElapsed = (_deltaTime / _duration) * 100;
+private _percentTimeElapsedString = [_percentTimeElapsed, 1, 0, false] call CBA_fnc_formatNumber;
 
 if (_percentTimeElapsed < 100) then {
-    [["Attack in progress:"], [((str _percentTimeElapsed) + "% Complete")]] call CBA_fnc_notify;
+    [["Attack in progress:"], [(_percentTimeElapsedString + "% Complete")]] call CBA_fnc_notify;
 };
 

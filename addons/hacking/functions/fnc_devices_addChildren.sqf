@@ -11,7 +11,7 @@
  * 0: Actions <ARRAY>
  *
  * Example:
- * [player] call jsoc_ew_base_fnc_cell_addChildren;
+ * [player] call jsoc_ew_hacking_fnc_devices_addChildren;
  *
  * Public: No
  */

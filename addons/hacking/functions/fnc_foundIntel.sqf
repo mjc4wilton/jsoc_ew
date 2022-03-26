@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [_this] call jsoc_ew_base_fnc_hack_foundIntel;
+ * [_this] call jsoc_ew_hacking_fnc_foundIntel;
  *
  * Public: No
  */

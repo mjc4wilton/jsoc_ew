@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="JSOC_EW">
+    <Package name="Hacking">
+        <Key ID="STR_JSOC_EW_Hacking_Hacking">
+            <English>Hacking</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Hacking_CheckProgress">
+            <English>Check Progress</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Hacking_ConnectorLength_DisplayName">
+            <English>Laptop Cable Length</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Hacking_ConnectorLength_Description">
+            <English>Length of laptop cable to hackable objects (meters)</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Hacking_Connect">
+            <English>Connect to Laptop</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Hacking_Disconnect">
+            <English>Disconnect</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Hacking_Devices">
+            <English>Devices</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Hacking_Laptop">
+            <English>[JSOC] EW Laptop</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Hacking_MaxDevices_DisplayName">
+            <English>Maximum Connected Devices</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Hacking_MaxDevices_Description">
+            <English>Maximum amount of devices that can be connected to a laptop at once</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Hacking_TakeConnector">
+            <English>Take Cable</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Hacking_ReturnConnector">
+            <English>Return Cable</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Hacking_HackFinished">
+            <English>Hacking Finished</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Hacking_HackStarted">
+            <English>Hacking Started</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Hacking_Laptop_Place">
+            <English>Place Laptop</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Hacking_Pickup">
+            <English>Pickup Laptop</English>
+        </Key>
+    </Package>
+</Project>
