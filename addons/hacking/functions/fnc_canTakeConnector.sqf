@@ -25,7 +25,7 @@ if ((_player getVariable [QGVAR(hasConnector), false]) isEqualTo true) then {
 };
 
 private _devices = _target getVariable [QGVAR(connectedDevices), []];
-if (count _devices >= GVAR(hack_maxDevices)) then {
+if (count _devices >= GVAR(maxDevices)) then {
     _return = false;
 };
 

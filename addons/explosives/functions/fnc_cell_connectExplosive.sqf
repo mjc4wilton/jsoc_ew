@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * _this call jsoc_ew_base_fnc_connectExplosive;
+ * _this call jsoc_ew_explosives_fnc_connectExplosive;
  *
  * Public: No
  */
