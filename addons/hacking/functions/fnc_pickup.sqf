@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [player, "jsoc_ew_base_Laptop"] call jsoc_ew_hacking_fnc_pickup;
+ * [player, "jsoc_ew_hacking_Laptop"] call jsoc_ew_hacking_fnc_pickup;
  *
  * Public: No
  */
@@ -21,7 +21,7 @@ params ["_player", "_target"];
 private _devices = _laptop getVariable [QGVAR(connectedDevices), []];
 
 {
-    [_x, _player, [_x, _target]] call FUNC(hack_disconnect);
+    [_x, _player, [_x, _target]] call FUNC(disconnect);
 } forEach _devices;
 
 [_player, QGVAR(Laptop)] call CBA_fnc_addItem;

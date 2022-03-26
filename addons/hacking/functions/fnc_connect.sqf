@@ -29,10 +29,10 @@ _laptop setVariable [QGVAR(connectedDevices), _devices, true];
 
 private _action = [
     (str _obj + "_disconnect"),      // Action Name (STRING)
-    LLSTRING(hack_disconnect),          // Name shown in menu
+    LLSTRING(disconnect),          // Name shown in menu
     "",                                 // Icon (STRING)
-    {_this call FUNC(hack_disconnect)}, // Statement (CODE)
-    {_this call FUNC(hack_canDisconnect)}, // Condition (CODE)
+    {_this call FUNC(disconnect)}, // Statement (CODE)
+    {_this call FUNC(canDisconnect)}, // Condition (CODE)
     {},                                 // Insert Children (CODE)
     [_obj, _laptop]                  // Parameters (ANY)
 ] call ace_interact_menu_fnc_createAction;

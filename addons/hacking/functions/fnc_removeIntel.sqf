@@ -17,13 +17,13 @@
 
 params ["_obj"];
 
-_obj setVariable [QGVAR(hack_hackable), nil, true];
-_obj setVariable [QGVAR(hack_share), nil, true];
-_obj setVariable [QGVAR(hack_actionText), nil, true];
-_obj setVariable [QGVAR(hack_duration), nil, true];
-_obj setVariable [QGVAR(hack_title), nil, true];
-_obj setVariable [QGVAR(hack_text), nil, true];
+_obj setVariable [QGVAR(hackable), nil, true];
+_obj setVariable [QGVAR(share), nil, true];
+_obj setVariable [QGVAR(actionText), nil, true];
+_obj setVariable [QGVAR(duration), nil, true];
+_obj setVariable [QGVAR(title), nil, true];
+_obj setVariable [QGVAR(text), nil, true];
 
-private _currentIntelObjs = missionNamespace getVariable [QGVAR(hack_intelObjects), []];
+private _currentIntelObjs = missionNamespace getVariable [QGVAR(intelObjects), []];
 _currentIntelObjs deleteAt (_currentIntelObjs find _obj);
-missionNamespace setVariable [QGVAR(hack_intelObjects), _currentIntelObjs, true];
+missionNamespace setVariable [QGVAR(intelObjects), _currentIntelObjs, true];

@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [player, "jsoc_ew_base_Laptop"] call jsoc_ew_hacking_fnc_place;
+ * [player, "jsoc_ew_hacking_Laptop"] call jsoc_ew_hacking_fnc_place;
  *
  * Public: No
  */
@@ -37,7 +37,7 @@ if (stance _unit == "STAND") then {
         _direction = _direction + 180;
     };
 
-    private _laptop = "jsoc_ew_base_LaptopObject" createVehicle [0, 0, 0];
+    private _laptop = QGVAR(LaptopObject) createVehicle [0, 0, 0];
 
     [{
         (_this select 0) params ["_laptop", "_direction", "_position"];

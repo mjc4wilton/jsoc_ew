@@ -20,21 +20,21 @@ params ["_player", "_target"];
 
 {
     private _obj = _x;
-    if (((_obj getVariable [QGVAR(hack_hasInteract), false]) isNotEqualTo true) && (_obj getVariable [QGVAR(hack_hackable), false]) isEqualTo true) then {
+    if (((_obj getVariable [QGVAR(hasInteract), false]) isNotEqualTo true) && (_obj getVariable [QGVAR(hackable), false]) isEqualTo true) then {
         // Object is hackable, add connect interaction
         private _action = [
             (str _obj + "_connect"),                           // Action Name (STRING)
-            LLSTRING(hack_connect),             // Name shown in menu
+            LLSTRING(Connect),             // Name shown in menu
             "",                                 // Icon (STRING)
-            {_this call FUNC(hack_connect)},    // Statement (CODE)
-            {_this call FUNC(hack_canConnect)}, // Condition (CODE)
+            {_this call FUNC(connect)},    // Statement (CODE)
+            {_this call FUNC(canConnect)}, // Condition (CODE)
             {},                                 // Insert Children (CODE)
             [_obj, _target]                           // Parameters (ANY)
         ] call ace_interact_menu_fnc_createAction;
         [_obj, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 
-        _obj setVariable [QGVAR(hack_hasInteract), true];
+        _obj setVariable [QGVAR(hasInteract), true];
     };
-} forEach ((getPos _target) nearEntities [["WeaponHolder","ReammoBox_F","AllVehicles","Thing"], GVAR(hack_connectorLength)]);
+} forEach ((getPos _target) nearEntities [["WeaponHolder","ReammoBox_F","AllVehicles","Thing"], GVAR(connectorLength)]);
 
 _player setVariable [QGVAR(hasConnector), true];

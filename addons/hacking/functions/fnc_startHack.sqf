@@ -20,26 +20,26 @@
 params ["_target", "_player", "_parameters"];
 _parameters params ["_obj", "_laptop"];
 
-_laptop setVariable [QGVAR(hack_isHacking), true, true];
-_laptop setVariable [QGVAR(hack_object), _obj, true];
+_laptop setVariable [QGVAR(isHacking), true, true];
+_laptop setVariable [QGVAR(object), _obj, true];
 private _timeVar = QGVAR(hack_) + (str _obj) + "_time";
 private _startTime = [time, serverTime] select isMultiplayer;
 _laptop setVariable [_timeVar, _startTime];
 
-private _duration = _obj getVariable [QGVAR(hack_duration), 1];
+private _duration = _obj getVariable [QGVAR(duration), 1];
 
 [
     ["\a3\ui_f\data\igui\cfg\simpletasks\types\download_ca.paa", 1.25],
-    [LLSTRING(Hack_HackStarted)],
+    [LLSTRING(HackStarted)],
     true
 ] call CBA_fnc_notify;
 
 [
     {
         params ["_player", "_obj", "_laptop"];
-        _laptop setVariable [QGVAR(hack_isHacking), nil, true];
-        _laptop setVariable [QGVAR(hack_object), nil, true];
-        [_player, _obj] call FUNC(hack_foundIntel);
+        _laptop setVariable [QGVAR(isHacking), nil, true];
+        _laptop setVariable [QGVAR(object), nil, true];
+        [_player, _obj] call FUNC(foundIntel);
     },
     [_player, _obj, _laptop],
     _duration

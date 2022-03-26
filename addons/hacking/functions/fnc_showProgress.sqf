@@ -20,7 +20,7 @@
 params ["_target", "_player", "_parameters"];
 _parameters params ["_obj", "_laptop"];
 
-private _duration = _obj getVariable [QGVAR(hack_duration), 1];
+private _duration = _obj getVariable [QGVAR(duration), 1];
 private _timeVar = QGVAR(hack_) + (str _obj) + "_time";
 private _startTime = _laptop getVariable [_timeVar, 0];
 private _currentTime = [time, serverTime] select isMultiplayer;
