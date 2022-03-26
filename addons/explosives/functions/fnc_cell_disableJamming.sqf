@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [backpack player] call jsoc_ew_base_fnc_cell_disableJamming;
+ * [backpack player] call jsoc_ew_explosives_fnc_cell_disableJamming;
  *
  * Public: No
  */

@@ -10,7 +10,7 @@
  * 0: Is Jamming <BOOLEAN>
  *
  * Example:
- * [backpackContainer player] call jsoc_ew_base_fnc_rf_isJamming;
+ * [backpackContainer player] call jsoc_ew_explosives_fnc_rf_isJamming;
  *
  * Public: No
  */

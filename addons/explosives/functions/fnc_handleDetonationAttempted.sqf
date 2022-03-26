@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [_explosive, _trigger] call jsoc_ew_base_fnc_handleDetonationAttempted;
+ * [_explosive, _trigger] call jsoc_ew_explosives_fnc_handleDetonationAttempted;
  *
  * Public: No
  */

@@ -14,7 +14,7 @@
  * 0: Actions <ARRAY>
  *
  * Example:
- * [player] call jsoc_ew_base_fnc_rf_addChildrenChildren;
+ * [player] call jsoc_ew_explosives_fnc_rf_addChildrenChildren;
  *
  * Public: No
  */
@@ -35,7 +35,7 @@ private _actionEnable = [
         // Condition
         (_this select 2) params ["_class","_obj"];
         !([_obj] call FUNC(rf_isJamming))
-    }, 
+    },
     {},
     [_class, _obj]
 ] call ace_interact_menu_fnc_createAction;

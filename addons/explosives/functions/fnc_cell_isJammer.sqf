@@ -10,7 +10,7 @@
  * 0: Is Jammer <BOOLEAN>
  *
  * Example:
- * [backpackContainer player] call jsoc_ew_base_fnc_cell_isJammer;
+ * [backpackContainer player] call jsoc_ew_explosives_fnc_cell_isJammer;
  *
  * Public: No
  */

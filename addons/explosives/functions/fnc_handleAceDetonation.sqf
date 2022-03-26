@@ -14,7 +14,7 @@
  * 0: Allow explosion <BOOLEAN>
  *
  * Example:
- * [_unit, _range, _explosive, _fuse, _trigger] call jsoc_ew_base_fnc_handleAceDetonation;
+ * [_unit, _range, _explosive, _fuse, _trigger] call jsoc_ew_explosives_fnc_handleAceDetonation;
  *
  * Public: No
  */

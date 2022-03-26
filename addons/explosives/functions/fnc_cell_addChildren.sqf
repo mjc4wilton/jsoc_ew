@@ -10,7 +10,7 @@
  * 0: Actions <ARRAY>
  *
  * Example:
- * [player] call jsoc_ew_base_fnc_rf_addChildren;
+ * [player] call jsoc_ew_explosives_fnc_cell_addChildren;
  *
  * Public: No
  */
@@ -28,17 +28,17 @@ private _backpackContainer = backpackContainer _unit;
 {
     _x params ["_class","_obj"];
 
-    if ([_obj] call FUNC(rf_isJammer)) then {
+    if ([_obj] call FUNC(cell_isJammer)) then {
         private _config = configOf _obj;
         private _name = getText (_config >> "displayName");
         private _picture = getText (_config >> "picture");
         private _action = [
-            str _obj, 
-            _name, 
-            _picture, 
+            str _obj,
+            _name,
+            _picture,
             {},
             {true},
-            {_this call FUNC(rf_addChildrenChildren)}, 
+            {_this call FUNC(cell_addChildrenChildren)},
             [_class, _obj]
         ] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _unit];

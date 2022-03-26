@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="JSOC_EW">
+    <Package name="Explosives">
+        <!-- Cell Jamming -->
+        <Key ID="STR_JSOC_EW_Explosives_Cell">
+            <English>Cell</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_Cell_DisableJamming">
+            <English>Disable</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_Cell_EnableJamming">
+            <English>Enable</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_Cell_Jamming">
+            <English>Cell Jamming</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_Modules_Cell_ConnectExplosive">
+            <English>Connect Explosive (Cell)</English>
+        </Key>
+        <!-- RF Detonator Jamming -->
+        <Key ID="STR_JSOC_EW_Explosives_RF">
+            <English>RF</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_RF_Jamming">
+            <English>RF Jamming</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_RF_EnableJamming">
+            <English>Enable</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_RF_DisableJamming">
+            <English>Disable</English>
+        </Key>
+        <!-- General IED Jamming -->
+        <Key ID="STR_JSOC_EW_Explosives_IEDJamming">
+            <English>IED Jamming</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_MaxJamRange_DisplayName">
+            <English>Max Jammer Range</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_MaxJamRange_Description">
+            <English>Max range for a jammer to successfully jam, provided it is closer to the explosive than the detonator in meters</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_ExactRange_DisplayName">
+            <English>Exact Bearing Range</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_ExactRange_Description">
+            <English>When an IED is jammed, if the jammer is within this radius of the explosive it will provice the exact bearing to the explosive</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_DetonationAttempted_Title">
+            <English>Detonation Attempted!</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_DetonationAttempted_Type">
+            <English>Detonator Type: %1</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_DetonationAttempted_Angle">
+            <English>Bearing: %1</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_DetonationAttempted_Explosive_Angle">
+            <English>Explosive Bearing: %1</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Explosives_DegreesFormat">
+            <English>%1 deg</English>
+        </Key>
+    </Package>
+</Project>
