@@ -30,7 +30,7 @@ private _backpackContainer = backpackContainer _unit;
 
     if ([_obj] call FUNC(rf_isJammer)) then {
         private _config = configOf _obj;
-        private _name = getText (_config >> "displayName");
+        private _name = getText (_config >> QEGVAR(base,displayNameShort));
         private _picture = getText (_config >> "picture");
         private _action = [
             str _obj,
