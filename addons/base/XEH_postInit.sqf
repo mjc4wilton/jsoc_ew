@@ -46,10 +46,10 @@ if (hasInterface) then {
 
 // Radio Jamming
 [QGVAR(equipRadioJammer), {
-    params ["_unit", "_f"];
+    params ["_unit", "_f", "_caller"];
 
     if (GVAR(hasACRE)) then {
-        [QEGVAR(acre,equipRadioJammer), [_unit, _f]] call CBA_fnc_localEvent;
+        [QEGVAR(acre,equipRadioJammer), [_unit, _f, _caller]] call CBA_fnc_localEvent;
     };
 }] call CBA_fnc_addEventHandler;
 

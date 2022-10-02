@@ -45,23 +45,23 @@ if (isPlayer _unit) exitWith {
 
 [LLSTRING(EquipRadioJammer_Title), [
         [
-          "EDIT",
-          [LLSTRING(EquipRadioJammer_Frequency_Title), LLSTRING(EquipRadioJammer_Frequency_Tooltip)],
-          [
-              "59.625",
-              {
-                  // Sanitizing Function - Returns only number
-                  parseNumber _this;
-              }
-          ],
-          true
+            "EDIT",
+            [LLSTRING(EquipRadioJammer_Frequency_Title), LLSTRING(EquipRadioJammer_Frequency_Tooltip)],
+            [
+                "59.625",
+                {
+                    // Sanitizing Function - Returns only number
+                    parseNumber _this;
+                }
+            ],
+            true
         ]
     ], {
-      params ["_values", "_args"];
-      _values params ["_fs"];
-      _args params ["_unit"];
-      private _f = parseNumber _fs;
+        params ["_values", "_args"];
+        _values params ["_fs"];
+        _args params ["_unit"];
+        private _f = parseNumber _fs;
 
-      [QEGVAR(base,equipRadioJammer), [_unit, _f], _unit] call CBA_fnc_targetEvent;
+        [QEGVAR(base,equipRadioJammer), [_unit, _f, player], _unit] call CBA_fnc_targetEvent;
     },
 {}, [_unit]] call zen_dialog_fnc_create;

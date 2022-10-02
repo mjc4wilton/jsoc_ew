@@ -31,5 +31,8 @@
         <Key ID="STR_JSOC_EW_ACRE_JammedTone_Description">
             <English>Tone which plays when you are being jammed</English>
         </Key>
+        <Key ID="STR_JSOC_EW_ACRE_Error_NoSpace">
+            <English>ERROR: No Space in Unit</English>
+        </Key>
     </Package>
 </Project>
