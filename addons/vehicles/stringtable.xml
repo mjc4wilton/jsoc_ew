@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="JSOC_EW">
-    <Package name="Explosives">
+    <Package name="Vehicles">
         <!-- IED Jamming -->
         <Key ID="STR_JSOC_EW_Vehicles_CellJamming_Enable">
             <English>Enable Cell Jamming</English>
