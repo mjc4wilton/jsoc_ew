@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="JSOC_EW">
+    <Package name="Explosives">
+        <!-- IED Jamming -->
+        <Key ID="STR_JSOC_EW_Vehicles_CellJamming_Enable">
+            <English>Enable Cell Jamming</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Vehicles_CellJamming_Disable">
+            <English>Disable Cell Jamming</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Vehicles_RFJamming_Enable">
+            <English>Enable RF Jamming</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Vehicles_RFJamming_Disable">
+            <English>Disable RF Jamming</English>
+        </Key>
+    </Package>
+</Project>

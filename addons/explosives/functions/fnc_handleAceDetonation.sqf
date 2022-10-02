@@ -57,6 +57,31 @@ scopeName QGVAR(handleAceDetonation_main);
         } forEach [_uniformContainer, _vestContainer, _backpackContainer];
     };
     if (_x isKindOf "WeaponHolder" || {_x isKindOf "ReammoBox_F"} || {_x isKindOf "AllVehicles"}) then {
+        // Test vehicle itself
+        if (_x call FUNC(cell_isJammer) && {_x call FUNC(cell_isJamming)}) then {
+            if (_trigger isEqualTo "ACE_Cellphone") then {
+                _return = false;
+                if (_x isKindOf "jsoc_m1152_ew_usarmy_wd" || {_x isKindOf "jsoc_m1152_ew_usarmy_d"}) then {
+                    // Notify
+                    private _operator = (((fullCrew [_x, "cargo"]) select 0) select 0);
+                    [QGVAR(detonationAttempted), [_explosive, _unit, _trigger], _operator] call CBA_fnc_targetEvent;
+                };
+                breakTo QGVAR(handleAceDetonation_main);
+            };
+        };
+        if (_x call FUNC(rf_isJammer) && {_x call FUNC(rf_isJamming)}) then {
+            if (_trigger isEqualTo "ACE_Clacker" || {_trigger isEqualTo "ACE_M26_Clacker"}) then {
+                _return = false;
+                if (_x isKindOf "jsoc_m1152_ew_usarmy_wd" || {_x isKindOf "jsoc_m1152_ew_usarmy_d"}) then {
+                    // Notify
+                    private _operator = (((fullCrew [_x, "cargo"]) select 0) select 0);
+                    [QGVAR(detonationAttempted), [_explosive, _unit, _trigger], _operator] call CBA_fnc_targetEvent;
+                };
+                breakTo QGVAR(handleAceDetonation_main);
+            };
+        };
+
+        // Test items inside
         private _container = _x;
         {
             _x params ["_class", "_obj"];
