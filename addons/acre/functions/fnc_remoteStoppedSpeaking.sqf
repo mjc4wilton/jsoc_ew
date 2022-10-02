@@ -22,5 +22,6 @@ if (_unit in GVAR(tonedUnits)) then {
     // Ensure tone isn't accentially stopped
     if (GVAR(tonedUnits) isEqualTo []) then {
         deleteVehicle GVAR(toneSpeaker);
+        GVAR(toneSpeaker) = objNull;
     };
 };
