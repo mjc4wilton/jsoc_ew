@@ -35,6 +35,6 @@ params ["_player", "_target"];
 
         _obj setVariable [QGVAR(hasInteract), true];
     };
-} forEach ((getPos _target) nearEntities [["WeaponHolder","ReammoBox_F","AllVehicles","Thing"], GVAR(connectorLength)]);
+} forEach ((getPos _target) nearEntities GVAR(connectorLength));
 
 _player setVariable [QGVAR(hasConnector), true];
