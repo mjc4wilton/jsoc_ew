@@ -4,7 +4,12 @@ class CfgPatches {
     class ADDON {
         name = QUOTE(COMPONENT);
         units[] = {
-            "jsoc_ew_base_backpack_mc",
+            QGVAR(backpack),
+            QGVAR(backpack_multicam),
+            QGVAR(backpack_multicamarctic),
+            QGVAR(backpack_multicamblack),
+            QGVAR(backpack_multicamtropic),
+            QGVAR(backpack_od),
             QGVAR(ModuleBase),
             QGVAR(Laptop),
             QGVAR(LaptopObject)

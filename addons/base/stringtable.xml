@@ -9,6 +9,18 @@
         <Key ID="STR_JSOC_EW_Base_Backpack_Multicam_DisplayName">
             <English>[JSOC] EW Backpack Multicam</English>
         </Key>
+        <Key ID="STR_JSOC_EW_Base_Backpack_MulticamArctic_DisplayName">
+            <English>[JSOC] EW Backpack Multicam Arctic</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Backpack_MulticamBlack_DisplayName">
+            <English>[JSOC] EW Backpack Multicam Black</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Backpack_MulticamTropic_DisplayName">
+            <English>[JSOC] EW Backpack Multicam Tropic</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Base_Backpack_OD_DisplayName">
+            <English>[JSOC] EW Backpack OD Green</English>
+        </Key>
         <Key ID="STR_JSOC_EW_Base_Backpack_DisplayName_Short">
             <English>[JSOC] EW Backpack</English>
         </Key>

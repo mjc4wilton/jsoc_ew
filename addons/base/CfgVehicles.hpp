@@ -15,19 +15,55 @@ class CfgVehicles {
 
     // Gear
     class Bag_Base;
-    class GVAR(backpack_mc): Bag_Base {
+    class GVAR(backpack) : Bag_Base {
         author = "Chaser";
-        scope = 2;
+        scope = 0;
         model = "a3\Supplies_F_Enoch\Bags\B_RadioBag_01_F.p3d";
-        displayName = CSTRING(Backpack_Multicam_DisplayName);
         picture = QPATHTOF(ui\UMB_Chaser.paa);
         hiddenSelections[] = { "Camo1" };
-        hiddenSelectionsTextures[] = {
-            QPATHTOF(data\GVAR(backpack_mc.paa))
-        };
         maximumLoad = 250;
         mass = 150;
         GVAR(displayNameShort) = CSTRING(Backpack_DisplayName_Short);
+    };
+    class GVAR(backpack_multicam): GVAR(backpack) {
+        scope = 2;
+        displayName = CSTRING(Backpack_Multicam_DisplayName);
+        picture = QPATHTOF(ui\UMB_Chaser.paa);
+        hiddenSelectionsTextures[] = {
+            QPATHTOF(data\GVAR(backpack_multicam.paa))
+        };
+    };
+    class GVAR(backpack_multicamarctic): GVAR(backpack) {
+        scope = 2;
+        displayName = CSTRING(Backpack_MulticamArctic_DisplayName);
+        picture = QPATHTOF(ui\UMB_Chaser.paa);
+        hiddenSelectionsTextures[] = {
+            QPATHTOF(data\GVAR(backpack_multicamarctic.paa))
+        };
+    };
+    class GVAR(backpack_multicamblack): GVAR(backpack) {
+        scope = 2;
+        displayName = CSTRING(Backpack_MulticamBlack_DisplayName);
+        picture = QPATHTOF(ui\UMB_Chaser.paa);
+        hiddenSelectionsTextures[] = {
+            QPATHTOF(data\GVAR(backpack_multicamblack.paa))
+        };
+    };
+    class GVAR(backpack_multicamtropic): GVAR(backpack) {
+        scope = 2;
+        displayName = CSTRING(Backpack_MulticamTropic_DisplayName);
+        picture = QPATHTOF(ui\UMB_Chaser.paa);
+        hiddenSelectionsTextures[] = {
+            QPATHTOF(data\GVAR(backpack_multicamtropic.paa))
+        };
+    };
+    class GVAR(backpack_od): GVAR(backpack) {
+        scope = 2;
+        displayName = CSTRING(Backpack_OD_DisplayName);
+        picture = QPATHTOF(ui\UMB_Chaser.paa);
+        hiddenSelectionsTextures[] = {
+            QPATHTOF(data\GVAR(backpack_od.paa))
+        };
     };
 
     // ZEUS Modules
