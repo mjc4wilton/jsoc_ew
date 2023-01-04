@@ -27,10 +27,15 @@ if (_speakingType isEqualTo SPEAKING_TYPE_RADIO) then {
     // Remote is speaking on radio
     if (([_radioID, ACE_player] call FUNC(getAudibleTransmissions)) isNotEqualTo []) then {
         // Unit can hear transmission
+        private _radioTx = HASH_GET(GET_CHANNEL_DATA(_radioID), "frequencytx");
         private _foundJammer = false;
         {
-            if (([_x, ACE_player] call FUNC(getAudibleTransmissions)) isNotEqualTo []) exitWith {
-                _foundJammer = true;
+            if (([_x, ACE_player] call FUNC(getAudibleTransmissions)) isNotEqualTo []) then {
+                // Unit can hear jammer
+                private _jammerTx = HASH_GET(GET_CHANNEL_DATA(_radioID), "frequencytx");
+                if (_jammerTx isEqualTo _radioTx) exitWith {
+                    _foundJammer = true;
+                };
             };
         } forEach (GVAR(jammers));
 
