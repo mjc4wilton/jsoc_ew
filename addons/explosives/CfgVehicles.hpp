@@ -25,7 +25,7 @@ class CfgVehicles {
 
     // Gear
     class Bag_Base;
-    class EGVAR(base,backpack_mc): Bag_Base {
+    class EGVAR(base,backpack): Bag_Base {
         GVAR(isCellJammer) = QUOTE(true);
         GVAR(isRFJammer) = QUOTE(true);
     };
