@@ -67,7 +67,18 @@ switch (_antenna) do {
             if (isNil "_obj" || _obj isEqualTo objNull) then {
                 [_obj] call FUNC(removeSignal);
             } else {
-                private _rxSignal = [_obj, _power] call FUNC(getSignalStrength);
+                // Calculate angle
+                private _bearingFacing = getDir ACE_player;
+                private _bearingJammer = ACE_player getDir _obj;
+                private _angle = (_bearingFacing max _bearingJammer) - (_bearingFacing min _bearingJammer);
+                if (_angle > 180) then {
+                    _angle = 360 - _angle;
+                };
+                private _multiplier = 1 - ((1 / 180) * _angle) ^ 2; // Quadratically varied with 1 at 0 angle and 0 at 180 angle.
+
+                private _distance = (_obj distance ACE_player);
+                private _signalBase = -24.6 * (sqrt (_distance / (4*_power)));
+                private _rxSignal = (-1 * (10 ^ ((log (abs _signalBase)) * (1/(0.0001 max _multiplier))))) max -993; // Vary signal strength with percent error
                 _sourceList pushBack [_freq, _rxSignal];
             };
         } forEach (missionNamespace getVariable [QGVAR(signals), []]);
