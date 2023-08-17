@@ -1,1 +1,3 @@
-hemtt build --release
+@ECHO OFF
+hemtt.exe build
+PAUSE

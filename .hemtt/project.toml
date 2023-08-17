@@ -1,0 +1,45 @@
+name = "jsoc_ew"
+prefix = "jsoc_ew"
+author = "77th JSOC"
+mainprefix = "z"
+
+[files]
+include = [
+    "mod.cpp",
+    "LICENSE",
+    "README*.md",
+]
+exclude = [
+    "*.psd",
+    "*.png",
+    "*.tga"
+]
+
+[version]
+git_hash = 0 # disabled
+
+[asc]
+enabled = true
+exclude = [
+    "/initsettings.sqf",
+    "/initkeybinds.sqf",
+    "/xeh_prep.sqf",
+    "dev",
+]
+
+[hemtt.config]
+preset = "Hemtt"
+
+[hemtt.release]
+folder = "jsoc_ew"
+
+[hemtt.launch]
+workshop = [
+    "450814997", # CBA_A3
+    "463939057", # ACE
+    "751965892", # ACRE2
+    "773125288", # ACE Compat - RHS USAF
+    "843577117", # RHS USAF
+    "1779063631", # Zeus Enhanced
+    "2018593688", # Zeus Enhanced - ACE3 Compat
+]
