@@ -37,8 +37,25 @@ private _duration = _obj getVariable [QGVAR(duration), 1];
 [
     {
         params ["_player", "_obj", "_laptop"];
+        // Cleanup
         _laptop setVariable [QGVAR(isHacking), nil, true];
         _laptop setVariable [QGVAR(object), nil, true];
+
+        // Ensure object is still connected to laptop
+        private _objConnected = _obj getVariable [QGVAR(connected), nil];
+        if (isNil "_objConnected") exitWith {};
+        if (_objConnected isNotEqualTo _laptop) exitWith{};
+
+        // Server event for hooks
+        [QGVAR(hackingCompleteServer), [_player, _obj, _laptop]] call CBA_fnc_serverEvent;
+
+        // Local event for hooks
+        [QGVAR(hackingCompletePlayer), [_player, _obj, _laptop], _player] call CBA_fnc_targetEvent;
+
+        // GlobalJIP event for hooks
+        [QGVAR(hackingCompleteGlobalJIP), [_player, _obj, _laptop]] call CBA_fnc_globalEventJIP;
+
+        // Handle intel sharing
         [_player, _obj] call FUNC(foundIntel);
     },
     [_player, _obj, _laptop],
