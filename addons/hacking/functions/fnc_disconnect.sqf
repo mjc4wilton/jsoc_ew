@@ -33,3 +33,4 @@ private _interactDisconnect = (str _obj + "_disconnect");
 private _interactConnect = (str _obj + "_connect");
 [_obj, 0, ["ACE_MainActions", _interactDisconnect]] call ace_interact_menu_fnc_removeActionFromObject;
 [_obj, 0, ["ACE_MainActions", _interactConnect]] call ace_interact_menu_fnc_removeActionFromObject;
+_obj setVariable [QGVAR(hasInteract), false];
