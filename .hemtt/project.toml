@@ -16,11 +16,12 @@ exclude = [
 ]
 
 [version]
-git_hash = 0 # disabled
+git_hash = 0
 
 [asc]
 enabled = true
 exclude = [
+    "*.inc.sqf",
     "/initsettings.sqf",
     "/initkeybinds.sqf",
     "/xeh_prep.sqf",

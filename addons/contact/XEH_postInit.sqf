@@ -16,4 +16,6 @@ if (hasInterface) then {
     missionNamespace setVariable ["#EM_FMax", SPECTRUM_FREQ_MAX];
     missionNamespace setVariable ["#EM_SMin", SPECTRUM_SENS_MIN];
     missionNamespace setVariable ["#EM_SMax", SPECTRUM_SENS_MAX];
+    missionNamespace setVariable ["#EM_SelMin", SPECTRUM_SEL_MIN];
+    missionNamespace setVariable ["#EM_SelMax", SPECTRUM_SEL_MAX];
 };

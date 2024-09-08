@@ -10,6 +10,12 @@
         <Key ID="STR_JSOC_EW_Contact_SpectrumUpdateRate_Description">
             <English>Amount of time (in seconds) between updates on the spectrum device screen.\nSet to 0 for every frame.</English>
         </Key>
+        <Key ID="STR_JSOC_EW_Contact_SignalAngleFalloff_DisplayName">
+            <English>Spectrum Device Angle Falloff</English>
+        </Key>
+        <Key ID="STR_JSOC_EW_Contact_SignalAngleFalloff_Description">
+            <English>Angle of difference between the spectrum device and signal source which reaches -infinity</English>
+        </Key>
         <Key ID="STR_JSOC_EW_Contact_DrawSignal_Error">
             <English>ERROR:</English>
         </Key>
