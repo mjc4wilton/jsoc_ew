@@ -51,8 +51,8 @@ switch (_antenna) do {
                     if (_angle > 180) then {
                         _angle = 360 - _angle;
                     };
-                    private _multiplier = 1 - ((1 / 180) * _angle) ^ 2; // Quadratically varied with 1 at 0 angle and 0 at 180 angle.
-                    private _maxSignalFinal = (-1 * (10 ^ ((log (abs _maxSignal)) * (1/(0.0001 max _multiplier))))) max -993; // Vary signal strength with percent error
+                    private _multiplier = 1 - ((1 / 30) * _angle) ^ 2; // Quadratically varied with 1 at 0 angle and 0 at 180 angle.
+                    private _maxSignalFinal = (-1 * (10 ^ ((log (abs (_maxSignal min -2))) * (1/(0.0001 max _multiplier))))) max -993; // Vary signal strength with percent error
 
                     _sourceList pushBack [_frequency, _maxSignalFinal];
                 } forEach (missionNamespace getVariable [QEGVAR(acre,jammers), []]);
@@ -74,11 +74,11 @@ switch (_antenna) do {
                 if (_angle > 180) then {
                     _angle = 360 - _angle;
                 };
-                private _multiplier = 1 - ((1 / 180) * _angle) ^ 2; // Quadratically varied with 1 at 0 angle and 0 at 180 angle.
+                private _multiplier = 1 - ((1 / 30) * _angle) ^ 2; // Quadratically varied with 1 at 0 angle and 0 at 180 angle.
 
                 private _distance = (_obj distance ACE_player);
                 private _signalBase = -24.6 * (sqrt (_distance / (4*_power)));
-                private _rxSignal = (-1 * (10 ^ ((log (abs _signalBase)) * (1/(0.0001 max _multiplier))))) max -993; // Vary signal strength with percent error
+                private _rxSignal = (-1 * (10 ^ ((log (abs (_signalBase min -2))) * (1/(0.0001 max _multiplier))))) max -993; // Vary signal strength with percent error
                 _sourceList pushBack [_freq, _rxSignal];
             };
         } forEach (missionNamespace getVariable [QGVAR(signals), []]);
